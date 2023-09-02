@@ -1,0 +1,12 @@
+{
+  "name": "proyecto-final-",
+  "version": "1.0.0",
+  "description": "## Los modulos que integran al sistemas son: * Seguridad * Circulación * Reservas * Reportes * Sanciones * Catalogación",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
