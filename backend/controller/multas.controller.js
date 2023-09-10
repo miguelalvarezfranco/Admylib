@@ -7,3 +7,11 @@ exports.crearMulta = async(req, res)=>{
         console.error(error);
     }
 }
+
+exports.updaMultas = async(req, res) =>{
+    try {
+        const respuesta = await multas.update(req.body)
+    } catch (error) {
+        console.error(error);
+    }
+}

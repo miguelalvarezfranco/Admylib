@@ -8,6 +8,7 @@ exports.find = async()=>{
     return await multas.find();
 }
 
-exports.update = async(filter, data) =>{
+exports.updateMultas = async(filter, data) =>{
     return await multas.findOneAndUpdate({filter }, data );
 }
+

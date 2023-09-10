@@ -7,3 +7,7 @@ exports.create = async(infomultas)=>{
 
     return nuevaMulta 
 }
+
+exports.update = async(upmultas)=>{
+    const {tiempoSancion, motivo} = upmultas;
+}
