@@ -9,6 +9,7 @@ dotenv.config();
 const PORT = process.env.PORT || 2000;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/frontend/views/pages"));
+app.use(express.static(__dirname ,"/frontend/static"));
 app.use(morgan("dev"));
 
 app.use(express.json());

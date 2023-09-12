@@ -22,7 +22,7 @@ const SociosSchema = new mongoose.Schema({
     reservas: [
         {
             type: Schema.Types.ObjectId,
-             ref: 'reservas'
+            ref: 'reservas'
             }
         ],
     prestamos: [
