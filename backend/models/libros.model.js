@@ -1,7 +1,14 @@
 const mongoose = require ('../config/database');
-const { Schema } = mongoose;
+// const { Schema } = mongoose;
+const Schema = mongoose.Schema;
 
 const LibrosSchema = new mongoose.Schema({
+    autores: [{
+        id: {
+            type: Schema.types.ObjectId,
+            ref: 'autores'
+        }
+    }],
     isbn: {
         type: String,
         required: true,

@@ -27,6 +27,12 @@ app.listen(PORT, () => {
 
 });
 
+// app.get("/libros", function (req, res) {
+//     Libro.find({}, function (err, libros) {
+//     res.status(200).send(libros);
+//     });
+// });
+
 
 
 

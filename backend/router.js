@@ -6,6 +6,9 @@ const router = express.Router();
 
 router.post("/multas", multas.crearMulta);
 
+router.post("/libros", libros.crearLibro);
+
+
 
 
 
