@@ -1,4 +1,4 @@
-const multas = require('../controller/data-acces/multas');
+const multas = require('../data-acces/multas');
 
 exports.create = async(infomultas)=>{
     const {tiempoSancion, motivo } = infomultas;

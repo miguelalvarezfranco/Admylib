@@ -1,7 +1,7 @@
-const libros = require('../../models/libros.model');
+const libros = require('../models/libros.model');
 
 exports.createLibros = async(librosdata) =>{
-    return await libros.creaLibros(librosdata);
+    return await libros.create(librosdata)
 }
 
 exports.find = async()=>{
