@@ -21,19 +21,19 @@ const SociosSchema = new mongoose.Schema({
     },
     reservas: [
         {
-            type: Schema.Types.ObjectId,
+            type: String,//Schema.Types.ObjectId,
             ref: 'reservas'
             }
         ],
     prestamos: [
         {
-            type: Schema.Types.ObjectId,
-             ref: 'prestamos'
+            type: String,//Schema.Types.ObjectId,
+            ref: 'prestamos'
             }
         ],
     multas: [
         {
-            type: Schema.Types.ObjectId,
+            type: String,//Schema.Types.ObjectId,
             ref: 'multas'
         }
     ]

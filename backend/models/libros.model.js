@@ -3,12 +3,12 @@ const mongoose = require ('../config/database');
 const Schema = mongoose.Schema;
 
 const LibrosSchema = new mongoose.Schema({
-    autores: [{
-        id: {
-            type: Schema.types.ObjectId,
-            ref: 'autores'
-        }
-    }],
+    // autores: [{
+    //     id: {
+    //         type: Schema.types.ObjectId,
+    //         ref: 'autores'
+    //     }
+    // }],
     isbn: {
         type: String,
         required: true,
@@ -20,12 +20,12 @@ const LibrosSchema = new mongoose.Schema({
         maxLength: 200
     },
     autor: {
-        type: Schema.types.ObjectId,
+        type: String,//Schema.types.ObjectId,
         ref: 'autores',
         required: [true, 'Referencia el autor del libro'],
     },
     editorial: {
-        type: Schema.types.ObjectId,
+        type: String,
         ref: 'editoriales',
         required: [true, 'Referencia a la editorial del libro']
     },
@@ -42,7 +42,7 @@ const LibrosSchema = new mongoose.Schema({
         required: [true, 'Ingrese las copias del libro disponibles']
     },
     idioma: {
-        type: Schema.types.ObjectId,
+        type: String,
         ref: 'idiomas',
         required: [true, 'Referencia al idioma en que está el libro']
     }

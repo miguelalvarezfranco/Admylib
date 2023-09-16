@@ -10,8 +10,4 @@ router.post("/libros", libros.crearLibro);
 
 
 
-
-
-
-
 module.exports = router;
