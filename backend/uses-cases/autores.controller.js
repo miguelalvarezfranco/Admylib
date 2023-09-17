@@ -1,9 +1,9 @@
-const autores = require('../controller/data-acces/autores');
+// const autores = require('../data-acces/autores');
 
-exports.registerAutores = async(register)=>{
-    const{nombreCompleto, fechaNacimiento, fechaDeseso} = register;
+// exports.registerAutores = async(register)=>{
+//     const{nombreCompleto, fechaNacimiento, fechaDeseso} = register;
 
-    const newregister = autores.registerAutor(register);
+//     const newregister = autores.registerAutor(register);
 
-    return newregister;
-}
+//     return newregister;
+// }

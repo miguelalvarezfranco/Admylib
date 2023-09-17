@@ -1,10 +1,10 @@
 const multas = require("../models/multas.model");
 
 exports.Createmultas = async(multasdata)=>{
-    return await multas.save(multasdata);
+    return await multas (multasdata).save();
 }
 
-exports.find = async()=>{
+exports.Buscar = async()=>{
     return await multas.find();
 }
 
