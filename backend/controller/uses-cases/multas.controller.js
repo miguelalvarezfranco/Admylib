@@ -23,12 +23,28 @@ exports.find = async(req, res) =>{
     }
 }
 
-
-
 exports.update = async(req, res)=>{
-    const id = {_id: req.params.id};
-    const actualizar = req.body;
-    const actualizarMulta  = await multasdata.update(id, actualizar);
-    res.status(200).json({multas: 'se actualizo con exito'});
-}
+
+    try {
+        const filtro = {_id: req.params.id };
+        const datos = {
+            tiempoSancion: req.body.tiempoSancion,
+            motivo: req.body.motivo
+        }
+
+        const updateMultas  = await multas.updateMultas(filtro, datos);
+
+        if(updateMultas.respuesta === false){
+            console.log('hola')
+            res.status(404).json({resultado: "no se actualizo"})
+        }else{
+            res.status(200).json({multas:  updateMultas})
+        }
+    } catch (e) {
+        res.status(500).json({error:e})
+    }
+    
+};
+
+
 
