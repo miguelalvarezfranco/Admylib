@@ -31,7 +31,8 @@ exports.buscar = async(filter)=>{
 
 exports.updateMultas = async(id, data) =>{
 
-    try {
+    try{
+
         const updateMultas = await multas.findOneAndUpdate(id , data );
         if(updateMultas){
             return {
@@ -46,7 +47,9 @@ exports.updateMultas = async(id, data) =>{
                 mensaje: "nose realizo la actualizacion"
             }
         }
-    } catch (error) {
+                mensaje: "no se pudo actualizar multa"
+                
+        } catch (error) {
         return {
             respuesta : false,
             error : err
@@ -54,7 +57,6 @@ exports.updateMultas = async(id, data) =>{
     }
 }
 
+
 exports.Eliminar = async()=>{
-
 }
-
