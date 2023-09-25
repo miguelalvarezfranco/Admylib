@@ -7,11 +7,11 @@ const AutoresSchema = new mongoose.Schema({
         required:[true, 'El nombre de autor es obligatorio']
     },
     fechaNacimiento:{
-        typo:Date,
+        type:Date,
         required:[true, 'Ingresar fecha de nacimiento del autor'],
     },
     fechaDeceso:{
-        typo:Date,
+        type:Date,
     },
 });
 

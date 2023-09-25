@@ -10,7 +10,7 @@ const LibrosSchema = new mongoose.Schema({
     //     }
     // }],
     isbn: {
-        type: String,
+        type: Number,
         required: true,
         unique: true
     },

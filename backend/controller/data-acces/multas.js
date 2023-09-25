@@ -11,7 +11,7 @@ exports.buscar = async(filter)=>{
         if(buscar){
             return {
                 respuesta : true,
-
+                
                 multas :buscar
             }
         }else{
