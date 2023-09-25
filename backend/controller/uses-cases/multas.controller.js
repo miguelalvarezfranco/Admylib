@@ -26,9 +26,17 @@ exports.find = async(req, res) =>{
 
 
 exports.update = async(req, res)=>{
+
+    try {
+        
+    } catch (error) {
+        
+    }
+
+
     const id = {_id: req.params.id};
     const actualizar = req.body;
-    const actualizarMulta  = await multasdata.update(id, actualizar);
+    const actualizarMulta  = await multas.updateMultas(id, actualizar);
     res.status(200).json({multas: 'se actualizo con exito'});
 }
 
