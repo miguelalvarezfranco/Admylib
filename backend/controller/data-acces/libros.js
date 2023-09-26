@@ -31,6 +31,29 @@ exports.buscarLibro = async(filter)=>{
 
 
 
-exports.updatelibros = async(filter, data)=>{
-    
+exports.updatelibros = async(id, data)=>{
+    try{
+
+        const updatelibros = await libros.findOneAndUpdate(id, data );
+        if(updatelibros){
+            return {
+                respuesta : true,
+
+                libros :updatelibros
+            }
+        }else{
+            return {
+                respuesta :false,
+
+                mensaje: "nose realizo la actualizacion"
+            }
+        }
+                mensaje: "no se pudo actualizar multa"
+                
+        } catch (error) {
+        return {
+            respuesta : false,
+            error : err
+        }
+    }
 }

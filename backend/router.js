@@ -1,6 +1,8 @@
 const multas = require('./controller/uses-cases/multas.controller');
 const autores = require('./controller/uses-cases/autores.controller');
 const libros = require('./controller/uses-cases/libros.controller');
+const bibliotecologos = require('./controller/uses-cases/bibliotecologos.controller');
+
 
 
 const express = require('express');
@@ -27,7 +29,13 @@ router.post("/registrarlibro", libros.creaLibros);
 
 router.get("/listarLibro", libros.find);
 
-// router.get("/actualizarLibro", libros.);
+router.get("/actualizarLibro", libros.update);
+
+//MODULO BIBLIOTECOLOGOS
+
+router.post("/register", bibliotecologos.Registrar);
+
+
 
 
 
