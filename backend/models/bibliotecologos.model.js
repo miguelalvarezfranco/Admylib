@@ -21,11 +21,11 @@ const BibliotecologoSchema = new mongoose.Schema({
         require: [true, 'Debes ingresar una contraseña segura'],
     },
     horarioEntrada: {
-        type: Time,  
+        type: String,  
         require:[true, 'Ingresa la hora de entrada del empleado'],
     },
     horarioSalida: {
-        type: Time,
+        type: String,
         require:[true, 'Ingresa la hora de salida del empleado'],
     }
 });
