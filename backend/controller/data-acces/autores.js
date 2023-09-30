@@ -17,7 +17,7 @@ exports.listar = async(filter)=>{
             return {
                 respuesta :false,
 
-                mensaje: "nose econtro ninguna multa"
+                mensaje: "nose econtro ningun autor"
             }
         }
     } catch(err){

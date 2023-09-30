@@ -27,25 +27,37 @@ exports.find = async(req, res) =>{
 exports.update = async(req, res)=>{
 
     try {
-        const filtro = {_id: req.params.id };
+        const filtro = {_id: req.body.id };
         const datos = {
             tiempoSancion: req.body.tiempoSancion,
             motivo: req.body.motivo
         }
         const updateMultas  = await multas.updateMultas(filtro, datos);
-
-        if(updateMultas.respuesta === false){
-            res.status(404).json({resultado: "no se actualizo"})
+        console.log(updateMultas)
+        if(id.respuesta === false){
+            res.status(404).json({respuesta: "no se actualizo"})
         }else{
             res.status(200).json({multas:  updateMultas})
         }
         
+    
     } catch (e) {
         res.status(500).json({error:e})
+
     }
 
-    console.log(update)
 
 }
+
+
+// exports.eliminarMulta = async (req, res) => {
+//     try {
+//         const id = req.params.id;
+//         await multas.findOneAndDelete({ _id: id });
+//     } catch (error) {
+        
+//     }
+
+// };
 
 

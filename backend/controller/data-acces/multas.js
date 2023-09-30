@@ -18,7 +18,7 @@ exports.buscar = async(filter)=>{
             return {
                 respuesta :false,
 
-                mensaje: "nose econtro ninguna multa"
+                mensaje: "nose encontro ninguna multa"
             }
         }
     } catch(err){
@@ -32,8 +32,8 @@ exports.buscar = async(filter)=>{
 exports.updateMultas = async(id, data) =>{
 
     try{
-
         const updateMultas = await multas.findOneAndUpdate(id , data );
+
         if(updateMultas){
             return {
                 respuesta : true,
@@ -44,10 +44,9 @@ exports.updateMultas = async(id, data) =>{
             return {
                 respuesta :false,
 
-                mensaje: "nose realizo la actualizacion"
+                mensaje: "no se actualizo la multa"
             }
         }
-                mensaje: "no se pudo actualizar multa"
                 
         } catch (error) {
         return {
@@ -57,6 +56,34 @@ exports.updateMultas = async(id, data) =>{
     }
 }
 
+// exports.eliminarMulta = async (id, data) => {
+//     try{
 
-exports.Eliminar = async()=>{
-}
+//         const eliminarMulta = await multas.findOneAndDelete(id , data );
+//         if(eliminarMulta){
+//             return {
+//                 respuesta : true,
+
+//                 multas :eliminarMulta
+//             }
+//         }else{
+//             return {
+//                 respuesta :false,
+
+//                 mensaje: "no se actualizo la multa"
+//             }
+//         }
+                
+//         } catch (error) {
+//         return {
+//             respuesta : false,
+//             error : err
+//         }
+//     }
+// }
+
+
+
+
+
+

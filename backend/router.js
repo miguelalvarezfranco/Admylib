@@ -5,8 +5,6 @@ const bibliotecologos = require('./controller/uses-cases/bibliotecologos.control
 const usuarios = require('./controller/uses-cases/usuarios.controller');
 
 
-
-
 const express = require('express');
 const router = express.Router();
 
@@ -15,7 +13,7 @@ router.post("/registrar", multas.create); // post hacer un cambio
 
 router.get("/buscar", multas.find );
 
-router.get("/actualizar", multas.update ); //get para hacer busquedas
+router.post("/actualizar", multas.update ); //get para hacer busquedas
 
 //MODULO AUTORES
 
@@ -36,12 +34,10 @@ router.get("/actualizarLibro", libros.update);
 //MODULO BIBLIOTECOLOGOS
 
 router.post("/register", bibliotecologos.Registrar);
+
 router.get("/ver", bibliotecologos.findB);
+
 router.get("/actualizarLibro", libros.update);
-
-
-
-
 
 //MODULO USUARIO
 

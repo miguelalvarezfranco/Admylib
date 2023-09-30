@@ -17,8 +17,7 @@ exports.buscarLibro = async(filter)=>{
         }else{
             return {
                 respuesta :false,
-
-                mensaje: "nose econtro ninguna multa"
+                mensaje: "nose econtro ningun libro"
             }
         }
     } catch(err){
@@ -28,7 +27,6 @@ exports.buscarLibro = async(filter)=>{
         }
     }
 }
-
 
 
 exports.updatelibros = async(id, data)=>{
@@ -48,8 +46,7 @@ exports.updatelibros = async(id, data)=>{
                 mensaje: "nose realizo la actualizacion"
             }
         }
-                mensaje: "no se pudo actualizar multa"
-                
+
         } catch (error) {
         return {
             respuesta : false,

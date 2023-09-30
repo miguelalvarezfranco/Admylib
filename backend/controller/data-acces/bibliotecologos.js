@@ -47,8 +47,7 @@ exports.updateBiblio = async(id, data) =>{
                 mensaje: "nose realizo la actualizacion"
             }
         }
-                mensaje: "no se pudo actualizar multa"
-                
+            
         } catch (error) {
         return {
             respuesta : false,
