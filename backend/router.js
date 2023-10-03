@@ -13,7 +13,10 @@ router.post("/registrar", multas.create); // post hacer un cambio
 
 router.get("/buscar", multas.find );
 
-router.post("/actualizar", multas.update ); //get para hacer busquedas
+router.post("/actualizar/:id", multas.update );
+
+router.post("/eliminarM/:id", multas.eliminar ); //get para hacer busquedas
+//get para hacer busquedas
 
 //MODULO AUTORES
 
@@ -21,7 +24,7 @@ router.post("/registrarAutor", autores.registerAutores);
 
 router.get("/listar", autores.findListar );
 
-router.get("/actualizar", autores.actualizarAutor ); //get para hacer busquedas
+router.post("/actualizarA/:id", autores.actualizarAutor ); //get para hacer busquedas
 
 //MODULO LIBROS
 
@@ -29,7 +32,7 @@ router.post("/registrarlibro", libros.creaLibros);
 
 router.get("/listarLibro", libros.find);
 
-router.get("/actualizarLibro", libros.update);
+router.post("/actualizarLibro/:id", libros.update);
 
 //MODULO BIBLIOTECOLOGOS
 
@@ -37,7 +40,7 @@ router.post("/register", bibliotecologos.Registrar);
 
 router.get("/ver", bibliotecologos.findB);
 
-router.get("/actualizarLibro", libros.update);
+router.post("/actualizarB/:id", bibliotecologos.updateB);
 
 //MODULO USUARIO
 

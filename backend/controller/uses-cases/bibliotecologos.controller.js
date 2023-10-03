@@ -37,12 +37,12 @@ exports.updateB = async(req, res)=>{
             horarioSalida: req.body.horarioSalida,
         
         }
-        const updateBiblio = await bibliotecologos.updateBiblio(filtro, datos);
 
-        if(updateBiblio.respuesta === false){
+        if(filtro.respuesta === false){
             res.status(404).json({resultado: "no se actualizo"})
         }else{
-            res.status(200).json({bibliotecologo:  updateBiblio})
+            await bibliotecologos.updateBiblio(filtro, datos);
+            res.status(200).json({bibliotecologo:  "se actualizo correctamente"})
         }
         
     } catch (e) {

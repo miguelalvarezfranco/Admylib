@@ -32,7 +32,7 @@ exports.buscar = async(filter)=>{
 exports.updateMultas = async(id, data) =>{
 
     try{
-        const updateMultas = await multas.findOneAndUpdate(id , data );
+        const updateMultas  = await multas.findOneAndUpdate(id , data );
 
         if(updateMultas){
             return {
@@ -56,31 +56,31 @@ exports.updateMultas = async(id, data) =>{
     }
 }
 
-// exports.eliminarMulta = async (id, data) => {
-//     try{
+exports.eliminarMulta = async (id, data) => {
+    try{
 
-//         const eliminarMulta = await multas.findOneAndDelete(id , data );
-//         if(eliminarMulta){
-//             return {
-//                 respuesta : true,
+        const eliminarMulta = await multas.findOneAndDelete(id , data );
+        if(eliminarMulta){
+            return {
+                respuesta : true,
 
-//                 multas :eliminarMulta
-//             }
-//         }else{
-//             return {
-//                 respuesta :false,
+                multas :eliminarMulta
+            }
+        }else{
+            return {
+                respuesta :false,
 
-//                 mensaje: "no se actualizo la multa"
-//             }
-//         }
+                mensaje: "no se elimino la multa"
+            }
+        }
                 
-//         } catch (error) {
-//         return {
-//             respuesta : false,
-//             error : err
-//         }
-//     }
-// }
+        } catch (error) {
+        return {
+            respuesta : false,
+            error : err
+        }
+    }
+}
 
 
 

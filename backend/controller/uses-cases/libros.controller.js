@@ -29,7 +29,7 @@ exports.find = async(req, res) =>{
 exports.update = async(req, res)=>{
 
     try {
-        const filtro = {_id: req.params.id };
+        const id = {_id: req.params.id };
         const datos = {
             Isbn: req.body.Isbn,
             titulo: req.body.titulo,
@@ -41,12 +41,13 @@ exports.update = async(req, res)=>{
             idioma: req.body.idioma,
             
         }
-        const updatelibros  = await libros.updatelibros(filtro, datos);
+    
 
-        if(updatelibros.respuesta === false){
+        if(id.respuesta === false){
             res.status(404).json({resultado: "no se actualizo"})
         }else{
-            res.status(200).json({libros:  updatelibros})
+            await libros.updatelibros(id, datos);
+            res.status(200).json({libros:  "se actualizo correctamente"})
         }
         
     } catch (e) {

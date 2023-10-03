@@ -34,13 +34,11 @@ exports.actualizarAutor = async(req, res)=>{
             fechaDeceso: req.body.fechaDeceso
 
         }
-        const updateAutor  = await autores.updateAutor(filtro, datos);
-
-        if(updateAutor.respuesta === false){
-            console.log('hola')
+        if(filtro.respuesta === false){
             res.status(404).json({resultado: "no se actualizo"})
         }else{
-            res.status(200).json({autores:  autores.updateAutor})
+            await autores.updateAutor(filtro, datos);
+            res.status(200).json({autores:  "Actualizado correctamente"})
         }
 
         

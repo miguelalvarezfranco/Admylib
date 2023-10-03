@@ -2,7 +2,7 @@ const mongoose = require('../config/database')
 
 const MultaSchema = new mongoose.Schema({
     tiempoSancion: {
-        type: Date,
+        type: String,
         required: [true, 'Debes ingresar el tiempo de la sanción']
     },
     motivo: {
