@@ -44,15 +44,12 @@ exports.update = async (req, res)=>{
 exports.eliminar = async (req, res) => {
     try {
         const id = req.params.id;
-        const datos = req.body;
-
         if(id.respuesta === false){
             res.status(404).json({respuesta: "no encuentro el id"});
         }else{
-            await multas.findOneAndDelete(id, datos);
-            res.status(200).json({multas:  "se actualio correctamente"});
+            await multas.findByIdAndDelete({_id: id});
+            res.status(200).json({multas:  "se elimino  correctamente"});
         }
-        
     } catch (e) {
         res.status(500).json({error:e})
 

@@ -59,7 +59,7 @@ exports.updateMultas = async(id, data) =>{
 exports.eliminarMulta = async (id, data) => {
     try{
 
-        const eliminarMulta = await multas.findOneAndDelete(id , data );
+        const eliminarMulta = await multas.findByIdAndDelete(id , data );
         if(eliminarMulta){
             return {
                 respuesta : true,
