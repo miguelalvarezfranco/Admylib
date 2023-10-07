@@ -47,7 +47,7 @@ exports.eliminar = async (req, res) => {
         if(id.respuesta === false){
             res.status(404).json({respuesta: "no encuentro el id"});
         }else{
-            await multas.findByIdAndDelete({_id: id});
+            await multas.eliminarMulta({_id: id});
             res.status(200).json({multas:  "se elimino  correctamente"});
         }
     } catch (e) {

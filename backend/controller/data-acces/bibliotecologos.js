@@ -55,3 +55,29 @@ exports.updateBiblio = async(id, data) =>{
         }
     }
 }
+
+exports.eliminarBiliotecologo = async (id, data) => {
+    try{
+
+        const eliminarBiliotecologo = await bibliotecologos.deleteOne(id , data );
+        if(eliminarBiliotecologo){
+            return {
+                respuesta : true,
+
+                multas :eliminarBiliotecologo
+            }
+        }else{
+            return {
+                respuesta :false,
+
+                mensaje: "no se elimino la multa"
+            }
+        }
+                
+        } catch (error) {
+        return {
+            respuesta : false,
+            error : err
+        }
+    }
+}

@@ -1,7 +1,7 @@
 const autores = require('../../models/autores.model');
 
 exports.registerAutor = async(autoresdata)=>{
-    return await new autores(autoresdata).save();
+    return await new autores(autoresdata).save(); //se esta creando un registro para el autor 
 }
 
 exports.listar = async(filter)=>{
@@ -44,6 +44,32 @@ exports.updateAutor = async(id, data) =>{
                 respuesta :false,
 
                 mensaje: "nose realizo la actualizacion"
+            }
+        }
+                
+        } catch (error) {
+        return {
+            respuesta : false,
+            error : err
+        }
+    }
+}
+
+exports.eliminarAutor = async (id, data) => {
+    try{
+
+        const eliminarAutor = await autores.deleteOne(id , data );
+        if(eliminarAutor){
+            return {
+                respuesta : true,
+
+                autores :eliminarAutor
+            }
+        }else{
+            return {
+                respuesta :false,
+
+                mensaje: "no se elimino la multa"
             }
         }
                 

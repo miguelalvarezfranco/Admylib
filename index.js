@@ -5,25 +5,44 @@ const path = require("path");
 const dotenv = require("dotenv");
 const router = require("./backend/router");
 
+//swagger
+const swaggerSpec ={
+    definition: {
+        openapi: "3.0.0",
+        info:{
+            title: "API Node",
+            version: "1.0.0",
+        },
+        servers:[
+            {
+                url:"http://localhost:7778",
+            },
+        ]
+    },
+    apis: [`${path.join(__dirname, "./backend/router.js")}`],
+    
+}
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDocs = require("swagger-jsdoc");
+
 dotenv.config();
 const PORT = process.env.PORT || 2000;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/frontend/views/pages"));
 //app.use(express.static(__dirname ,"/frontend/static"));
 app.use(morgan("dev"));
+app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDocs(swaggerSpec)))
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
-app.use('/', router);
+app.use('/api', router);
 
 
 
 
 app.listen(PORT, () => {
     console.log(`el servidor esta en linea ...!! ${PORT}`);
-
-
 
 });
 
@@ -34,11 +53,6 @@ app.listen(PORT, () => {
 // });
 
 
-
-
-
-
-
-app.get("/",(req, res)=>{
-    res.render('formuregistro');
-})
+// app.get("/",(req, res)=>{
+//     res.render('formuregistro');
+// })

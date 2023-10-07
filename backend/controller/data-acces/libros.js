@@ -54,3 +54,29 @@ exports.updatelibros = async(id, data)=>{
         }
     }
 }
+
+exports.eliminarLibro = async (id, data) => {
+    try{
+
+        const eliminarLibro = await libros.deleteOne(id , data );
+        if(eliminarLibro){
+            return {
+                respuesta : true,
+
+                libros :eliminarLibro
+            }
+        }else{
+            return {
+                respuesta :false,
+
+                mensaje: "no se elimino el libro"
+            }
+        }
+                
+        } catch (error) {
+        return {
+            respuesta : false,
+            error : err
+        }
+    }
+}

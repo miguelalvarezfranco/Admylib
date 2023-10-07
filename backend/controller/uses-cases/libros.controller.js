@@ -54,5 +54,20 @@ exports.update = async(req, res)=>{
         res.status(500).json({error:e})
     }
 
-
 }
+
+exports.eliminarL = async (req, res) => {
+    try {
+        const id = req.params.id;
+        if(id.respuesta === false){
+            res.status(404).json({respuesta: "no encuentro el id"});
+        }else{
+            await libros.eliminarLibro({_id: id});
+            res.status(200).json({libros:  "se elimino  correctamente"});
+        }
+    } catch (e) {
+        res.status(500).json({error:e})
+
+        }
+
+};

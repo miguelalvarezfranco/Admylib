@@ -47,3 +47,19 @@ exports.actualizarAutor = async(req, res)=>{
     }
 
 }
+
+exports.eliminarA = async (req, res) => {
+    try {
+        const id = req.params.id;
+        if(id.respuesta === false){
+            res.status(404).json({respuesta: "no encuentro el id"});
+        }else{
+            await autores.eliminarAutor({_id: id});
+            res.status(200).json({autores:  "se elimino  correctamente"});
+        }
+    } catch (e) {
+        res.status(500).json({error:e})
+
+        }
+
+};
