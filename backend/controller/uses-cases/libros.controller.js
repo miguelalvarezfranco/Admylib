@@ -21,9 +21,7 @@ exports.find = async(req, res) =>{
     }catch(e){
         res.status(500).json({error:e})
     }
-
     console.log(libros)
-
 }
 
 exports.update = async(req, res)=>{
@@ -38,11 +36,8 @@ exports.update = async(req, res)=>{
             materias: req.body.materias,
             fechaPublicacion: req.body.fechaPublicacion,
             copiasDisponibles: req.body.copiasDisponibles,
-            idioma: req.body.idioma,
-            
+            idioma: req.body.idioma,    
         }
-    
-
         if(id.respuesta === false){
             res.status(404).json({resultado: "no se actualizo"})
         }else{

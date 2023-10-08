@@ -17,42 +17,80 @@ const router = express.Router();
  *    properties:
  *     nombreCompleto:
  *      type: string
- *      description: nombre Completo
+ *      description: nombreCompleto
  *     fechaNacimiento:
  *      type: Date
- *      description: fecha Nacimiento
+ *      description: fechaNacimiento
  *     fechaDeceso:
  *      type: Date
- *      description: fecha Deceso
+ *      description: fechaDeceso
  *    
  */
 
 /**
  * @swagger
- * /api/registrar:
+ * /api/registrarAutor:
  *  post:
- *    summary: login user
- *    tags: [User]
+ *    summary: create new autor
+ *    tags: [autores]
  *    requestBody:
  *      required: true
  *      content:
  *        application/json:
  *          schema:
  *            type: object
- *            $ref: '#/components/schemas/User'
+ *            $ref: '#/components/schemas/autores'
  *    responses:
  *      200:
- *        decription: nuevo login
+ *        description: se creo con exito
  */
-router.post("/registrar", multas.create); // post hacer un cambio 
+
 //MODULO MULTAS
+router.post("/registrar", multas.create); // post hacer un cambio 
 
 router.get("/buscar", multas.find);
 
+/**
+ * @swagger
+ * /api/Listar:
+ *  get:
+ *    summary: return all autores
+ *    tags: [autores]
+ *    responses:
+ *      200:
+ *        description: todos los autores
+ *        content:  
+ *        application/json:
+ *          schema:
+ *            type: array
+ *            items:
+ *              $ref: '#/components/schemas/autores' 
+ */
+
 router.post("/actualizar/:id", multas.update);
 
-router.post("/eliminarM/:id", multas.eliminar); //get para hacer busquedas
-//get para hacer busquedas
+router.post("/eliminarM/:id", multas.eliminar);
+
+/**
+ * @swagger
+ * /api/eliminarA/{id}:
+ *  delete:
+ *    summary: eliminar autor
+ *    tags: [autores]
+ *    parameters:
+ *      - in: path
+ *        nombre: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: usar el id
+ *    responses:
+ *      200:
+ *        description: se elimino el usuario
+ *      404:
+ *        description: autor no eliminado
+ */
+
 
 //MODULO AUTORES
 
