@@ -375,10 +375,10 @@ router.delete("/eliminarL/:id", libros.eliminarL); //get para hacer busquedas
  *      type: string
  *      description: contraseña 
  *     horarioEntrada:
- *      type:string
+ *      type: string
  *      description: horario de entrada
  *     horarioSalida:
- *      type:string
+ *      type: string
  *      description: horario de salida
  */
 
@@ -388,7 +388,7 @@ router.post("/register", bibliotecologos.Registrar);
  * @swagger
  * /api/register:
  *  post:
- *    summary: create new bibliotecologo
+ *    summary: create new bibliotecologos
  *    tags: [bibliotecologos]
  *    requestBody:
  *      required: true
@@ -396,7 +396,7 @@ router.post("/register", bibliotecologos.Registrar);
  *        application/json:
  *          schema:
  *            type: object
- *            $ref: '#/components/schemas/bibliotecologos'
+ *            $ref: '#/components/schemas/bibliotecologo'
  *    responses:
  *      200:
  *        description: se creo con exito
@@ -485,7 +485,6 @@ router.post("/crear", usuarios.crear);
 
 // router.post("/autores", libros.crearLibro);
 
-//http://localhost:7778/api-doc/#/bibliotecologos/delete_api_eliminarB__id_
 
 
 
