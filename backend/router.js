@@ -12,81 +12,105 @@ const router = express.Router();
  * @swagger
  * components:
  *  schemas:
- *   autores:
+ *   multas:
  *    type: object
  *    properties:
- *     nombreCompleto:
+ *     tiempoSancion:
  *      type: string
- *      description: nombreCompleto
- *     fechaNacimiento:
- *      type: Date
- *      description: fechaNacimiento
- *     fechaDeceso:
- *      type: Date
- *      description: fechaDeceso
- *    
+ *      description: tiempo sancionado
+ *     motivo:
+ *      type: string
+ *      description: motivo sancion
  */
+
+
+
+//MODULO MULTAS
+router.post("/registrar", multas.create); // post hacer un cambio 
 
 /**
  * @swagger
- * /api/registrarAutor:
+ * /api/registrar:
  *  post:
- *    summary: create new autor
- *    tags: [autores]
+ *    summary: create new multa
+ *    tags: [multas]
  *    requestBody:
  *      required: true
  *      content:
  *        application/json:
  *          schema:
  *            type: object
- *            $ref: '#/components/schemas/autores'
+ *            $ref: '#/components/schemas/multas'
  *    responses:
  *      200:
  *        description: se creo con exito
  */
-
-//MODULO MULTAS
-router.post("/registrar", multas.create); // post hacer un cambio 
-
 router.get("/buscar", multas.find);
 
 /**
  * @swagger
- * /api/Listar:
+ * /api/buscar:
  *  get:
- *    summary: return all autores
- *    tags: [autores]
+ *    summary: return all multas
+ *    tags: [multas]
  *    responses:
  *      200:
- *        description: todos los autores
+ *        description: todos los multas
  *        content:  
  *        application/json:
  *          schema:
  *            type: array
  *            items:
- *              $ref: '#/components/schemas/autores' 
+ *              $ref: '#/components/schemas/multas' 
  */
 
-router.post("/actualizar/:id", multas.update);
-
-router.post("/eliminarM/:id", multas.eliminar);
+router.put("/actualizar/:id", multas.update);
 
 /**
  * @swagger
- * /api/eliminarA/{id}:
- *  delete:
- *    summary: eliminar autor
- *    tags: [autores]
+ * /api/actualizar/{id}:
+ *  put:
+ *    summary: update multas
+ *    tags: [multas]
  *    parameters:
  *      - in: path
- *        nombre: id
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: usar el id
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            $ref: '#/components/schemas/multas'
+ *    responses:
+ *      200:
+ *        description: se actualizo la multa
+ *      404:
+ *        description: multa no se actualizo
+ */
+
+router.delete("/eliminarM/:id", multas.eliminar);
+
+/**
+ * @swagger
+ * /api/eliminarM/{id}:
+ *  delete:
+ *    summary: eliminar autor
+ *    tags: [multas]
+ *    parameters:
+ *      - in: path
+ *        name: id
  *        schema:
  *          type: string
  *        required: true
  *        description: usar el id
  *    responses:
  *      200:
- *        description: se elimino el usuario
+ *        description: se elimino la multa
  *      404:
  *        description: autor no eliminado
  */
