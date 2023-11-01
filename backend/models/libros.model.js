@@ -1,14 +1,7 @@
 const mongoose = require ('../config/database');
-// const { Schema } = mongoose;
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const LibrosSchema = new mongoose.Schema({
-    // autores: [{
-    //     id: {
-    //         type: Schema.types.ObjectId,
-    //         ref: 'autores'
-    //     }
-    // }],
     isbn: {
         type: Number,
         required: true,
@@ -20,7 +13,7 @@ const LibrosSchema = new mongoose.Schema({
         maxLength: 200
     },
     autor: {
-        type: String,//Schema.types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'autores',
         required: [true, 'Referencia el autor del libro'],
     },

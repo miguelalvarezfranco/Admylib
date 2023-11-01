@@ -1,6 +1,8 @@
 const libros = require('../../models/libros.model');
 
 exports.createLibros = async(librosdata) =>{
+    const buscarAutor = autoresmodel.findOne(librosdata.nombreCompleto);
+    librosdata.autores = buscarAutor._id;
     return await new  libros(librosdata).save();
 }
 
