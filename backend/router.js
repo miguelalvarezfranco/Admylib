@@ -3,6 +3,7 @@ const autores = require('./controller/uses-cases/autores.controller');
 const libros = require('./controller/uses-cases/libros.controller');
 const bibliotecologos = require('./controller/uses-cases/bibliotecologos.controller');
 const usuarios = require('./controller/uses-cases/usuarios.controller');
+const pagi = require('./controller/Pagina');
 
 
 const express = require('express');
@@ -27,7 +28,7 @@ router.post("/registrarlibro", libros.creaLibros);
 router.get("/listarLibro", libros.find);
 router.put("/actualizarLibro/:id", libros.update);
 router.delete("/eliminarL/:id", libros.eliminarL); //get para hacer busquedas
-router.get("/", libros.mostrarpagina);
+
 
 //MODULO BIBLIOTECOLOGOS
 
@@ -37,6 +38,8 @@ router.put("/actualizarB/:id", bibliotecologos.updateB);
 router.delete("/eliminarB/:id", bibliotecologos.eliminarB); //get para hacer busquedas
 
 
+//MOSTRAR PAGINA PRICIPAL
+router.get("/", pagi.mostrarpagina);
 
 
 //MODULO USUARIO

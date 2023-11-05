@@ -23,7 +23,6 @@ exports.find = async(req, res) =>{
     }
     console.log(libros)
 }
-
 exports.update = async(req, res)=>{
 
     try {
@@ -48,7 +47,6 @@ exports.update = async(req, res)=>{
     } catch (e) {
         res.status(500).json({error:e})
     }
-
 }
 
 exports.eliminarL = async (req, res) => {
@@ -62,7 +60,6 @@ exports.eliminarL = async (req, res) => {
         }
     } catch (e) {
         res.status(500).json({error:e})
-
         }
-
 };
+
