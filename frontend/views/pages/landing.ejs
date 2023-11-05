@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admylib</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        #barra {
+            background-color: #f2f2f2;
+
+        }
+
+        .navbar-brand {
+            font-size: 40px;
+        }
+
+        #primerSect{
+            font-size: 35px;
+        }
+        #segundaSect{
+            font-size: 35px;
+        }
+        .center {
+            position: absolute;
+            top: 40%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav id="barra" class="navbar navbar-expand-sm navbar-light">
+        <!-- Brand/logo -->
+        <div class="container justify-content-start">
+            <img src="assets/imagenes/bpc.png" alt="logo" style="width: 120px;">
+            <a class="navbar-brand">
+                Biblioteca Pública Campiñas
+            </a>
+        </div>
+        <!-- Links -->
+        <ul class="container justify-content-end navbar-nav" id="items">
+            <li class="nav-item">
+                <a class="nav-link" href="landing.html">Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Catálogo</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="catalogoRegistrar.html">Registrar libro</a>
+                    <a class="dropdown-item" href="catalogoVer.html">Ver catálogo</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Servicios</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="servicioPrestamo.html">Préstamo</a>
+                    <a class="dropdown-item" href="servicioCursosTalleres.html">Cursos y talleres</a>
+                    <a class="dropdown-item" href="servicioReserva.html">Reservas</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Institucional</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="forcontac.html">Contacto</a>
+            </li>
+            <li class="nav-item pr-2">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#login">
+                    <i class="fa fa-user-circle"></i>
+                </button>
+            </li>
+            <li class="nav-item">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#registro">
+                    <i class="fa fa-sign-in"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section id="primerSect">
+            <img src="assets/imagenes/fondo1.jpg" alt="fondo" width="100%">
+            <div class="center form-row">
+                <form action="/action_page.php">
+                    <label for="busquedaCatalogo" class="text-light">Búsqueda rápida en el Catálogo</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Ingresa un título o palabra clave" id="busquedaCatalogo">
+                    </div>
+            </div>
+            </form>
+        </section>
+
+
+
+
+        <section>
+            <div class="text-center bg-light">
+                <div id="demo" class="carousel slide" data-ride="carousel">
+
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <li data-target="#demo" data-slide-to="1"></li>
+                        <li data-target="#demo" data-slide-to="2"></li>
+                    </ul>
+
+                    <!-- The slideshow -->
+                    <div class="carousel-inner row">
+                        <div class="carousel-item active col-sm">
+                            <img src="assets/imagenes/libro1.jpeg" width="250px" height="330px">
+                        </div>
+                        <div class="carousel-item col-sm">
+                            <img src="assets/imagenes/libro2.jpg" width="250px" height="330px">
+                        </div>
+                        <div class="carousel-item col-sm">
+                            <img src="assets/imagenes/libro3.jpg" width="250px" height="330px">
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev bg-dark" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next bg-dark" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+        <section id="segundaSect">
+            <div class="container-fluid text-center bg-dark text-light">
+                <p>Calendario de actividades</p>
+            </div> 
+        </section>
+    </main>
+</body>

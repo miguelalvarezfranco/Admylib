@@ -26,7 +26,7 @@ const LibrosSchema = new mongoose.Schema({
         type: Array,
         required: [true, 'Ingrese un nombre de materia para asignar al libro']
     },
-    fechaPublicacion: {
+    AñodePublicacion: {
         type: Date,
         required: [true, 'Ingrese la fecha en que se publicó el libro']
     },

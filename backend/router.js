@@ -27,7 +27,7 @@ router.post("/registrarlibro", libros.creaLibros);
 router.get("/listarLibro", libros.find);
 router.put("/actualizarLibro/:id", libros.update);
 router.delete("/eliminarL/:id", libros.eliminarL); //get para hacer busquedas
-
+router.get("/", libros.mostrarpagina);
 
 //MODULO BIBLIOTECOLOGOS
 
@@ -35,6 +35,9 @@ router.post("/register", bibliotecologos.Registrar);
 router.get("/ver", bibliotecologos.findB);
 router.put("/actualizarB/:id", bibliotecologos.updateB);
 router.delete("/eliminarB/:id", bibliotecologos.eliminarB); //get para hacer busquedas
+
+
+
 
 //MODULO USUARIO
 

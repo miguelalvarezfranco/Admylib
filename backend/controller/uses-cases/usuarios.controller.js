@@ -8,3 +8,23 @@ exports.crear = async(req, res)=>{
     res.status(200).json({resultado: nuevoUsuario});
 }
 
+exports.infoUsuario = async (req, res) => {
+    const infoUsu = await usuarios.findOne({ email: req.body.Correo });
+
+    console.log(infoUsu);
+    
+    const contraUsuario = req.body.password
+    
+    if(infoUsu.password === contraUsuario){
+        console.log(true);
+    }
+    
+    if(infoUsu.rol === 'Usuario' ){
+        res.render("Libros");
+    }else if(infoUsu.rol === 'Admin'){
+        res.render('landing');
+    }
+    
+    };
+    
+
