@@ -29,7 +29,7 @@ dotenv.config();
 const PORT = process.env.PORT || 2000;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/frontend/views/pages"));
-//app.use(express.static(__dirname ,"/frontend/static"));
+app.use(express.static(__dirname ,"/frontend/static/views/pages"));
 app.use(morgan("dev"));
 app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDocs(swaggerSpec)))
 
@@ -39,12 +39,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', router);
 
 
-
-
 app.listen(PORT, () => {
     console.log(`el servidor esta en linea ...!! ${PORT}`);
 
 });
+
+module.exports = app;
 
 // app.get("/libros", function (req, res) {
 //     Libro.find({}, function (err, libros) {

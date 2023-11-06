@@ -3,7 +3,7 @@ const autores = require('./controller/uses-cases/autores.controller');
 const libros = require('./controller/uses-cases/libros.controller');
 const bibliotecologos = require('./controller/uses-cases/bibliotecologos.controller');
 const usuarios = require('./controller/uses-cases/usuarios.controller');
-const pagi = require('./controller/Pagina');
+
 
 
 const express = require('express');
@@ -39,7 +39,10 @@ router.delete("/eliminarB/:id", bibliotecologos.eliminarB); //get para hacer bus
 
 
 //MOSTRAR PAGINA PRICIPAL
-router.get("/", pagi.mostrarpagina);
+router.get("/landing", (req, res)=>{
+    res.render('landing');
+});
+
 
 
 //MODULO USUARIO
