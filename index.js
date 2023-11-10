@@ -29,14 +29,17 @@ dotenv.config();
 const PORT = process.env.PORT || 2000;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/frontend/views/pages"));
-app.use(express.static(__dirname ,"/frontend/static/views/pages"));
+//app.use(express.static(__dirname ,"/frontend/static/views/pages"));
 app.use(morgan("dev"));
 app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDocs(swaggerSpec)))
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
-app.use('/api', router);
+// app.use('/api', router);
+
+const Mirouter = require("./backend/router");
+app.use("/", Mirouter);
 
 
 app.listen(PORT, () => {
