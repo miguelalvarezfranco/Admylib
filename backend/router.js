@@ -2,7 +2,6 @@ const express = require('express');
 const multas = require('./controller/uses-cases/multas.controller');
 const autores = require('./controller/uses-cases/autores.controller');
 const libros = require('./controller/uses-cases/libros.controller');
-const lib = require('./controller/libros');
 const bibliotecologos = require('./controller/uses-cases/bibliotecologos.controller');
 const usuarios = require('./controller/uses-cases/usuarios.controller');
 
