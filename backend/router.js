@@ -36,7 +36,7 @@ router.get("/ver", bibliotecologos.findB);
 router.put("/actualizarB/:id", bibliotecologos.updateB);
 router.delete("/eliminarB/:id", bibliotecologos.eliminarB);
 
-router.post("/registrar", lib.agregarLibro);
+// router.post("/registrar", lib.agregarLibro);
 
 
 //MOSTRAR PAGINA PRICIPAL
