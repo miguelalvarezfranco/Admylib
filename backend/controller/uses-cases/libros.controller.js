@@ -63,3 +63,7 @@ exports.eliminarL = async (req, res) => {
         }
 };
 
+exports.formularioLibro = async(req, res) =>{ //nombre de la funcion que quiero hacer
+    res.render("libros") // documento que quiero mostrar
+}
+

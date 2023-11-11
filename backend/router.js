@@ -36,7 +36,7 @@ router.get("/ver", bibliotecologos.findB);
 router.put("/actualizarB/:id", bibliotecologos.updateB);
 router.delete("/eliminarB/:id", bibliotecologos.eliminarB);
 
-// router.post("/registrar", lib.agregarLibro);
+
 
 
 //MOSTRAR PAGINA PRICIPAL
@@ -44,6 +44,8 @@ router.get("/landing", (req, res)=>{
     res.render('landing');
 });
 
+
+router.get("/mostrarFormulario", libros.formularioLibro ) //se pone el nombre de la ruta y ademas se llama la funcion que recien se crea para mostrar el fomrulario
 
 
 //MODULO USUARIO
