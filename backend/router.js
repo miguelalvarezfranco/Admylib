@@ -2,7 +2,6 @@ const express = require('express');
 const multas = require('./controller/uses-cases/multas.controller');
 const autores = require('./controller/uses-cases/autores.controller');
 const libros = require('./controller/uses-cases/libros.controller');
-const lib = require('./controller/libros');
 const bibliotecologos = require('./controller/uses-cases/bibliotecologos.controller');
 const usuarios = require('./controller/uses-cases/usuarios.controller');
 
@@ -36,7 +35,7 @@ router.get("/ver", bibliotecologos.findB);
 router.put("/actualizarB/:id", bibliotecologos.updateB);
 router.delete("/eliminarB/:id", bibliotecologos.eliminarB);
 
-router.post("/registrar", lib.agregarLibro);
+
 
 
 //MOSTRAR PAGINA PRICIPAL
@@ -44,6 +43,8 @@ router.get("/landing", (req, res)=>{
     res.render('landing');
 });
 
+
+router.get("/mostrarFormulario", libros.formularioLibro ) //se pone el nombre de la ruta y ademas se llama la funcion que recien se crea para mostrar el fomrulario
 
 
 //MODULO USUARIO

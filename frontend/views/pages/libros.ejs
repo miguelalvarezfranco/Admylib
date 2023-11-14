@@ -47,7 +47,7 @@
     <nav id="barra" class="navbar navbar-expand-sm navbar-light">
         <!-- Brand/logo -->
         <div class="container justify-content-start">
-            <img src="assets/imagenes/bpc.png" alt="logo" style="width: 120px;">
+            <img src="images/bpc.png" alt="logo" style="width: 120px;">
             <a class="navbar-brand">
                 Biblioteca Pública Campiñas
             </a>
@@ -55,28 +55,25 @@
         <!-- Links -->
         <ul class="container justify-content-end navbar-nav" id="items">
             <li class="nav-item">
-                <a class="nav-link" href="landing.html">Inicio</a>
+                <a class="nav-link" href="landing">Inicio</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Catálogo</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="libros">Registrar libro</a>
+                    <a class="dropdown-item" href="">Registrar libro</a>
                     <a class="dropdown-item" href="catalogoVer.html">Ver catálogo</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Servicios</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="servicioPrestamo.html">Préstamo</a>
+                    <a class="dropdown-item" href="Prestamos">Préstamo</a>
                     <a class="dropdown-item" href="servicioCursosTalleres.html">Cursos y talleres</a>
                     <a class="dropdown-item" href="servicioReserva.html">Reservas</a>
                 </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Institucional</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contacto</a>
             </li>
             <li class="nav-item pr-2">
                 <!-- Button trigger modal -->
@@ -93,19 +90,26 @@
         </ul>
     </nav>
 
+
+
+
+
+    //FURMULARIO PARA REGISTRAR UN LIBRO 
+
+
     <div class="container pt-4">
-        <form action="/registrar" method="post">
+        <form action="/registrarLibr" method="post">
             <div class="form-group">
                 <label for="uname">ISBN:</label>
                 <input type="text" class="form-control" id="Isbn" placeholder="Ingresa el ISBN" name="Isbn">
             </div>
             <div class="form-group">
                 <label for="Tit">Título:</label>
-                <input type="password" class="form-control" id="title" placeholder="Ingresa el título" name="titulo">
+                <input type="text" class="form-control" id="title" placeholder="Ingresa el título" name="titulo">
             </div>
             <div class="form-group">
-                <label for="Añ">Año de publicación:</label>
-                <input type="password" class="form-control" id="Año" placeholder="Ingresa el año de publicacion" name="AñodePublicacion">
+                <label for="Año">Año de publicación:</label>
+                <input type="number" class="form-control" id="Año" placeholder="Ingresa el año de publicacion" name="AñodePublicacion">
             </div   <div class="form-group">
                 <label for="Copi">Copias Disponibles</label>
                 <input type="number" class="form-control" id="copias" placeholder="Ingresa el numero de copias disponibles" name="opiasDisponibles">

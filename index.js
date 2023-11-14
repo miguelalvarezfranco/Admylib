@@ -29,7 +29,7 @@ dotenv.config();
 const PORT = process.env.PORT || 2000;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/frontend/views/pages"));
-//app.use(express.static(__dirname ,"/frontend/static/views/pages"));
+app.use(express.static(path.join(__dirname,"/frontend/static")));
 app.use(morgan("dev"));
 app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDocs(swaggerSpec)))
 
