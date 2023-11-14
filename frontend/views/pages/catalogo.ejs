@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+<style>
+    .titulo{
+        text-align: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .table{
+        border-color: black;
+        width: 950px;
+        justify-content: center;
+        border-radius: 30px;
+    }
+    #barra {
+            background-color: #f2f2f2;
+
+        }
+
+        .navbar-brand {
+            font-size: 40px;
+        }
+
+        #primerSect{
+            font-size: 35px;
+        }
+        #segundaSect{
+            font-size: 35px;
+        }
+        .center {
+            position: absolute;
+            top: 40%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+    
+</style>
+
+<body>
+
+    <nav id="barra" class="navbar navbar-expand-sm navbar-light">
+        <!-- Brand/logo -->
+        <div class="container justify-content-start">
+            <img src="images/bpc.png" alt="logo" style="width: 120px;">
+            <a class="navbar-brand">
+                Biblioteca Pública Campiñas
+            </a>
+        </div>
+        <!-- Links -->
+        <ul class="container justify-content-end navbar-nav" id="items">
+            <li class="nav-item">
+                <a class="nav-link" href="landing">Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Catálogo</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="">Registrar libro</a>
+                    <a class="dropdown-item" href="/catalogo">Ver catálogo</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Servicios</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="Prestamos">Préstamo</a>
+                    <a class="dropdown-item" href="servicioCursosTalleres.html">Cursos y talleres</a>
+                    <a class="dropdown-item" href="servicioReserva.html">Reservas</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Institucional</a>
+            </li>
+            <li class="nav-item pr-2">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#login">
+                    <i class="fa fa-user-circle"></i>
+                </button>
+            </li>
+            <div class="d-flex justify-content-between">
+                <button class="ver-carrito btn" data-toggle="modal" data-target="#verCarrito"
+                    onclick="pintarCarrito()">🛒 <span id="cantidadCarrito" class="cantidadCarrito"></span>
+            <li class="nav-item">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#registro">
+                    <i class="fa fa-sign-in"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+  
+
+    <!-- Carrito-->
+    <div class="modal fade  " id="verCarrito" tabindex="-1" aria-labelledby="carrito" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="carrito">Mi Carrito de Compras</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="body-carrito">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" onclick="comprar('${elemento.id}')">Comprar💲</button>
+                    <button type="button" class="btn btn-danger" onclick="vaciar() ">Vaciar carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">LOGIN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="container">
+
+                    <h2>Iniciar Sesión</h2>
+                    <form class="formu" action="inicio" method="post">
+
+                        <label for="username">Correo:</label>
+                        <br>
+                        <input type="email" name="Correo" placeholder="Ingrese su correo">
+                        <br>
+                        <br>
+                        <label for="password">Contraseña:</label>
+                        <br>
+                        <input type="password" name="password" placeholder="Ingrese su contraseña">
+                        <br>
+                        <br>
+                        <a href="inicio"><input type="submit" class="btn btn-outline-success"  value="Iniciar Sesión"</a><br><a
+                            href="formcontra">Recuperar Contraseña</a><br><br> 
+                        <br>
+                        <br>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<br>
+<br>
+
+        <%producto.forEach(function(elemento){%>
+            <div class="card" style="width: 17rem; height: 450px">
+                <img src="https://source.unsplash.com/300x201/?<%=elemento.nombre%>" class="card-img-top" alt="..">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%=elemento.titulo%>
+                    </h5>
+                    <p class="card-text" style="height: 80px;">
+
+                        <%=elemento.precio%>
+                    </p>
+                    <p class="card-text">
+                        <p>Precio: <%=elemento.copiasdisponibles%></p>
+                    </p>
+
+                    <button type="button" style="border-radius: 15px; padding: 12px; "
+                        onclick="Carrito(`<%=elemento.titulo%>`,`<%=elemento.precio%>`,`<%=elemento.copiasdisponibles%>`,`<%=elemento.imagen%>`)">Añadir
+                        Al Carrito</button>
+                </div>
+            </div>
+            <% })%>
+        <script>
+
+            let carritoCompras = JSON.parse(localStorage.getItem("Micarrito")) || [];
+
+
+            let body = document.getElementById('body-carrito')
+
+
+            function Carrito(id, imagen, nombre, precio) {
+
+                const repeat = carritoCompras.some((repeatid) => repeatid.id === id);
+
+
+                if (repeat) {
+                    carritoCompras.map((produ) => {
+                        if (produ.id === id) {
+                            produ.cantidad++;
+                        }
+                    });
+                } else {
+                    carritoCompras.push({
+                        id: id,
+                        imagen: imagen,
+                        nombre: nombre,
+                        precio: precio,
+                        cantidad: 1,
+                    });
+                }
+                console.log(carritoCompras);
+                carritoCount();
+                cookies();
+                pintarCarrito();
+
+            }
+
+            function cookies() {
+                localStorage.setItem("Micarrito", JSON.stringify(carritoCompras));
+            }
+
+
+            function pintarCarrito() {
+                body.innerHTML = '';
+
+                carritoCompras.forEach(elemento => {
+                    let carrito = document.createElement('div')
+                    carrito.className = "d-flex justify-content-evenly align-items-center"
+                    carrito.innerHTML =
+
+                        `<div class="mb-3 w-25">
+                        <img src="https://source.unsplash.com/featured/300x201" style="width:200px;">
+                    </div>
+                    <div class="w-25">
+                        <div class="d-flex justify-content-center">
+                            <h3>${elemento.nombre}</h3>
+                        </div>
+                        <div>
+                            <div class=" d-flex justify-content-between ">
+                                <button type="button"  class="btn btn-primary"  onclick="sumar('${elemento.id}')" >+</button>
+                                <p>cantidad:   ${elemento.cantidad} </p>
+                                <button type="button"   class="btn btn-primary" onclick="restar('${elemento.id}')">-</button>
+                            </div>
+                            <div class="d-flex justify-content-center mt-3">
+                                <p>precio:   ${elemento.precio} </p>
+                            </div>
+                        </div>
+                    </div>`;
+
+                    body.append(carrito);
+
+                    let eliminar = document.createElement('span');
+                    eliminar.innerText = "⛔";
+                    eliminar.className = "eliminar-producto";
+                    carrito.append(eliminar);
+
+                    eliminar.addEventListener("click", eliminarProducto);
+
+
+                });
+                const total = carritoCompras.reduce((acc, pro) => acc + parseFloat(pro.precio) * (pro.cantidad), 0);
+
+                const totalproductos = document.createElement("div");
+                totalproductos.className = "total-content";
+                totalproductos.innerHTML = `total a pagar: ${total} $`;
+                body.append(totalproductos);
+
+
+            }
+
+            const eliminarProducto = () => {
+                const foundId = carritoCompras.find((elemento) => elemento.id);
+
+                console.log(foundId);
+
+                carritoCompras = carritoCompras.filter((carritoId) => {
+                    return carritoId !== foundId;
+                });
+
+                pintarCarrito();
+                cookies();
+
+            };
+
+            const cantidadCarrito = document.getElementById('cantidadCarrito');
+
+            const carritoCount = () =>{
+                cantidadCarrito.style.display = 'block';
+                cantidadCarrito.innerText = carritoCompras.length;
+            };
+
+
+
+
+            function sumar(id) {
+                carritoCompras.map((produ) => {
+                    if (produ.id === id) {
+                        produ.cantidad++;
+                        cookies();
+                        pintarCarrito()
+                    }
+                });
+
+
+            }
+
+            function restar(id) {
+                carritoCompras.map((produ) => {
+                    if (produ.id == id) {
+                        produ.cantidad--;
+                        cookies();
+                        pintarCarrito()
+
+                        if (produ.id == 0) {
+                            pintarCarrito()
+                            cookies();
+                            eliminarProducto();
+                        }
+                    }
+
+                });
+
+            }
+
+            function comprar(id) {
+                
+            }
+
+        function vaciar () {
+
+            const bodycarrito = document.getElementById('body-carrito');
+            bodycarrito.innerHTML = '';
+            localStorage.clear();
+        }
+
+
+            
+        </script>
+
+
+
+                
+
+
+
+
+
+
+
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+                integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+                integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+                crossorigin="anonymous"></script>
+
+
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+                integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+                crossorigin="anonymous"></script>
+
+</body>
+</html>

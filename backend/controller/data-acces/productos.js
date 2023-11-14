@@ -1,24 +1,25 @@
-const multas = require("../../models/multas.model");
+const { mongoose } = require('mongoose');
+const Productos = require('../../models/productos.model');
 
-exports.Createmultas = async(multasdata)=>{
-    return await new  multas(multasdata).save();
+exports.registrarProducto = async(produc)=>{
+    return await new  Productos(produc).save();
 }
 
-exports.buscar = async(filter)=>{
+exports.buscarP = async(filter)=>{
 
     try{
-        const buscar = await multas.find(filter);
-        if(buscar){
+        const buscarP = await Productos.find(filter);
+        if(buscarP){
             return {
                 respuesta : true,
                 
-                multas :buscar
+                multas :buscarP
             }
         }else{
             return {
                 respuesta :false,
 
-                mensaje: "nose encontro ninguna multa"
+                mensaje: "nose econtro ningun producto"
             }
         }
     } catch(err){
@@ -29,22 +30,48 @@ exports.buscar = async(filter)=>{
     }
 }
 
-exports.updateMultas = async(id, data) =>{
+exports.updateProduct = async(id, data) =>{
 
     try{
-        const updateMultas  = await multas.findOneAndUpdate(id , data );
 
-        if(updateMultas){
+        const updateProduct = await Productos.findOneAndUpdate( data );
+        if(updateProduct){
             return {
                 respuesta : true,
 
-                multas :updateMultas
+                productos :updateProduct
             }
         }else{
             return {
                 respuesta :false,
 
-                mensaje: "no se actualizo la multa"
+                mensaje: "nose realizo la actualizacion"
+            }
+        }
+            
+        } catch (error) {
+        return {
+            respuesta : false,
+            error : err
+        }
+    }
+}
+
+exports.eliminarProducto = async ( data) => {
+    try{
+
+        const eliminarProducto = await Productos.deleteOne( data );
+        if(eliminarProducto){
+            return {
+                respuesta : true,
+
+                multas :eliminarProducto
+            }
+        }else{
+            return {
+                respuesta :false,
+
+                mensaje: "no se elimino el producto"
             }
         }
                 
@@ -55,35 +82,3 @@ exports.updateMultas = async(id, data) =>{
         }
     }
 }
-
-exports.eliminarMulta = async (id, data) => {
-    try{
-
-        const eliminarMulta = await multas.deleteOne(id , data );
-        if(eliminarMulta){
-            return {
-                respuesta : true,
-
-                multas :eliminarMulta
-            }
-        }else{
-            return {
-                respuesta :false,
-
-                mensaje: "no se elimino la multa"
-            }
-        }
-                
-        } catch (error) {
-        return {
-            respuesta : false,
-            error : err
-        }
-    }
-}
-
-
-
-
-
-
