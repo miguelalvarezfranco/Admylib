@@ -13,13 +13,11 @@ const LibrosSchema = new mongoose.Schema({
         maxLength: 200
     },
     autor: {
-        type: Schema.Types.ObjectId,
-        ref: 'autores',
+        type: String,
         required: [true, 'Referencia el autor del libro'],
     },
     editorial: {
         type: String,
-        ref: 'editoriales',
         required: [true, 'Referencia a la editorial del libro']
     },
     materias: {

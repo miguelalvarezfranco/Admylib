@@ -3,7 +3,7 @@ const autores = require('./controller/uses-cases/autores.controller');
 const libros = require('./controller/uses-cases/libros.controller');
 const bibliotecologos = require('./controller/uses-cases/bibliotecologos.controller');
 const usuarios = require('./controller/uses-cases/usuarios.controller');
-const productos = require('./controller/uses-cases/productos.controller')
+const catalogos = require('./controller/uses-cases/catalogos.controller');
 
 const router = express.Router();
 
@@ -39,7 +39,7 @@ router.get("/landing", (req, res)=>{
 
 router.get("/mostrarFormulario", libros.formularioLibro )
 
-router.get("/catalogo", productos.mostrarcatalogo ) //se pone el nombre de la ruta y ademas se llama la funcion que recien se crea para mostrar el fomrulario
+// router.get("/catalogo", catalogos.mostrarcatalogo ) //se pone el nombre de la ruta y ademas se llama la funcion que recien se crea para mostrar el fomrulario
 
 
 
