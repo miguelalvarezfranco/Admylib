@@ -95,10 +95,10 @@
     //FURMULARIO PARA REGISTRAR UN LIBRO 
 
     <div class="container pt-4">
-        <form action="/registrarLibr" method="post">
+        <form action="/registrarLibro" method="post">
             <div class="form-group">
                 <label for="uname">ISBN:</label>
-                <input type="text" class="form-control" id="Isbn" placeholder="Ingresa el ISBN" name="Isbn">
+                <input type="number" class="form-control" id="isbn" placeholder="Ingresa el ISBN" name="isbn">
             </div>
             <div class="form-group">
                 <label for="Tit">Título:</label>
@@ -106,10 +106,10 @@
             </div>
             <div class="form-group">
                 <label for="Año">Año de publicación:</label>
-                <input type="number" class="form-control" id="Año" placeholder="Ingresa el año de publicacion" name="AñodePublicacion">
+                <input type="date" class="form-control" id="Año" placeholder="Ingresa el año de publicacion" name="Añodepublicacion">
             </div   <div class="form-group">
                 <label for="Copi">Copias Disponibles</label>
-                <input type="number" class="form-control" id="copias" placeholder="Ingresa el numero de copias disponibles" name="opiasDisponibles">
+                <input type="number" class="form-control" id="copias" placeholder="Ingresa el numero de copias disponibles" name="copiasdisponibles">
 
             </div>
             <div class="form-row">
@@ -123,7 +123,7 @@
                     </select>
                 </div>
                 <div class="form-group col-md-7">
-                    <label for="idioma">Autor</label>
+                    <label for="">Autor</label>
                     <select name="" id="idioma" class="form-control">
                         <option selected>Seleccione el autor</option>
                         <option>Esteban</option>
@@ -133,7 +133,7 @@
                     </select>
                 </div>
                 <div class="form-group col-md-7">
-                    <label for="idioma">Editorial</label>
+                    <label for="">Editorial</label>
                     <select name="" id="idioma" class="form-control">
                         <option selected>Seleccione la editorial</option>
                         <option>Norma</option>

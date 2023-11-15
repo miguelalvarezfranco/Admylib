@@ -5,37 +5,38 @@ const LibrosSchema = new mongoose.Schema({
     isbn: {
         type: Number,
         required: true,
-        unique: true
+
     },
     titulo: {
         type: String,
-        required: [true, 'Ingrese el título del libro'],
+        required: true,
         maxLength: 200
     },
     autor: {
         type: String,
-        required: [true, 'Referencia el autor del libro'],
+        required: false,
     },
     editorial: {
         type: String,
-        required: [true, 'Referencia a la editorial del libro']
+        required: false
+        
     },
     materias: {
-        type: Array,
-        required: [true, 'Ingrese un nombre de materia para asignar al libro']
+        type: String,
+        required:false
     },
-    AñodePublicacion: {
+    Añodepublicacion: {
         type: Date,
-        required: [true, 'Ingrese la fecha en que se publicó el libro']
+        required: true
     },
-    copiasDisponibles: {
+    copiasdisponibles: {
         type: Number,
-        required: [true, 'Ingrese las copias del libro disponibles']
+        
     },
     idioma: {
         type: String,
-        ref: 'idiomas',
-        required: [true, 'Referencia al idioma en que está el libro']
+        required:false,
+        
     }
 });
 

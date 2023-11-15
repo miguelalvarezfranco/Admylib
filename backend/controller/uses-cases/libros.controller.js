@@ -33,8 +33,8 @@ exports.update = async(req, res)=>{
             autor: req.body.autor,
             editorial: req.body.editorial,
             materias: req.body.materias,
-            fechaPublicacion: req.body.fechaPublicacion,
-            copiasDisponibles: req.body.copiasDisponibles,
+            Añodepublicacion: req.body.Añodepublicacion,
+            copiasdisponibles: req.body.copiasdisponibles,
             idioma: req.body.idioma,    
         }
         if(id.respuesta === false){
