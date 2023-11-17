@@ -29,24 +29,24 @@ const catalogos = require("../data-acces/catalogos");
         copiasdisponibles: req.body.copiasdisponibles,
         imagen: req.body.imagen,
 
-//     });
+    });
 
-//         catalogo.save();
-//         res.redirect("/catalogos");
-//         console.log('catalogos');
-//     };
+        catalogo.save();
+        res.redirect("/catalogos");
+        console.log('catalogos');
+    };
 
-//         exports.eliminarcatalogo = async (req, res) => {
-//         const id = req.params.id;
-//         await catalogos.findByIdAndDelete({ _id: id });
-//         res.redirect("/catalogos");
-//     };
+        exports.eliminarcatalogo = async (req, res) => {
+        const id = req.params.id;
+        await catalogos.findByIdAndDelete({ _id: id });
+        res.redirect("/catalogos");
+    };
 
-//         exports.actualizarproducto = async (req, res) => {
-//         const nuevo = { _id: new mongoose.Types.ObjectId(), referencia: req.body.referencia, nombre: req.body.nombre, descripcion: req.body.descripcion, precio: req.body.precio, stock: req.body.stock, habilitado: req.body.habilitado, imagen: req.body.imagen };
-//         await catalogos.findOneAndRemove({ referencia: req.body.referencia });
+        exports.actualizarproducto = async (req, res) => {
+        const nuevo = { _id: new mongoose.Types.ObjectId(), referencia: req.body.referencia, nombre: req.body.nombre, descripcion: req.body.descripcion, precio: req.body.precio, stock: req.body.stock, habilitado: req.body.habilitado, imagen: req.body.imagen };
+        await catalogos.findOneAndRemove({ referencia: req.body.referencia });
 
-//         await catalogos.insertMany(nuevo);
+        await catalogos.insertMany(nuevo);
 
-//         res.redirect("/productos");
-//     };
+        res.redirect("/catalogos");
+    };

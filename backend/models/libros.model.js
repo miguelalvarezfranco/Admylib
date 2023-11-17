@@ -23,7 +23,7 @@ const LibrosSchema = new mongoose.Schema({
     },
     materias: {
         type: String,
-        required:false
+        required:true
     },
     Añodepublicacion: {
         type: Date,
