@@ -23,7 +23,7 @@ router.get("/landing", (req, res)=>{
 
 router.get("/mostrarFormulario", libros.formularioLibro )
 
-router.get("/catalogo", catalogos.mostrarcatalogo ) //se pone el nombre de la ruta y ademas se llama la funcion que recien se crea para mostrar el fomrulario
+router.get("/catalogo", catalogos.catalogoLibros ) //se pone el nombre de la ruta y ademas se llama la funcion que recien se crea para mostrar el fomrulario
 
 
 
