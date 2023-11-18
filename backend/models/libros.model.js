@@ -32,6 +32,14 @@ const LibrosSchema = new mongoose.Schema({
         type: Number,
         
     },
+    precio: {
+        type: Number,
+        
+    },
+    imagen: {
+        type: String,
+        
+    },
     idioma: {
         type: String,
         required:false,

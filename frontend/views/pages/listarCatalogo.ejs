@@ -1,170 +1,174 @@
-    <!DOCTYPE html>
-        <html lang="en">
-        <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Catálogo de Libros</title>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <link href="" rel="stylesheet">
-    <style>
-        .card {
-        margin-bottom: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-        transition: box-shadow 0.3s ease; /* Transición suave al pasar el cursor */
-        }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
 
-        .card:hover {
-        
-        
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Cambio de sombra al pasar el cursor */
-        }
-
-        .card-title {
-        font-size: 1.2rem;
-        color: #333;
-        }
-
-        .card-text {
-        color: #666;
-        }
-
-        /* Estilos opcionales */
-        .container {
-        max-width: 900px;
-        }
-
-        h1 {
-        color: #333;
+<style>
+    .titulo{
         text-align: center;
-        margin-bottom: 30px;
-        }
-    </style>
-    </head>
-    <body>
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .table{
+        border-color: black;
+        width: 950px;
+        justify-content: center;
+        border-radius: 30px;
+    }
 
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Catálogo de Libros</h1>
-        <div class="row" id="catalogo">
-        <!-- Aquí se generarán las cards de libros con JavaScript -->
+    
+</style>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-8">
+            
+            <h1 class="titulo">Tabla Productos</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">AÑO DE PUBLICACION</th>
+            <th scope="col">EDITORIAL</th>
+            <th scope="col">COPIAS DISPONIBLES </th>
+            <th scope="col">PRECIO</th>
+            <th scope="col">IDIOMA</th>
+            <th scope="col">AUTOR</th>
+            <th scope="col">IMAGEN</th>
+            <th scope="col">MATERIAS</th>
+
+        </tr>
+        </thead>
+        <tbody>
+            <% producto.forEach(function(elemento){%>
+                <tr>
+                    <td>
+                        <%=elemento._id%>   
+                    </td>
+                    <td>
+                        <%=elemento.referencia%>
+                    </td>
+                    <td>
+                        <%=elemento.nombre%>
+                    </td>
+                    <td>
+                        <%=elemento.descripcion%>
+                    </td>
+                    <td>
+                        <%=elemento.precio%>
+                    </td>
+                    <td>
+                        <%=elemento.stock%>
+                    </td>
+                    <td>
+                        <%=elemento.habilitado%>
+                    </td>
+                    <td>
+                        <%=elemento.imagen%>
+                    </td>
+                    <td>
+                        <button type="button" class="button button1" data-toggle="modal" onclick="llenarformulario( `<%=elemento._id %>`,`<%=elemento.referencia %>`, `<%=elemento.nombre %>`,`<%=elemento.descripcion%>`, `<%=elemento.precio%>`,`<%=elemento.stock%>`,`<%=elemento.imagen%>`,`<%=elemento.habilitado%>`, `<%=elemento.imagen%>` )" data-target="#update">Actualizar</button>
+                        <a href="eliminarproducto/<%=elemento._id%>" class="button btn-success">eliminar</a>
+                    </td>
+                    
+                </tr>
+                    
+            <%})%>
+        </tbody>
+
+                <!-- Button to Open the Modal -->
+
+
+<!-- The Modal -->
+<div class="modal fade" id="update">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+        <h4 class="modal-title">Modificación</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-    </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
 
-    <!-- ... (código previo) -->
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">${libro.titulo}</h5>
-        <p class="card-text">Autor: ${libro.autor}</p>
-        <p class="card-text">Género: ${libro.genero}</p>
-        <button class="btn btn-primary agregar-carrito" data-titulo="${libro.titulo}">Agregar al carrito</button>
+            <form action="actualizarproducto" method="post">
+                <div class="form-group">
+                    <label for="text">ID</label>
+                    <input type="text" class="form-control" id="actualizaridp" name="idpactualizarproducto"  placeholder="id" readonly >
+                </div>
+                <div class="form-group">
+                    <label for="text">referencia</label>
+                    <input type="text" class="form-control" id="actualizarreferencia" name="referencia"  placeholder="referencia"  >
+                </div>
+                <div class="form-group">
+                    <label for="text">nombre</label>
+                    <input type="text" class="form-control" id="actualizarnombre" name="nombre" placeholder="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="text">descripcion</label>
+                    <input type="text" class="form-control" id="actualizardescripcion" name="descripcion" placeholder="descripcion">
+                </div>
+                <div class="form-group">
+                    <label for="text">precio</label>
+                    <input type="text" class="form-control" id="actualizarprecio" name="precio" placeholder="precio">
+                </div>
+                <div class="form-group">
+                    <label for="text">stock</label>
+                    <input type="text" class="form-control" id="actualizarstock" name="stock" placeholder="stock">
+            </div>
+            <div class="form-group">
+                <label for="text">habilitado</label>
+                <input type="text" class="form-control" id="actualizarhabilitado" name="habilitado" placeholder="habilitado">
+            </div>
+            <div class="form-group">
+                <label for="text">imagen</label>
+                <input type="text" class="form-control" id="actualizarimagen" name="imagen" placeholder="imagen">
+            </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="Guardar"/>
+                </div>
+            </form>
+        
+            
+        </div>
+        
+
+        
+    </div>
     </div>
 </div>
-<!-- ... (código posterior) -->
+
+
+    </table>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
 
 
     <script>
+        function llenarformulario(idp, referencia, nombre, descripcion, precio, stock, imagen, habilitado ){
+            actualizaridp.value=idp;
+            actualizarreferencia.value=referencia;
+            actualizarnombre.value=nombre;
+            actualizardescripcion.value=descripcion;
+            actualizarprecio.value=precio;
+            actualizarstock.value=stock;
+            actualizarhabilitado.value=habilitado;
 
-
-    // Array de objetos con la información de los libros
-    const libros = [
-    {
-        titulo: "El nombre de la rosa",
-        autor: "Umberto Eco",
-        genero: "Novela histórica"
-    },
-    {
-        titulo: "Cien años de soledad",
-        autor: "Gabriel García Márquez",
-        genero: "Realismo mágico"
-    },
-    {
-        titulo: "El nombre de la rosa",
-        autor: "Umberto Eco",
-        genero: "Novela histórica"
-    },
-    {
-        titulo: "Cien años de soledad",
-        autor: "Gabriel García Márquez",
-        genero: "Realismo mágico"
-    },
-    {
-        titulo: "El nombre de la rosa",
-        autor: "Umberto Eco",
-        genero: "Novela histórica"
-    },
-    {
-        titulo: "Cien años de soledad",
-        autor: "Gabriel García Márquez",
-        genero: "Realismo mágico"
-    },
-    // ... Agregar los otros libros aquí
-    ];
-let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-// Función para manejar el evento de agregar al carrito
-function agregarAlCarrito(event) {
-    const titulo = event.target.dataset.titulo;
-    const libroSeleccionado = libros.find((libro) => libro.titulo === titulo);
-
-    if (libroSeleccionado) {
-    carrito.push(libroSeleccionado);
-    
-
-actualizarCarrito();
-    console.log(`"${libroSeleccionado.titulo}" ha sido agregado al carrito.`);
-    console.log("Contenido del carrito:", carrito);
-    }
-}
-
-// Función para actualizar el carrito en localStorage
-function actualizarCarrito() {
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-}
-
-// Función para crear las cards de los libros
-function crearCards() {
-    const catalogo = document.getElementById('catalogo');
-
-    libros.
-
-
-forEach((libro) => {
-    const card = document.createElement('div');
-    card.
-
-classList.add('col-md-4');
-
-    card.innerHTML = `
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">${libro.titulo}</h5>
-            <p class="card-text">Autor: ${libro.autor}</p>
-            <p class="card-text">Género: ${libro.genero}</p>
-            <button class="btn btn-primary agregar-carrito" data-titulo="${libro.titulo}">Agregar al carrito</button>
-        </div>
-    </div>
-    `;
-
-    catalogo.
-
-appendChild(card);
-    });
-
-  // Agregar evento de clic a los botones "Agregar al carrito"
-    const botonesCarrito = document.querySelectorAll('.agregar-carrito');
-    botonesCarrito.
-    botonesCarrito
-forEach((boton) => {
-    boton.addEventListener('click', agregarAlCarrito);
-    });
-}
-
-// Llamar a la función para crear las cards al cargar la página
-document.addEventListener('DOMContentLoaded', crearCards);
-
-    
-
-
+        }
 
     </script>
-    </body>
-    </html>
+
+    
+
+</body>
+</html>
