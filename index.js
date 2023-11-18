@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const {body,  validationResult} = require("express-validator");
 const morgan = require("morgan"); // para gestionar las request procesadas//
 const path = require("path");
 const dotenv = require("dotenv");
@@ -46,6 +47,18 @@ app.listen(PORT, () => {
     console.log(`el servidor esta en linea ...!! ${PORT}`);
 
 });
+
+app.post('/registrarlibro',[
+    body('isbn', 'ingrese solo numeros')
+    .exists()
+    .isLength({min:10}),
+],(req, res)=>{
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.status(400).json({ errors: errors.array() });
+        console.log(errors)
+    }
+})
 
 module.exports = app;
 

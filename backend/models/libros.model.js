@@ -10,7 +10,6 @@ const LibrosSchema = new mongoose.Schema({
     titulo: {
         type: String,
         required: true,
-        maxLength: 200
     },
     autor: {
         type: String,
