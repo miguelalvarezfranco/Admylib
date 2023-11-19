@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const {body,  validationResult} = require("express-validator");
+const {body,  validationResult} = require('express-validator');
 const morgan = require("morgan"); // para gestionar las request procesadas//
 const path = require("path");
 const dotenv = require("dotenv");
@@ -51,12 +51,48 @@ app.listen(PORT, () => {
 app.post('/registrarlibro',[
     body('isbn', 'ingrese solo numeros')
     .exists()
-    .isLength({min:10}),
+    .isNumeric({min:10}),
+    body('titulo','ingrese solo letras')
+    .exists()
+    .isLength({min:100}),
+    body('Añodepublicacion','ingrese un año correcto')
+    .exists()
+    .isLength({min:50}),
+    body('editorial','ingrese una editorial')
+    .exists()
+    .isLength({min:50}),
+    body('copiasdisponibles','ingrese numeros ')
+    .exists()
+    .isNumeric({min:50}),
+    body('precio','en este campo no se permiten letras')
+    .exists()
+    .isNumeric({min:100}),
+    body('idioma','ingrese un idioma')
+    .exists()
+    .isLength({min:100}),
+    body('autor','ingrese un autor')
+    .exists()
+    .isLength({min:100}),
+    body('iamgen','ingrese una imagen ')
+    .exists()
+    .isLength({min:80}),
+    body('materias','ingrese una materia ')
+    .exists()
+    .isLength({min:100}),
 ],(req, res)=>{
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        res.status(400).json({ errors: errors.array() });
-        console.log(errors)
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //     res.status(400).json({ errors: errors.array() });
+    //     console.log(errors)
+    // }
+    const errors = validationResult(req)
+    if(!errors.isEmpty()) {
+        console.log(req.body)
+        const valores = req.body
+        const validaciones = errors.array
+        res.render('libros', {validaciones:validaciones, valores:valores})
+    }else{
+        res.send('¡Validacion exitosa!')
     }
 })
 

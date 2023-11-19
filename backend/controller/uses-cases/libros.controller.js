@@ -16,7 +16,7 @@ exports.find = async(req, res) =>{
         if(buscarLibro.respuesta === false) {
             res.status(404).json({resultado: "no existe ningun libro"})
         }else{
-            res.status(200).json({libros:  buscarLibro})
+            res.sta.save();tus(200).json({libros:  buscarLibro})
         }
     }catch(e){
         res.status(500).json({error:e})
@@ -35,6 +35,8 @@ exports.update = async(req, res)=>{
             materias: req.body.materias,
             Añodepublicacion: req.body.Añodepublicacion,
             copiasdisponibles: req.body.copiasdisponibles,
+            precio: req.body.precio,
+            imagen: req.body.imagen,
             idioma: req.body.idioma,    
         }
         if(id.respuesta === false){
@@ -66,4 +68,7 @@ exports.eliminarL = async (req, res) => {
 exports.formularioLibro = async(req, res) =>{ //nombre de la funcion que quiero hacer
     res.render("libros") // documento que quiero mostrar
 }
+
+
+
 
