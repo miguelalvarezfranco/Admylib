@@ -8,10 +8,12 @@ const router = express.Router();
 //MODULO LIBROS
 
 router.post("/registrarlibro", libros.creaLibros);
-router.get("/listarLibro", libros.find);
+router.get("/listarLibro", libros.libro);
 router.put("/actualizarLibro/:id", libros.update);
 router.delete("/eliminarL/:id", libros.eliminarL);
-router.get("/catalogo", libros.find); 
+
+
+// router.get("/catalogo", libros.catalogo); 
 
 
 //MOSTRAR PAGINA PRICIPAL
@@ -20,7 +22,7 @@ router.get("/landing", (req, res)=>{
 });
 
 
-router.post("/vistaadmin", usuarios.infoUsuario);
+// router.post("/vistaadmin", usuarios.infoUsuario);
 
 
 router.get("/mostrarFormulario", libros.formularioLibro)

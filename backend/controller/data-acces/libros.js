@@ -1,3 +1,5 @@
+
+
 const libros = require('../../models/libros.model');
 
 exports.createLibros = async(librosdata) =>{
@@ -5,7 +7,6 @@ exports.createLibros = async(librosdata) =>{
 }
 
 exports.buscarLibro = async(filter)=>{
-
     try{
         const buscarLibro = await libros.find(filter);
         if(buscarLibro){

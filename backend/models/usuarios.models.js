@@ -12,7 +12,7 @@ const usuarioSchema = new mongoose.Schema({
         
     rol: { 
     type: String,     
-    required: [true, 'Hay que indicar el rol del usuario']  
+    default: 'usuario'  
 
     }})
 

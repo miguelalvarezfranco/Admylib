@@ -6,9 +6,12 @@ exports.creaLibros = async(req, res)=>{
     const nuevoLibro =  libros.createLibros(datos);
 
     res.status(200).json({resultado: nuevoLibro});
+
+    
 }
 
-exports.find = async(req, res) =>{
+
+exports.libro = async(req, res) =>{
     
     try{
         const buscarLibro = await libros.buscarLibro()
@@ -16,13 +19,18 @@ exports.find = async(req, res) =>{
         if(buscarLibro.respuesta === false) {
             res.status(404).json({resultado: "no existe ningun libro"})
         }else{
-            res.sta.save();tus(200).json({libros:  buscarLibro})
+            res.render('listarCatalogo',{
+                libro : buscarLibro.libros
+            })
+
+            // res.status(200).json({libros:  buscarLibro})
         }
     }catch(e){
         res.status(500).json({error:e})
     }
     console.log(libros)
 }
+
 exports.update = async(req, res)=>{
 
     try {
