@@ -6,7 +6,11 @@ exports.crear = async(req, res)=>{
     const nuevoUsuario = usuarios.crearUsuario(datos);
 
     res.status(200).json({resultado: nuevoUsuario});
+
+    
 }
+
+
 
 exports.infoUsuario = async (req, res) => {
     const infoUsu = await usuarios.findOne({ email: req.body.Correo });
@@ -20,9 +24,9 @@ exports.infoUsuario = async (req, res) => {
     }
     
     if(infoUsu.rol === 'Usuario' ){
-        res.render("Libros");
+        res.render("landing");
     }else if(infoUsu.rol === 'Admin'){
-        res.render('landing');
+        res.render('mostrarCatalogo');
     }
     
     };

@@ -85,8 +85,8 @@
         border-radius: 50%;
         font-size: 12px;
         padding: 4px;
-        top: 18px;
-        right: 11%;
+        top: 40px;
+        right: 5%;
         position: absolute;
         display: none;
     }
@@ -117,18 +117,6 @@
             </li>
             <button class="ver-carrito btn" data-toggle="modal" data-target="#verCarrito"
                     onclick="pintarCarrito()">🛒 <span id="cantidadCarrito" class="cantidadCarrito"></span>
-            <li class="nav-item pr-2">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#login">
-                    <i class="fa fa-user-circle"></i>
-                </button>
-            </li>
-            <li class="nav-item">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#registro">
-                    <i class="fa fa-sign-in"></i>
-                </button>
-            </li>
         </ul>
     </nav>
 
@@ -153,10 +141,10 @@
     </div>
 
     <!-- Modal -->
+    
 
-
-    <%libro.forEach(function(elemento){%>
-        <div class="card" style="width: 17rem; height: 450px">
+    <%libros2.forEach(function(elemento){%>
+        <div class="card" style="width: 17rem; height: 430px">
             <img src="https://source.unsplash.com/300x201/?<%=elemento.titulo%>" class="card-img-top" alt="..">
             <div class="card-body">
                 <h5 class="card-title">
@@ -318,9 +306,6 @@
 
             }
 
-            function comprar(id) {
-                
-            }
 
         function vaciar () {
 

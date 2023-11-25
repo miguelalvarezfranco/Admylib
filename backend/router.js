@@ -13,7 +13,7 @@ router.put("/actualizarLibro/:id", libros.update);
 router.delete("/eliminarL/:id", libros.eliminarL);
 
 
-// router.get("/catalogo", libros.catalogo); 
+
 
 
 //MOSTRAR PAGINA PRICIPAL
@@ -22,12 +22,17 @@ router.get("/landing", (req, res)=>{
 });
 
 
-// router.post("/vistaadmin", usuarios.infoUsuario);
+router.post("/vistaadmin", usuarios.infoUsuario);
 
 
-router.get("/mostrarFormulario", libros.formularioLibro)
+router.get("/mostrarFormulario", libros.formularioLibro);
 
-// router.get("/catalogo", catalogos.catalogoLibros ) //se pone el nombre de la ruta y ademas se llama la funcion que recien se crea para mostrar el fomrulario
+router.get("/mostrarTabla", libros.tablaCatalogo);
+
+
+
+
+
 
 
 //MODULO USUARIO

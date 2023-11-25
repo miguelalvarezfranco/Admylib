@@ -28,7 +28,8 @@
         <div class="col-8">
             
             <h1 class="titulo">Tabla Productos</h1>
-    <table class="table table-bordered">
+
+    <table class="table table-bordered" action="/mostrarTabla" method="get">
         <thead>
         <tr>
             <th scope="col">ID</th>
@@ -43,11 +44,10 @@
             <th scope="col">IMAGEN</th>
             <th scope="col">IDIOMA</th>
 
-
         </tr>
         </thead>
         <tbody>
-            <% producto.forEach(function(elemento){%>
+            <% libros2.forEach(function(elemento){%>
                 <tr>
                     <td>
                         <%=elemento._id%>   
@@ -103,7 +103,7 @@
                 <!-- Modal body -->
                 <div class="modal-body">
         
-                    <form action="actualizarproducto" method="post">
+                    <form action="actualizarCatalogo" method="post">
                         <div class="form-group">
                             <label for="text">ID</label>
                             <input type="text" class="form-control" id="actualizaridp" name="idpactualizarproducto"  placeholder="id" readonly >
@@ -157,7 +157,6 @@
                 </div>
                 
         
-                
             </div>
             </div>
         </div>

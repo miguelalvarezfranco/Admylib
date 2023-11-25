@@ -4,15 +4,15 @@ exports.creaLibros = async(req, res)=>{
     const datos = req.body;
 
     const nuevoLibro =  libros.createLibros(datos);
-
-    res.status(200).json({resultado: nuevoLibro});
+    
+    res.status(200).json({libros2:  nuevoLibro});
 
     
 }
 
 
 exports.libro = async(req, res) =>{
-    
+
     try{
         const buscarLibro = await libros.buscarLibro()
 
@@ -20,7 +20,7 @@ exports.libro = async(req, res) =>{
             res.status(404).json({resultado: "no existe ningun libro"})
         }else{
             res.render('listarCatalogo',{
-                libro : buscarLibro.libros
+                libros2 : buscarLibro.libros
             })
 
             // res.status(200).json({libros:  buscarLibro})
@@ -45,7 +45,7 @@ exports.update = async(req, res)=>{
             copiasdisponibles: req.body.copiasdisponibles,
             precio: req.body.precio,
             imagen: req.body.imagen,
-            idioma: req.body.idioma,    
+            idioma: req.body.idioma,
         }
         if(id.respuesta === false){
             res.status(404).json({resultado: "no se actualizo"})
@@ -53,7 +53,7 @@ exports.update = async(req, res)=>{
             await libros.updatelibros(id, datos);
             res.status(200).json({libros:  "se actualizo correctamente"})
         }
-        
+
     } catch (e) {
         res.status(500).json({error:e})
     }
@@ -76,6 +76,41 @@ exports.eliminarL = async (req, res) => {
 exports.formularioLibro = async(req, res) =>{ //nombre de la funcion que quiero hacer
     res.render("libros") // documento que quiero mostrar
 }
+
+exports.tablaCatalogo = async(req, res)=>{
+    const mostrartabla = await libros.mostrartabla()
+
+    res.render("mostrarCatalogo",{
+        libros2: mostrartabla.libros
+
+    })
+}
+
+
+
+
+
+// exports.tablaCatalogo = async(req, res) =>{
+
+//     try{
+//         const tablaCatalogo= await libros.tablaCatalogo()
+
+//         if(tablaCatalogo.respuesta === false) {
+//             res.status(404).json({resultado: "no existe ningun libro"})
+//         }else{
+//             res.render('mostrarCatalogo',{
+//                 libros2 : tablaCatalogo.libros
+//             })
+
+//             // res.status(200).json({libros:  buscarLibro})
+//         }
+//     }catch(e){
+//         res.status(500).json({error:e})
+//     }
+//     console.log(libros)
+// }
+
+
 
 
 
