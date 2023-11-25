@@ -27,11 +27,7 @@ router.post("/vistaadmin", usuarios.infoUsuario);
 
 router.get("/mostrarFormulario", libros.formularioLibro);
 
-router.get("/mostrarTabla", libros.tablaCatalogo);
-
-
-
-
+// router.get("/mostrarTabla", libros.tablaCatalogo);
 
 
 

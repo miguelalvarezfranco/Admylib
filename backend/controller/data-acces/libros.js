@@ -6,10 +6,6 @@ exports.createLibros = async(librosdata) =>{
     return await new  libros(librosdata).save();
 }
 
-// exports.tablaCatalogo = async()=>{
-    
-//     const tablaCatalogo = await libros.find();
-// }
 
 exports.buscarLibro = async(filter)=>{
     try{

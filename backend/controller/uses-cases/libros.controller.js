@@ -23,7 +23,6 @@ exports.libro = async(req, res) =>{
                 libros2 : buscarLibro.libros
             })
 
-            // res.status(200).json({libros:  buscarLibro})
         }
     }catch(e){
         res.status(500).json({error:e})
@@ -73,42 +72,15 @@ exports.eliminarL = async (req, res) => {
         }
 };
 
+
 exports.formularioLibro = async(req, res) =>{ //nombre de la funcion que quiero hacer
     res.render("libros") // documento que quiero mostrar
 }
 
-exports.tablaCatalogo = async(req, res)=>{
-    const mostrartabla = await libros.mostrartabla()
-
-    res.render("mostrarCatalogo",{
-        libros2: mostrartabla.libros
-
-    })
-}
 
 
 
 
-
-// exports.tablaCatalogo = async(req, res) =>{
-
-//     try{
-//         const tablaCatalogo= await libros.tablaCatalogo()
-
-//         if(tablaCatalogo.respuesta === false) {
-//             res.status(404).json({resultado: "no existe ningun libro"})
-//         }else{
-//             res.render('mostrarCatalogo',{
-//                 libros2 : tablaCatalogo.libros
-//             })
-
-//             // res.status(200).json({libros:  buscarLibro})
-//         }
-//     }catch(e){
-//         res.status(500).json({error:e})
-//     }
-//     console.log(libros)
-// }
 
 
 
