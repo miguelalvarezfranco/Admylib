@@ -9,6 +9,25 @@ exports.creaLibros = async(req, res)=>{
 
     
 }
+exports.Tablalibro = async(req, res) =>{
+
+    try{
+        const TablaL = await libros.TablaL()
+
+        if(TablaL.respuesta === false) {
+            res.status(404).json({resultado: "no existe ningun libro"})
+        }else{
+            res.render('mostrarCatalogo',{
+                libros2 : TablaL.libros
+            })
+
+        }
+    }catch(e){
+        res.status(500).json({error:e})
+    }
+    console.log(libros)
+}
+
 
 
 exports.libro = async(req, res) =>{
