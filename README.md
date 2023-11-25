@@ -1,17 +1,12 @@
 # Admylib
-## Este es un Sistema de Gestión Interna Bibliotecaria que permite automatizar algunas de las operaciones bibliotecarias más recurrentes en una unidad de información 
+## Este es una tienda virtual de libros la cual te va permitir realizar compras online con facilidad
 
 ## Los modulos que integran al sistemas son:
 * Seguridad
-* Circulación
-* Reservas
-* Reportes
-* Sanciones
 * Catalogación
 
 # Colaboradores
 * Miguel Angel
-* Esteban García
-* Isabela Grisales
+
 
   
