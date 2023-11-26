@@ -7,26 +7,32 @@ exports.creaLibros = async(req, res)=>{
     
     res.status(200).json({libros2:  nuevoLibro});
 
+    res.redirect('/mostrarCatalogo');
+
     
 }
-exports.Tablalibro = async(req, res) =>{
+
+exports.Tabla = async(req, res) =>{
 
     try{
-        const TablaL = await libros.TablaL()
+        const buscarLibro = await libros.buscarLibro()
 
-        if(TablaL.respuesta === false) {
+        if(buscarLibro.respuesta === false) {
             res.status(404).json({resultado: "no existe ningun libro"})
         }else{
             res.render('mostrarCatalogo',{
-                libros2 : TablaL.libros
+                libros2 : buscarLibro.libros
             })
-
+            
         }
     }catch(e){
         res.status(500).json({error:e})
     }
     console.log(libros)
+
+   
 }
+
 
 
 
@@ -95,6 +101,15 @@ exports.eliminarL = async (req, res) => {
 exports.formularioLibro = async(req, res) =>{ //nombre de la funcion que quiero hacer
     res.render("libros") // documento que quiero mostrar
 }
+
+// exports.Tablalibro = async (req, res) => {
+//     const TablaL = await libros.find();
+
+//     res.render("mostrarCatalogo",{
+
+//         libros2: TablaL
+//     });
+// };
 
 
 

@@ -22,10 +22,15 @@ router.get("/landing", (req, res)=>{
 });
 
 
+
+
 router.post("/vistaadmin", usuarios.infoUsuario);
 
 
 router.get("/mostrarFormulario", libros.formularioLibro);
+
+router.get("/mostrarCatalogo", libros.Tabla);
+
 
 // router.get("/mostrarTabla", libros.tablaCatalogo);
 

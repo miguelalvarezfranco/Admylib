@@ -6,7 +6,6 @@ exports.createLibros = async(librosdata) =>{
     return await new  libros(librosdata).save();
 }
 
-
 exports.buscarLibro = async(filter)=>{
     try{
         const buscarLibro = await libros.find(filter);
