@@ -5,6 +5,7 @@ const morgan = require("morgan"); // para gestionar las request procesadas//
 const path = require("path");
 const dotenv = require("dotenv");
 const router = require("./backend/router");
+const multer = require("multer");
 
 //swagger
 const swaggerSpec ={
@@ -67,16 +68,16 @@ app.post('/registrarlibro',[
     body('precio','en este campo no se permiten letras')
     .exists()
     .isNumeric({min:100}),
-    body('idioma','ingrese un idioma')
+    body('idioma','ingrese solo letras')
     .exists()
     .isLength({min:100}),
-    body('autor','ingrese un autor')
+    body('autor','ingrese un solo letras')
     .exists()
     .isLength({min:100}),
-    body('iamgen','ingrese una imagen ')
+    body('iamgen','ingrese solo  imagenes ')
     .exists()
     .isLength({min:80}),
-    body('materias','ingrese una materia ')
+    body('materias','ingrese solo letras ')
     .exists()
     .isLength({min:100}),
 ],(req, res)=>{

@@ -5,7 +5,6 @@ exports.creaLibros = async(req, res)=>{
 
     const nuevoLibro =  libros.createLibros(datos);
     
-    res.status(200).json({libros2:  nuevoLibro});
 
     res.redirect('/mostrarCatalogo');
 

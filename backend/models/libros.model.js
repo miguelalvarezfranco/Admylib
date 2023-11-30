@@ -22,11 +22,11 @@ const LibrosSchema = new mongoose.Schema({
     },
     materias: {
         type: String,
-        required:true
+        
     },
     Añodepublicacion: {
         type: Date,
-        required: true
+        
     },
     copiasdisponibles: {
         type: Number,
@@ -37,7 +37,7 @@ const LibrosSchema = new mongoose.Schema({
         
     },
     imagen: {
-        type: String,
+        type:String,
         
     },
     idioma: {

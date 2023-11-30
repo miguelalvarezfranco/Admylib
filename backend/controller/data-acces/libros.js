@@ -1,5 +1,3 @@
-
-
 const libros = require('../../models/libros.model');
 
 exports.createLibros = async(librosdata) =>{

@@ -12,24 +12,23 @@
         text-align: center;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
-    .table{
+    .table table-bordered{
+        width: 950px;
         border-color: black;
-        width: 250px;
-        justify-content: center;
+        justify-content: center; 
         border-radius: 30px;
-    }
+        
+    } 
 
-    
 </style>
 
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-        <div class="col-8">
-            
-            <h1 class="titulo">Tabla Productos</h1>
 
-    <table class="table table-bordered">
+    <button><a href="landing">Regresar</a></button>
+
+    <h1 class="titulo">Tabla Productos</h1>
+
+    <table class="table table-bordered" >
         <thead>
         <tr>
             <th scope="col">ID</th>
@@ -110,43 +109,43 @@
                         </div>
                         <div class="form-group">
                             <label for="text">isbn</label>
-                            <input type="number" class="form-control" id="actualizarreferencia" name="referencia"  placeholder="isbn"  >
+                            <input type="number" class="form-control" id="actualizarreferencia" name="isbn"  placeholder="isbn"  >
                         </div>
                         <div class="form-group">
                             <label for="text">titulo</label>
-                            <input type="text" class="form-control" id="actualizarnombre" name="nombre" placeholder="titulo">
+                            <input type="text" class="form-control" id="actualizarnombre" name="titulo"  placeholder="titulo">
                         </div>
                         <div class="form-group">
                             <label for="text">autor</label>
-                            <input type="text" class="form-control" id="actualizardescripcion" name="descripcion" placeholder="autor">
+                            <input type="text" class="form-control" id="actualizardescripcion" name="autor" placeholder="autor">
                         </div>
                         <div class="form-group">
                             <label for="text">editorial</label>
-                            <input type="text" class="form-control" id="actualizarprecio" name="precio" placeholder="editorial">
+                            <input type="text" class="form-control" id="actualizarprecio" name="editorial" placeholder="editorial">
                         </div>
                         <div class="form-group">
-                            <label for="text">materia</label>
-                            <input type="text" class="form-control" id="actualizarstock" name="stock" placeholder="materia">
+                            <label for="text">materias</label>
+                            <input type="text" class="form-control" id="actualizarstock" name="materias" placeholder="materias">
                     </div>
                     <div class="form-group">
                         <label for="text">Añodepublicacion</label>
-                        <input type="date" class="form-control" id="actualizarhabilitado" name="habilitado" placeholder="Añodepublicacion">
+                        <input type="date" class="form-control" id="actualizarhabilitado" name="Añodepublicacion" placeholder="Añodepublicacion">
                     </div>
                     <div class="form-group">
                         <label for="text">copiasdisponibles</label>
-                        <input type="number" class="form-control" id="actualizarimagen" name="imagen" placeholder="copiasdisponibles">
+                        <input type="number" class="form-control" id="actualizarimagen" name="copiasdisponibles" placeholder="copiasdisponibles">
                     </div>
                     <div class="form-grlistarLibrooup">
                         <label for="text">precio</label>
-                        <input type="number" class="form-control" id="actualizarimagen" name="imagen" placeholder="precio">
+                        <input type="number" class="form-control" id="actualizarimagen" name="precio" placeholder="precio">
                     </div>
                     <div class="form-group">
                         <label for="text">imagen</label>
-                        <input type="text" class="form-control" id="actualizarimagen" name="imagen" placeholder="imagen">
+                        <input type="image"form-control" id="actualizarimagen" name="imagen" placeholder="imagen">
                     </div>
                     <div class="form-group">
                         <label for="text">idioma</label>
-                        <input type="text" class="form-control" id="actualizarimagen" name="imagen" placeholder="idioma">
+                        <input type="text" class="form-control" id="actualizarimagen" name="idioma" placeholder="idioma">
                     </div>
                         <div class="modal-footer">
                             <input type="submit" class="btn btn-success" value="Guardar"/>

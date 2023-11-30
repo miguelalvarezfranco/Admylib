@@ -1,22 +1,28 @@
 const mongoose = require('../config/database');
-const usuarioSchema = new mongoose.Schema({    
-    email: {       
-    type: String,     
-    required: [true, 'Ingresa el correo del usuario'] 
+const { Schema } = mongoose;
+
+const usuarioSchema = new mongoose.Schema({
+
+  usuario: {
+    type: String,
+    
+  },
+  email: {
+    type: String,
+    
+  },
+  password: {
+    type: String,
+    
   },
 
-    password: { 
-    type: String, 
-    required: [true, 'Ingresa la contraseña del usuario']   
-    }, 
-        
-    rol: { 
+  rol: { 
     type: String,     
-    default: 'usuario'  
+    default: 'administrador'  
 
     }})
 
       
-  const usuarios = mongoose.model('usuarios', usuarioSchema);module.exports = usuarios;
-  // const clientes = mongoose.model('clientes', ClienteSchema);
-  // module.exports = clientes;
+  const usuario = mongoose.model('usuarios', usuarioSchema);
+  module.exports = usuario;
+  
