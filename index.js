@@ -70,7 +70,7 @@ app.post('/registrarlibro',[
     body('Añodepublicacion','ingrese un año correcto')
     .exists()
     .isLength({min:50}),
-    body('editorial','ingrese una editorial')
+    body('editorial','ingrese solo letras')
     .exists()
     .isLength({min:50}),
     body('copiasdisponibles','ingrese numeros ')

@@ -17,27 +17,43 @@
         <h1>Vista Administrador </h1>
     </div>
 
-    <nav class="navbar navbar-expand-sm navbar-black bg-light d-flex justify-content-between">
-    
+    <body>
+        <nav id="barra" class="navbar navbar-expand-sm navbar-light">
+            <!-- Brand/logo -->
+            <div class="container justify-content-start">
+                <img src="images/udl.png" alt="logo" style="width:110px;">
+                <a class="navbar-brand">
+                    El universo de los libros 
+                </a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+            </div>
+            <!-- Links -->
+            <ul class="container justify-content-end navbar-nav" id="items">
+                <li class="nav-item">
+                    <a class="nav-link" href="landing">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Catálogo</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/mostrarFormulario">Registrar libro</a>
+                        <a class="dropdown-item" href="/listarLibro">Ver catálogo</a>
+                    </div>
+                </li>
+                <li class="nav-item pr-2">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#login">
+                        <i class="fa fa-user-circle"></i>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#registro">
+                        <i class="fa fa-sign-in"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
 
-        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span> -->
-        <div class="container-fluid">
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            LIBROS
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/registrarlibro">Registrar</a></li>
-                            <li><a class="dropdown-item" href="/listarLibro">Listar</a></li>
-                        </ul>
-                    </li>
-                    
-                </ul>
+   
 
             </script>
 

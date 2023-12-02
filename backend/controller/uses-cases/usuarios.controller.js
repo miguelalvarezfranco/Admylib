@@ -7,9 +7,6 @@ exports.crear = async(req, res)=>{
     const nuevoUsuario = usuarios.crearUsuario(datos);
 
     res.redirect('/listarUsuarios')
-
-
-
 }
 
 exports.listarusuarios = async(req, res) =>{

@@ -94,48 +94,48 @@
 
 
     <div class="container pt-4">
-        <form action="/registrarLibro" method="post">
+        <form action="/registrarLibro" method="post" onsubmit=" return validarFormulario()">
             <div class="form-group">
                 <label for="uname">ISBN:</label>
-                <input type="number" class="form-control" id="isbn" placeholder="Ingresa el ISBN" name="isbn" >
+                <input type="number" class="form-control" id="isbn" placeholder="Ingresa el ISBN" name="isbn" min="6" maxlength="10">
             </div>
             <div class="form-group">
                 <label for="Tit">Título:</label>
-                <input type="text" class="form-control" id="title" placeholder="Ingresa el título" name="titulo" >
+                <input type="text" class="form-control" id="title" placeholder="Ingresa el título" name="titulo" min="100" maxlength="200" >
                 <small>Ingrese Solo letras</small>
             </div>
             <div class="form-group">
                 <label for="Año">Año de publicación:</label>
-                <input type="date" class="form-control" id="Año" placeholder="Ingresa el año de publicacion" name="Añodepublicacion">
+                <input type="date" class="form-control" id="Año" placeholder="Ingresa el año de publicacion" name="Añodepublicacion" required>
             </div>
             <div class="form-group">
                 <label for="Copi">editorial</label>
-                <input type="text" class="form-control" id="editorial" placeholder="Ingresa la editorial del libro" name="editorial" ">
+                <input type="text" class="form-control" id="editorial" placeholder="Ingresa la editorial del libro" name="editorial" min="100" maxlength="150">
             </div>  
             <div class="form-group">
                 <label for="Copi">Copias Disponibles</label>
-                <input type="number" class="form-control" id="copias" placeholder="Ingresa el numero de copias disponibles" name="copiasdisponibles">
+                <input type="number" class="form-control" id="copias" placeholder="Ingresa el numero de copias disponibles" name="copiasdisponibles" required>
             </div>
             <div class="form-group">
                 <label for="Copi">Precio</label>
-                <input type="number" class="form-control" id="precio" placeholder="Ingresa el precio del libro" name="precio">
+                <input type="number" class="form-control" id="precio" placeholder="Ingresa el precio del libro" name="precio" required>
             </div>
             <div class="form-group">
                 <label for="Copi">idioma</label>
-                <input type="text" class="form-control" id="idioma" placeholder="Ingresa el idioma" name="idioma"> 
+                <input type="text" class="form-control" id="idioma" placeholder="Ingresa el idioma" name="idioma" min="15" max="50"> 
             </div>
             <div class="form-group">
                 <label for="Copi">Autor</label>
-                <input type="text" class="form-control" id="autor" placeholder="Ingresa el autor del libro" name="autor">
+                <input type="text" class="form-control" id="autor" placeholder="Ingresa el autor del libro" name="autor" min="100" maxlength="180">
             </div>
             <div class="form-group">
                 <label for="Copi">Imagen</label>
-                <input type="file" class="form-control" id="imagen" placeholder="imagen" name="imagen">
+                <input type="file" class="form-control" id="imagen" placeholder="imagen" name="imagen" >
                 <button>Cargar Archivo</button>
             </div>
             <div class="form-group">
                 <label for="Copi">materias</label>
-                <input type="text" class="form-control" id="materias" placeholder="Ingresa la materia del libro" name="materias">
+                <input type="text" class="form-control" id="materias" placeholder="Ingresa la materia del libro" name="materias" min="20" maxlength="60">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
@@ -156,14 +156,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="vistaadmin">
+                <form action="inicio" onsubmit="return validarlogin()">
                     <div class="form-group">
                         <label for="email">Correo:</label>
-                        <input type="email" name="correo" class="form-control" placeholder="Ingrese su correo">
+                        <input type="email" name="correo" class="form-control" placeholder="Ingrese su correo" required >
                     </div>
                     <div class="form-group">
                         <label for="pwd">Contraseña:</label>
-                        <input type="password" class="form-control" placeholder="Ingrese su contraseña" >
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña" required >
                     </div>
                     <div class="form-group form-check text-center">
                         <label class="form-check-label">
@@ -189,26 +189,87 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/crear" method="post">
+                <form action="/crear" method="post" onsubmit="return validarRegistro">
                     <div class="form-group">
                         <label for="usuario">Usuario:</label>
-                        <input type="text" class="form-control" placeholder="Ingrese su usuario" name="usuario" id="">
+                        <input type="text" class="form-control" placeholder="Ingrese su usuario" name="usuario" id="" required>
                     </div>
                     <div class="form-group">
                         <label for="email">email:</label>
-                        <input type="email" class="form-control" placeholder="Ingrese su correo" name="email" id="">
+                        <input type="email" class="form-control" placeholder="Ingrese su correo" name="email" id="" required>
                     </div>
                     <div class="form-group">
                         <label for="pwd">Contraseña:</label>
-                        <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="password" id="">
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="password" id="" required>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-success">Enviar</button>
                     </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function validarFormulario() {
+    let isbn = document.getElementById('isbn').value.trim();
+    let titulo = document.getElementById('title').value.trim();
+    let anio = document.getElementById('Año').value.trim();
+    let editorial = document.getElementById('editorial').value.trim();
+    let copias = document.getElementById('copias').value.trim();
+    let precio = document.getElementById('precio').value.trim();
+    let idioma = document.getElementById('idioma').value.trim();
+    let autor = document.getElementById('autor').value.trim();
+    let imagen = document.getElementById('imagen').value.trim();
+    let materias = document.getElementById('materias').value.trim();
+
+    if (isbn === '' || titulo === '' || anio === '' || editorial === '' || copias === '' || precio === '' || idioma === '' || autor === '' || imagen === '' || materias === '') {
+        alert('Por favor, completa todos los campos.');
+        return false;
+    }
+
+    // Puedes agregar más validaciones específicas según tus requisitos, como verificar el formato del ISBN, validar números, etc.
+
+    return true; // Si todos los campos están llenos, el formulario se envía
+}
+
+
+
+function validarlogin() {
+    let correo = document.querySelector('input[name="correo"]').value.trim();
+    let contraseña = document.querySelector('input[type="password"]').value.trim();
+
+    if (correo === '' || contraseña === '') {
+        alert('Por favor, complete todos los campos.');
+        return false;
+    }
+
+    // Puedes agregar más validaciones, como verificar el formato del correo, longitud de la contraseña, etc.
+
+    return true; // Si todos los campos están llenos, el formulario se envía
+}
+
+
+
+function validarRegistro() {
+    let usuario = document.querySelector('input[name="usuario"]').value.trim();
+    let email = document.querySelector('input[name="email"]').value.trim();
+    let contraseña = document.querySelector('input[name="password"]').value.trim();
+
+    if (usuario === '' || email === '' || contraseña === '') {
+        alert('Por favor, complete todos los campos.');
+        return false;
+    }
+
+    // Puedes agregar más validaciones, como verificar el formato del correo electrónico o longitud de la contraseña, etc.
+
+    return true; // Si todos los campos están llenos, el formulario se envía
+}
+
+
+
+</script>
+
 
 
 

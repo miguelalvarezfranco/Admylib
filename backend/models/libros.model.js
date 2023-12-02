@@ -5,31 +5,43 @@ const LibrosSchema = new mongoose.Schema({
     isbn: {
         type: Number,
         required: true,
+        maxLength:10,
+        minLength:5
 
     },
     titulo: {
         type: String,
         required: true,
+        maxLength:100,
+        minLength:50
     },
     autor: {
         type: String,
         required: false,
+        maxLength:10,
+        minLength:5
     },
     editorial: {
         type: String,
-        required: false
+        required: false,
+        maxLength:80,
+        minLength:30
         
     },
     materias: {
         type: String,
+        maxLength:10,
+        minLength:5
         
     },
     Añodepublicacion: {
         type: Date,
+
         
     },
     copiasdisponibles: {
         type: Number,
+
         
     },
     precio: {
