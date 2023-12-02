@@ -24,3 +24,4 @@ passport.use('local-inicio', new LocalStrategy({
     await usuario.save();
     done(null, usuario);
 }))
+

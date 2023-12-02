@@ -192,15 +192,15 @@
                 <form action="/crear" method="post" onsubmit="return validarRegistro">
                     <div class="form-group">
                         <label for="usuario">Usuario:</label>
-                        <input type="text" class="form-control" placeholder="Ingrese su usuario" name="usuario" id="" required>
+                        <input type="text" class="form-control" placeholder="Ingrese su usuario" name="usuario" id="" required  min="15" maxlength="100">
                     </div>
                     <div class="form-group">
                         <label for="email">email:</label>
-                        <input type="email" class="form-control" placeholder="Ingrese su correo" name="email" id="" required>
+                        <input type="email" class="form-control" placeholder="Ingrese su correo" name="email" id="" required min="50" maxlength="100">
                     </div>
                     <div class="form-group">
                         <label for="pwd">Contraseña:</label>
-                        <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="password" id="" required>
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="password" id="" required min="8" maxlength="10">
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-success">Enviar</button>
