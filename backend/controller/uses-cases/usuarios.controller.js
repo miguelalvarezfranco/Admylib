@@ -111,22 +111,6 @@ exports.informacion = async(req, res) =>{
 
 
 
-    
-    // console.log(infoUsu);
-    
-    // const contraUsuario = req.body.password
-    
-    // if(infoUsu.password === contraUsuario){
-    //     console.log(true);
-    // }
-    
-    // if(infoUsu.rol === 'vendedor' ){
-    //     res.render("inicio");
-    // }else if(infoUsu.rol === 'clientes'){
-    //     res.render('paginaprincipal' ,{producto: catalogo});
-    // }
-
-
 
 
 

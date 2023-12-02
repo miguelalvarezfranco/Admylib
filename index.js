@@ -6,6 +6,10 @@ const path = require("path");
 const dotenv = require("dotenv");
 const router = require("./backend/router");
 const multer = require("multer");
+const passport = require('passport');
+const session = require('express-session');
+
+require('./backend/passport/auten-local');
 
 //swagger
 const swaggerSpec ={
@@ -37,6 +41,13 @@ app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDocs(swaggerSpec))
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
+app.use(session({
+    secret: 'mysecret',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // app.use('/api', router);
 

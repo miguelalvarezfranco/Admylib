@@ -1,7 +1,7 @@
 const express = require('express');
 const libros = require('./controller/uses-cases/libros.controller');
 const usuarios = require('./controller/uses-cases/usuarios.controller');
-
+const passport = require('passport');
 
 const router = express.Router();
 
@@ -23,8 +23,15 @@ router.get("/landing", (req, res)=>{
 
 
 
+router.get("/inicio",(req, res, next)=>{
+    res.render('inicio');
+});
 
-router.post("/vistaadmin", usuarios.informacion);
+router.post("/inicio", passport.authenticate('local-inicio',{
+    successRedirect: '/inicio',
+    failureRedirect: 'inicio',
+    passReqToCallback: true
+}));
 
 
 router.get("/mostrarFormulario", libros.formularioLibro);
@@ -32,6 +39,8 @@ router.get("/mostrarFormulario", libros.formularioLibro);
 router.get("/mostrarCatalogo", libros.Tabla);
 
 router.get("/listarUsuarios", usuarios.listarusuarios);
+
+
 
 
 
