@@ -66,9 +66,12 @@
                     <a class="dropdown-item" href="">Ver catálogo</a>
                 </div>
             </li>
+<<<<<<< HEAD
             <li class="nav-item">
                 <a class="nav-link" href="#">Institucional</a>
             </li>
+=======
+>>>>>>> 1fdcab7f7dcafe801949b9a1a98f0832da9e618a
             <li class="nav-item pr-2">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#login">
@@ -184,15 +187,15 @@
                 <form action="/crear" method="post" onsubmit="return validarRegistro">
                     <div class="form-group">
                         <label for="usuario">Usuario:</label>
-                        <input type="text" class="form-control" placeholder="Ingrese su usuario" name="usuario" id="" required>
+                        <input type="text" class="form-control" placeholder="Ingrese su usuario" name="usuario" id="" required  min="15" maxlength="100">
                     </div>
                     <div class="form-group">
                         <label for="email">email:</label>
-                        <input type="email" class="form-control" placeholder="Ingrese su correo" name="email" id="" required>
+                        <input type="email" class="form-control" placeholder="Ingrese su correo" name="email" id="" required min="50" maxlength="100">
                     </div>
                     <div class="form-group">
                         <label for="pwd">Contraseña:</label>
-                        <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="password" id="" required>
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="password" id="" required min="8" maxlength="10">
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-success">Enviar</button>

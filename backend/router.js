@@ -29,13 +29,17 @@ router.get("/landing", (req, res)=>{
 
 
 
-router.get("/inicio",(req, res, next)=>{
+
+
+    router.get("/inicio",(req, res, next)=>{
     res.render('inicio');
 });
 
+
+
 router.post("/inicio", passport.authenticate('local-inicio',{
-    successRedirect: '/inicio',
-    failureRedirect: 'inicio',
+    successRedirect: '/landing',
+    failureRedirect: '/inicio',
     passReqToCallback: true
 }));
 
@@ -45,6 +49,10 @@ router.get("/mostrarFormulario", libros.formularioLibro);
 router.get("/mostrarCatalogo", libros.Tabla);
 
 router.get("/listarUsuarios", usuarios.listarusuarios);
+
+router.get("/busqueda",(req, res)=>{
+    res.render('busqueda');
+})
 
 
 
