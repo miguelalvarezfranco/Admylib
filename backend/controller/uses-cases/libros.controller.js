@@ -3,9 +3,8 @@ const libros = require('../data-acces/libros');
 exports.creaLibros = async(req, res)=>{
     const datos = req.body;
 
-    const nuevoLibro =  libros.createLibros(datos);
+    // const nuevoLibro =  libros.createLibros(datos);
     
-
     res.redirect('mostrarCatalogo');
 }
 
@@ -47,7 +46,7 @@ exports.libro = async(req, res) =>{
             res.render('listarCatalogo',{
                 libros2 : buscarLibro.libros
             })
-            res.status(200).json({libros2: buscarLibro});
+        //     res.status(200).json({libros2: buscarLibro});
         }
     }catch(e){
         res.status(500).json({error:e})

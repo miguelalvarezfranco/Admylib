@@ -38,7 +38,7 @@ router.get("/landing", (req, res)=>{
 
 
 router.post("/inicio", passport.authenticate('local-inicio',{
-    successRedirect: '/landing',
+    successRedirect: '/inicio',
     failureRedirect: '/inicio',
     passReqToCallback: true
 }));
