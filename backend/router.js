@@ -12,6 +12,12 @@ router.get("/listarLibro", libros.libro);
 router.put("/actualizarLibro/:id", libros.update);
 router.delete("/eliminarL/:id", libros.eliminarL);
 
+//MODULO USUARIOS
+router.post("/registrarUsuario", usuarios.crear);
+router.get("/listarUsuarios", usuarios.usuario);
+router.put("/actualizarUsuarios/:id", usuarios.updateUsu);
+router.delete("/eliminarU/:id", usuarios.eliminarU);
+
 
 
 
