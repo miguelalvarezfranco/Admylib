@@ -123,10 +123,12 @@
                 <div class="modal-body" id="body-carrito">
 
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" onclick="comprar('${elemento.id}')">Comprar💲</button>
+                <!-- <div class="modal-footer">
+        
                     <button type="button" class="btn btn-danger" onclick="vaciar()">Vaciar carrito</button>
-                </div>
+        
+                </div> -->
+
             </div>
         </div>
     </div>
@@ -224,6 +226,9 @@
 
                     body.append(carrito);
 
+        
+
+
                     let eliminar = document.createElement('span');
                     eliminar.innerText = "⛔";
                     eliminar.className = "eliminar-producto";
@@ -237,8 +242,73 @@
 
                 const totalproductos = document.createElement("div");
                 totalproductos.className = "total-content";
-                totalproductos.innerHTML = `total a pagar: ${total} $`;
+                totalproductos.innerHTML = `
+                <div class="total a pagar">total: ${total} $</div>
+                <button class="btn-primary" id="checkOut-btn"> ir a pagar</button>
+                <div id="button-checkOut"></div>
+                
+                `;
                 body.append(totalproductos);
+
+                const mercadopago = new MercadoPago('<TEST-94df3d95-f925-48c2-aa58-26362b70ef70>', {
+                    locale: '<es-AR>' // The most common are: 'pt-BR', 'es-AR' and 'en-US'
+                });
+
+                const checkOut = totalproductos.querySelector("#checkOut-btn");
+
+
+                verificarbutton.addEventListener("click", function () {
+
+                    verificarbutton.remove();
+
+                const orderData = {
+                Cantidad: 1,
+                description: "compra de pruebas",
+                price: total,
+                };
+
+                fetch("http://localhost:7777/create_preference", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(orderData),
+                })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (preference) {
+                    createCheckoutButton(preference.id);
+                })
+                .catch(function () {
+                    alert("Unexpected error");
+                });
+            });
+
+                function createCheckoutButton(preferenceId) {
+                // Initialize the checkout
+                const bricksBuilder = mercadopago.bricks();
+
+                const renderComponent = async (bricksBuilder) => {
+                //if (window.checkoutButton) window.checkoutButton.unmount();
+                await bricksBuilder.create(
+                    'wallet',
+                    'button-verificar', // class/id where the payment button will be displayed
+                    {
+                        initialization: {
+                            preferenceId: preferenceId
+                        },
+                        callbacks: {
+                            onError: (error) => console.error(error),
+                            onReady: () => {}
+                        },
+                    }
+                );
+                window.checkoutButton =  renderComponent(bricksBuilder);
+            }
+        
+        }
+
 
 
             }

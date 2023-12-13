@@ -8,6 +8,18 @@ const router = require("./backend/router");
 const multer = require("multer");
 const passport = require('passport');
 const session = require('express-session');
+const cors = require("cors");
+const mercadopago = require('mercadopago');
+
+// REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
+
+
+
+
+
+
+
+
 
 require('./backend/passport/auten-local');
 
@@ -48,6 +60,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
 
 // app.use('/api', router);
 
@@ -58,6 +71,52 @@ app.use("/", Mirouter);
 app.listen(PORT, () => {
     console.log(`el servidor esta en linea ...!! ${PORT}`);
 
+});
+
+
+
+    // REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
+
+    mercadopago.configure({
+        access_token: 'TEST-4019632423541743-121222-0a1c0fcafb7dee7e54845c48bc91eeef-1591378824'
+    
+    });
+
+//MERCADO PAGO 
+
+
+	let preference = {
+		items: [
+			{
+				title: req.body.description,
+	            unit_price : 100,
+				quanty: req.body.descripcion
+			}
+		],
+		back_urls: {
+			"success": "http://localhost:8080/feedback",
+			"failure": "http://localhost:8080/feedback",
+			"pending": ""
+		},
+		auto_return: "approved",
+	};
+
+	mercadopago.preferences
+    .create(preference)
+		.then(function (response) {
+			res.json({
+				id: response.body.id
+			});
+		}).catch(function (error) {
+			console.log(error);
+		});
+
+app.get('/feedback', function (req, res) {
+	res.json({
+		Payment: req.query.payment_id,
+		Status: req.query.status,
+		MerchantOrder: req.query.merchant_order_id
+	});
 });
 
 app.post('/registrarlibro',[
@@ -110,13 +169,3 @@ app.post('/registrarlibro',[
 
 module.exports = app;
 
-// app.get("/libros", function (req, res) {
-//     Libro.find({}, function (err, libros) {
-//     res.status(200).send(libros);
-//     });
-// });
-
-
-// app.get("/",(req, res)=>{
-//     res.render('formuregistro');
-// })
