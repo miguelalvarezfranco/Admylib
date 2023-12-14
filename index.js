@@ -33,13 +33,18 @@ const swaggerSpec ={
         },
         servers:[
             {
-                url:"http://localhost:7778",
+                url:"http://localhost:7777",
             },
         ]
     },
     apis: [`${path.join(__dirname, "./backend/router.js")}`],
     
 }
+
+
+
+
+
 const swaggerUI = require("swagger-ui-express");
 const swaggerJsDocs = require("swagger-jsdoc");
 
@@ -78,19 +83,20 @@ app.listen(PORT, () => {
     // REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
 
     mercadopago.configure({
-        access_token: 'TEST-4019632423541743-121222-0a1c0fcafb7dee7e54845c48bc91eeef-1591378824'
-    
+        access_token: "TEST-4019632423541743-121222-0a1c0fcafb7dee7e54845c48bc91eeef-1591378824",
+
     });
 
 //MERCADO PAGO 
 
+app.post("/create_preference", (req, res) => {
 
 	let preference = {
 		items: [
 			{
-				title: req.body.description,
-	            unit_price : 100,
-				quanty: req.body.descripcion
+				tiulo: req.body.titulo,
+				descripcion: req.body.descripcion,
+                cantidad: req.body.cantidad
 			}
 		],
 		back_urls: {
@@ -101,8 +107,9 @@ app.listen(PORT, () => {
 		auto_return: "approved",
 	};
 
-	mercadopago.preferences
-    .create(preference)
+
+
+	mercadopago.preferences.create(preference)
 		.then(function (response) {
 			res.json({
 				id: response.body.id
@@ -150,12 +157,8 @@ app.post('/registrarlibro',[
     body('materias','ingrese solo letras ')
     .exists()
     .isLength({min:100}),
-],(req, res)=>{
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //     res.status(400).json({ errors: errors.array() });
-    //     console.log(errors)
-    // }
+    ],(req, res)=>{
+
     const errors = validationResult(req)
     if(!errors.isEmpty()) {
         console.log(req.body)
@@ -167,5 +170,8 @@ app.post('/registrarlibro',[
     }
 })
 
+
 module.exports = app;
+
+});
 
