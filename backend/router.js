@@ -48,7 +48,7 @@ router.get("/mostrarFormulario", libros.formularioLibro);
 
 router.get("/mostrarCatalogo", libros.Tabla);
 
-router.get("/listarUsuarios", usuarios.listarusuarios);
+router.get("/listarUsuarios", usuarios.usu);
 
 router.get("/busqueda",(req, res)=>{
     res.render('busqueda');

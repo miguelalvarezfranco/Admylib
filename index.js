@@ -83,20 +83,22 @@ app.listen(PORT, () => {
     // REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
 
     mercadopago.configure({
-        access_token: "TEST-4019632423541743-121222-0a1c0fcafb7dee7e54845c48bc91eeef-1591378824",
+        access_token: "TEST-4806185970195035-121423-c7a401b5be2660c2f5177c30f1e32c8c-1591378824",
 
     });
+    
 
 //MERCADO PAGO 
 
 app.post("/create_preference", (req, res) => {
-
-	let preference = {
+    console.log(req.body);
+	const preference = {
 		items: [
-			{
-				tiulo: req.body.titulo,
-				descripcion: req.body.descripcion,
-                cantidad: req.body.cantidad
+			{   id: 2,
+				title: "hola mundo",
+				unit_price: 100,
+                quantity: 1
+                
 			}
 		],
 		back_urls: {
@@ -106,8 +108,6 @@ app.post("/create_preference", (req, res) => {
 		},
 		auto_return: "approved",
 	};
-
-
 
 	mercadopago.preferences.create(preference)
 		.then(function (response) {
@@ -125,6 +125,11 @@ app.get('/feedback', function (req, res) {
 		MerchantOrder: req.query.merchant_order_id
 	});
 });
+
+
+
+
+
 
 app.post('/registrarlibro',[
     body('isbn', 'ingrese solo numeros')

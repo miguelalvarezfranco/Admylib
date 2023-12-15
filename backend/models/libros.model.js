@@ -41,6 +41,7 @@ const LibrosSchema = new mongoose.Schema({
     },
     copiasdisponibles: {
         type: Number,
+        
 
         
     },

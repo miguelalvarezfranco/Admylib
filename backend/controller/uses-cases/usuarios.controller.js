@@ -4,12 +4,12 @@ exports.crear = async(req, res)=>{
 
     const datos = req.body;
 
-    const nuevoUsuario = usuarios.crearUsuario(datos);
+    // const nuevoUsuario = usuarios.crearUsuario(datos);
 
-    res.redirect('/listarUsuarios')
+    res.redirect('listarUsuarios')
 }
 
-exports.listarusuarios = async(req, res) =>{
+exports.usu = async(req, res) =>{
 
     try{
         const buscarusuario = await usuarios.buscarusuario()
@@ -38,7 +38,7 @@ exports.usuario = async(req, res) =>{
             res.status(404).json({resultado: "no existe ningun libro"})
         }else{
             res.render('listarUsuarios',{
-                usurios2 : buscarusuario.usuarios
+                usuarios2 : buscarusuario.usuarios
             })
 
         }

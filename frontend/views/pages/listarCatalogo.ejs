@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,6 +53,8 @@
         border-radius: 15px;
         border-color: black;
         background: #abbaab;
+        transition: 0.3s;
+        cursor: pointer;
         /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #ffffff, #abbaab);
         /* Chrome 10-25, Safari 5.1-6 */
@@ -60,7 +62,7 @@
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
 
-    .card :hover {
+    .card:hover {
         transform: scale(1.1);
         box-shadow: 0px 0px 30px -15px rgba(0, 0, 0, 0);
 
@@ -78,11 +80,17 @@
         border-radius: 50%;
         font-size: 12px;
         padding: 4px;
-        top: 40px;
-        right: 5%;
+        top: 36px;
+        right: 3%;
         position: absolute;
         display: none;
     }
+
+    @media screen and (max-width: 767px) {
+        .navbar-brand {
+            font-size: 30px;
+        }
+}
 
     </style>
 </head>
@@ -212,7 +220,6 @@
                     <div class="w-25">
                         <div>
                             <div class="d-flex justify-content-center">
-                                <h3>${elemento.titulo}</h3>
                             </div>
                             <div class=" d-flex justify-content-between ">
                                 <button type="button"  class="btn btn-primary"  onclick="sumar('${elemento.id}')" >+</button>
@@ -250,9 +257,10 @@
                 `;
                 body.append(totalproductos);
 
-                const mercadopago = new MercadoPago('TEST-94df3d95-f925-48c2-aa58-26362b70ef70', {
-                    locale: '<es-AR>' // The most common are: 'pt-BR', 'es-AR' and 'en-US'
-                });
+                const mercadopago = new MercadoPago('TEST-bd60d255-deb5-4a6d-a663-c476efc2a257');
+                    locale: '<en-AR>'
+                 // The most common are: 'pt-BR', 'es-AR' and 'en-US'
+                
 
                 const checkoutButton = totalproductos.querySelector("#checkout-btn");
 
@@ -262,9 +270,9 @@
                     checkoutButton.remove();
 
                 const orderData = {
-                cantidad: 1,
-                descripcion: "compra de pruebas",
-                precio: total,
+                title: "hola",
+                quantity: 1,
+                price: 100
                 };
 
                 fetch("http://localhost:8080/create_preference", {
@@ -291,12 +299,12 @@
 
                 const renderComponent = async (bricksBuilder) => {
                 //if (window.checkoutButton) window.checkoutButton.unmount();
-                await bricksBuilder.create(
-                    'wallet',
+                await mercadopago.bricksBuilder.create(
+                    'wallet', "wallet_container",
                     'button-checkout', // class/id where the payment button will be displayed
                     {
                         initialization: {
-                            preferenceId: preferenceId
+                            preferenceId: 1,
                         },
                         callbacks: {
                             onError: (error) => console.error(error),

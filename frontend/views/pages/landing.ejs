@@ -37,6 +37,11 @@
             justify-content: center;
             flex-direction: column;
         }
+        @media screen and (max-width: 767px) {
+        .navbar-brand {
+            font-size: 30px;
+        }
+}
 
     </style>
 </head>
@@ -58,7 +63,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Catálogo</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/mostrarFormulario">Registrar libro</a>
+                    <a class="dropdown-item" href="/mostrarformulario">Registrar libro</a>
                     <a class="dropdown-item" href="/listarLibro">Ver catálogo</a>
                 </div>
             </li>
@@ -278,7 +283,7 @@
                         <input type="password" class="form-control" placeholder="Ingrese su contraseña"   name="password" required>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-success">Enviar</button>
+                        <button type="submit" class="btn btn-success">Registrarse</button>
                     </div>
             </div>
         </div>

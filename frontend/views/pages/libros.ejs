@@ -63,7 +63,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Catálogo</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="">Registrar libro</a>
-                    <a class="dropdown-item" href="listarLibro">Ver catálogo</a>
+                    <a class="dropdown-item" href="">Ver catálogo</a>
                 </div>
             </li>
             <li class="nav-item pr-2">
@@ -82,16 +82,17 @@
     </nav>
 
 
-    <div class="container pt-4">
+    <div class="container pt-4" needs-validation" novalidate="">
         <form action="/registrarLibro" method="post" onsubmit=" return validarFormulario()">
             <div class="form-group">
-                <label for="uname">ISBN:</label>
+                <label for="validationUsu">ISBN:</label>
                 <input type="number" class="form-control" id="isbn" placeholder="Ingresa el ISBN" name="isbn" min="6" maxlength="10">
+                
+                    
             </div>
             <div class="form-group">
-                <label for="Tit">Título:</label>
+                <label for="Validaton2">Título:</label>
                 <input type="text" class="form-control" id="title" placeholder="Ingresa el título" name="titulo" min="100" maxlength="200" >
-                <small>Ingrese Solo letras</small>
             </div>
             <div class="form-group">
                 <label for="Año">Año de publicación:</label>
@@ -129,7 +130,33 @@
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
+
+    <script>
+             //Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+    'use strict'
+ 
+ // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+ 
+  // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+    }
+ 
+        form.classList.add('was-validated')
+    }, false)
+    })
+})()
+    </script>
+
 </body>
+
+
+
 
 
 
@@ -185,11 +212,11 @@
                     </div>
                     <div class="form-group">
                         <label for="email">email:</label>
-                        <input type="email" class="form-control" placeholder="Ingrese su correo" name="email"  required min="50" maxlength="100">
+                        <input type="email" class="form-control" placeholder="Ingrese su correo" name="email"  required  >
                     </div>
                     <div class="form-group">
                         <label for="pwd">Contraseña:</label>
-                        <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="password"  required min="8" maxlength="10">
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="password"  required>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-success">Enviar</button>
