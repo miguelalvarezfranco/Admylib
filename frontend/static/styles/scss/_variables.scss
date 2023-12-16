@@ -11,6 +11,7 @@ $break-large: 1024px;
 /* btn mixin */
 @mixin btn () {
     background-color: #343a40;
+    border-color: #343a40;
     color: #fff;
     font-weight: 700;  
     cursor: pointer;
@@ -22,5 +23,8 @@ $break-large: 1024px;
     &:hover {
         transform: scale(1.1);
         color: #fff;
+    }
+    @media screen and (max-width: $break-small){
+        width: 100%;
     }
 }
