@@ -1,7 +1,6 @@
 const usuarios = require('../data-acces/usuarios.controller');
 
-exports.crearUsuarios = async(req, res)=>{
-
+exports.creaUsuario = async(req, res)=>{
     const datos = req.body;
 
     // const nuevoUsuario = usuarios.crearUsuario(datos);
@@ -9,16 +8,17 @@ exports.crearUsuarios = async(req, res)=>{
     res.redirect('listarUsuarios')
 }
 
-exports.usu = async(req, res) =>{
+exports.Tabla2 = async(req, res) =>{
 
     try{
-        const buscarusuario = await usuarios.buscarusuario()
+        const buscarUsuario = await usuarios.buscarUsuario()
 
-        if(buscarusuario.respuesta === false) {
+        if(buscarUsuario.respuesta === false) {
+
             res.status(404).json({resultado: "no existe ningun usuario"})
         }else{
             res.render('listarUsuarios',{
-                usuarios2 : buscarusuario.usuarios
+                usuarios2 : buscarUsuario.usuarios
             })
             
         }
@@ -32,15 +32,17 @@ exports.usu = async(req, res) =>{
 exports.usuario = async(req, res) =>{
 
     try{
-        const buscarusuario = await usuarios.buscarusuario()
+        const buscarUsuario = await usuarios.buscarUsuario()
 
-        if(buscarusuario.respuesta === false) {
-            res.status(404).json({resultado: "no existe ningun usuario"})
+        if(buscarUsuario.respuesta === false) {
+
+            res.status(404).json({resultado: "no existe "})
         }else{
-            res.render('listarUsuarios',{
-                usuarios2 : buscarusuario.usuarios
-            })
 
+            res.render('listarUsuarios',{
+                usuarios2 : buscarUsuario.usuarios
+            })
+        //     res.status(200).json({libros2: buscarLibro});
         }
     }catch(e){
         res.status(500).json({error:e})

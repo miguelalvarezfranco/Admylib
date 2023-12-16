@@ -65,9 +65,7 @@ app.use(cors());
 
 // app.use('/api', router);
 
-app.post('login', (req, res)=>{
 
-})
 
 const Mirouter = require("./backend/router");
 app.use("/", Mirouter);

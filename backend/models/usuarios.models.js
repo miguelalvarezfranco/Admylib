@@ -1,8 +1,8 @@
 const mongoose = require('../config/database');
-const bcrypt = require('bcrypt-nodejs');
+// const bcrypt = require('bcrypt-nodejs');
 const { Schema } = mongoose;
 
-const userSchema = new mongoose.Schema({
+const SchemaUsuario = new mongoose.Schema({
 
   usuario: {
     type: String,
@@ -23,15 +23,15 @@ const userSchema = new mongoose.Schema({
 
     }})
 
-    userSchema.methods.encryptedPassword = (password) => {
-      return  bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-    };
+    // userSchema.methods.encryptedPassword = (password) => {
+    //   return  bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+    // };
 
-    userSchema.methods.compararContraseña = function(password){
-      bcrypt.compareSync(password, this.password);
-    }
+    // userSchema.methods.compararContraseña = function(password){
+    //   bcrypt.compareSync(password, this.password);
+    // }
 
       
-  const user = mongoose.model('user', userSchema);
-  module.exports = user;
+  const usuario = mongoose.model('usuarios', SchemaUsuario);
+  module.exports = usuario;
   

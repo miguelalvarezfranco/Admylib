@@ -1,18 +1,18 @@
 const usuarios = require('../../models/usuarios.models');
 
-exports.crearUsuario = async(usuariosdata)=>{
+exports.createUsuarios = async(usuariosdata)=>{
     return await new usuarios(usuariosdata).save();
 
 }
 
-exports.buscarusuario = async(filter)=>{
+exports.buscarUsuario = async(filter)=>{
     try{
-        const buscarusuario = await usuarios.find(filter);
-        if(buscarusuario){
+        const buscarUsuario = await usuarios.find(filter);
+        if(buscarUsuario){
             return {
                 respuesta : true,
                 
-                usuarios :buscarusuario
+                usuarios :buscarUsuario
             }
         }else{
             return {

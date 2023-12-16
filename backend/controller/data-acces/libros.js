@@ -22,7 +22,7 @@ exports.buscarLibro = async(filter)=>{
     } catch(err){
         return {
             respuesta : false,
-            error : err
+            error : error
         }
     }
 }
