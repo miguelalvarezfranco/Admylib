@@ -17,18 +17,18 @@ passport.use('local-inicio', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, async (req, email, password, done) =>{
-
-    const user = User.findOne({email: email});
-    if(user){
-        return done(null, false, )
-    }
-
-
     const newusuario = new User();
     newusuario.usuario = usuario;
     newusuario.email = email;
-    newusuario.password = usuario.encryptedPassword(password);
+    newusuario.password = newusuario.encryptedPassword(password);
     await newusuario.save();
     done(null, newusuario);
+    // const user = User.findOne({email: email});
+    // if(user){
+    //     return done(null, false, )
+    // }
+
+
+    
 }))
 

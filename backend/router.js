@@ -31,17 +31,18 @@ router.get("/landing", (req, res)=>{
 
 
 
-    router.get("/inicio",(req, res, next)=>{
+router.get("/inicio",(req, res, next)=>{
     res.render('inicio');
 });
 
-
-
 router.post("/inicio", passport.authenticate('local-inicio',{
     successRedirect: '/inicio',
-    failureRedirect: '/inicio',
+    failureRedirect: '',
     passReqToCallback: true
 }));
+
+
+
 
 
 router.get("/mostrarFormulario", libros.formularioLibro);
