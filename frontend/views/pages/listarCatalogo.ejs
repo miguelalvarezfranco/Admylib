@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Listar Catálogo</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admylib</title>
@@ -70,26 +70,25 @@
     <!-- Modal -->
     
 
-    <%libros2.forEach(function(elemento){%>
-        <div class="card">
-            <img src="https://source.unsplash.com/300x201/?<%=elemento.titulo%>" class="card-img-top" alt="..">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <%=elemento.titulo%>
-                </h5>
-                <p class="card-text" style="height: 80px;">
-                    <%=elemento.descripcion%>
-                </p>
-                <p class="card-text">
-                    <p>Precio: <%=elemento.precio%></p>
-                </p>
-
-                <button class="btn" type="button"
-                    onclick="Carrito(`<%=elemento.id%>`,`<%=elemento.imagen%>`,`<%=elemento.titulo%>`,`<%=elemento.precio%>`)">Añadir
-                    Al Carrito</button>
-            </div>
+        <div class="container book-list">
+            <%libros2.forEach(function(elemento){%>
+                <div class="card">
+                    <img src="https://source.unsplash.com/300x201/?<%=elemento.titulo%>" class="card-img-top" alt="..">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%=elemento.titulo%>
+                        </h5>
+                        <p class="card-text">
+                            <p>Precio: <%=elemento.precio%></p>
+                        </p>
+        
+                        <button class="btn" type="button"
+                            onclick="Carrito(`<%=elemento.id%>`,`<%=elemento.imagen%>`,`<%=elemento.titulo%>`,`<%=elemento.precio%>`)">Añadir
+                            Al Carrito</button>
+                    </div>
+                </div>
+            <% })%>
         </div>
-        <% })%>
 
         <script>
 
