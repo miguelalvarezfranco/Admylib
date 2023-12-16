@@ -12,144 +12,146 @@
 
 <body>
 
-    <button><a href="inicio">Regresar</a></button>
+    <a href="inicio" class="btn-back">Regresar</a>
 
     <h1 class="titulo">Tabla Libros</h1>
 
-    <table class="table table-bordered" >
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">ISBN</th>
-            <th scope="col">TITULO</th>
-            <th scope="col">AUTOR</th>
-            <th scope="col">EDITORIAL</th>
-            <th scope="col">MATERIAS</th>
-            <th scope="col">AÑO DE PUBLICACION</th>
-            <th scope="col">COPIAS DISPONIBLES</th>
-            <th scope="col">PRECIO</th>
-            <th scope="col">IMAGEN</th>
-            <th scope="col">IDIOMA</th>
+    <div class="content-table">
+        <table class="table table-bordered" >
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">TITULO</th>
+                <th scope="col">AUTOR</th>
+                <th scope="col">EDITORIAL</th>
+                <th scope="col">MATERIAS</th>
+                <th scope="col">AÑO DE PUBLICACION</th>
+                <th scope="col">COPIAS DISPONIBLES</th>
+                <th scope="col">PRECIO</th>
+                <th scope="col">IMAGEN</th>
+                <th scope="col">IDIOMA</th>
 
-        </tr>
-        </thead>
-        <tbody>
-            <% libros2.forEach(function(elemento){%>
-                <tr>
-                    <td>
-                        <%=elemento._id%>   
-                    </td>
-                    <td>
-                        <%=elemento.isbn%>
-                    </td>
-                    <td>
-                        <%=elemento.titulo%>
-                    </td>
-                    <td>
-                        <%=elemento.autor%>
-                    </td>
-                    <td>
-                        <%=elemento.editorial%>
-                    </td>
-                    <td>
-                        <%=elemento.materias%>
-                    </td>
-                    <td>
-                        <%=elemento.Añodepublicacion%>
-                    </td>
-                    <td>
-                        <%=elemento.copiasdisponibles%>
-                    </td>
-                    <td>
-                        <%=elemento.precio%>
-                    </td>
-                    <td>
-                        <%=elemento.imagen%>
-                    </td>
-                    <td>
-                        <%=elemento.idioma%>
-                    </td>
-                    <td>
-                        <button type="button" class="button button1" data-toggle="modal" onclick="llenarformulario( `<%=elemento._id %>`,`<%=elemento.isbn %>`, `<%=elemento.titulo %>`,`<%=elemento.autor%>`, `<%=elemento.editorial%>`,`<%=elemento.materias%>`,`<%=elemento.Añodepublicacion%>`,`<%=elemento.copiasdisponibles%>`, `<%=elemento.precio%>`,`<%=elemento.imagen%>`,`<%=elemento.idioma%>` )" data-target="#update">Actualizar</button>
-                        <a href="eliminarproducto/<%=elemento._id%>" class="button btn-success">eliminar</a>
-                    </td>
+            </tr>
+            </thead>
+            <tbody>
+                <% libros2.forEach(function(elemento){%>
+                    <tr>
+                        <td>
+                            <%=elemento._id%>   
+                        </td>
+                        <td>
+                            <%=elemento.isbn%>
+                        </td>
+                        <td>
+                            <%=elemento.titulo%>
+                        </td>
+                        <td>
+                            <%=elemento.autor%>
+                        </td>
+                        <td>
+                            <%=elemento.editorial%>
+                        </td>
+                        <td>
+                            <%=elemento.materias%>
+                        </td>
+                        <td>
+                            <%=elemento.Añodepublicacion%>
+                        </td>
+                        <td>
+                            <%=elemento.copiasdisponibles%>
+                        </td>
+                        <td>
+                            <%=elemento.precio%>
+                        </td>
+                        <td>
+                            <%=elemento.imagen%>
+                        </td>
+                        <td>
+                            <%=elemento.idioma%>
+                        </td>
+                        <td>
+                            <button type="button" class="button btn update" data-toggle="modal" onclick="llenarformulario( `<%=elemento._id %>`,`<%=elemento.isbn %>`, `<%=elemento.titulo %>`,`<%=elemento.autor%>`, `<%=elemento.editorial%>`,`<%=elemento.materias%>`,`<%=elemento.Añodepublicacion%>`,`<%=elemento.copiasdisponibles%>`, `<%=elemento.precio%>`,`<%=elemento.imagen%>`,`<%=elemento.idioma%>` )" data-target="#update">Actualizar</button>
+                            <a href="eliminarproducto/<%=elemento._id%>" class="button btn">Eliminar</a>
+                        </td>
+                        
+                    </tr>
+                        
+                <%})%>
+            </tbody>
+            <div class="modal fade" id="update">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                    <h4 class="modal-title">Modificación</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
                     
-                </tr>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+            
+                        <form action="actualizarCatalogo" method="post">
+                            <div class="form-group">
+                                <label for="text">ID</label>
+                                <input type="text" class="form-control" id="actualizaridp" name="idpactualizarproducto"  placeholder="id" readonly >
+                            </div>
+                            <div class="form-group">
+                                <label for="text">isbn</label>
+                                <input type="number" class="form-control" id="actualizarreferencia" name="isbn"  placeholder="isbn"  >
+                            </div>
+                            <div class="form-group">
+                                <label for="text">titulo</label>
+                                <input type="text" class="form-control" id="actualizarnombre" name="titulo"  placeholder="titulo">
+                            </div>
+                            <div class="form-group">
+                                <label for="text">autor</label>
+                                <input type="text" class="form-control" id="actualizardescripcion" name="autor" placeholder="autor">
+                            </div>
+                            <div class="form-group">
+                                <label for="text">editorial</label>
+                                <input type="text" class="form-control" id="actualizarprecio" name="editorial" placeholder="editorial">
+                            </div>
+                            <div class="form-group">
+                                <label for="text">materias</label>
+                                <input type="text" class="form-control" id="actualizarstock" name="materias" placeholder="materias">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Añodepublicacion</label>
+                            <input type="date" class="form-control" id="actualizarhabilitado" name="Añodepublicacion" placeholder="Añodepublicacion">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">copiasdisponibles</label>
+                            <input type="number" class="form-control" id="actualizarimagen" name="copiasdisponibles" placeholder="copiasdisponibles">
+                        </div>
+                        <div class="form-grlistarLibrooup">
+                            <label for="text">precio</label>
+                            <input type="number" class="form-control" id="actualizarimagen" name="precio" placeholder="precio">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">imagen</label>
+                            <input type="image"form-control" id="actualizarimagen" name="imagen" placeholder="imagen">
+                        </div>
+                        <div class="form-group">
+                            <label for="text">idioma</label>
+                            <input type="text" class="form-control" id="actualizarimagen" name="idioma" placeholder="idioma">
+                        </div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-success" value="Guardar"/>
+                            </div>
+                        </form>
                     
-            <%})%>
-        </tbody>
-        <div class="modal fade" id="update">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                <h4 class="modal-title">Modificación</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        
+                    </div>
+                    
+            
                 </div>
-                
-                <!-- Modal body -->
-                <div class="modal-body">
-        
-                    <form action="actualizarCatalogo" method="post">
-                        <div class="form-group">
-                            <label for="text">ID</label>
-                            <input type="text" class="form-control" id="actualizaridp" name="idpactualizarproducto"  placeholder="id" readonly >
-                        </div>
-                        <div class="form-group">
-                            <label for="text">isbn</label>
-                            <input type="number" class="form-control" id="actualizarreferencia" name="isbn"  placeholder="isbn"  >
-                        </div>
-                        <div class="form-group">
-                            <label for="text">titulo</label>
-                            <input type="text" class="form-control" id="actualizarnombre" name="titulo"  placeholder="titulo">
-                        </div>
-                        <div class="form-group">
-                            <label for="text">autor</label>
-                            <input type="text" class="form-control" id="actualizardescripcion" name="autor" placeholder="autor">
-                        </div>
-                        <div class="form-group">
-                            <label for="text">editorial</label>
-                            <input type="text" class="form-control" id="actualizarprecio" name="editorial" placeholder="editorial">
-                        </div>
-                        <div class="form-group">
-                            <label for="text">materias</label>
-                            <input type="text" class="form-control" id="actualizarstock" name="materias" placeholder="materias">
-                    </div>
-                    <div class="form-group">
-                        <label for="text">Añodepublicacion</label>
-                        <input type="date" class="form-control" id="actualizarhabilitado" name="Añodepublicacion" placeholder="Añodepublicacion">
-                    </div>
-                    <div class="form-group">
-                        <label for="text">copiasdisponibles</label>
-                        <input type="number" class="form-control" id="actualizarimagen" name="copiasdisponibles" placeholder="copiasdisponibles">
-                    </div>
-                    <div class="form-grlistarLibrooup">
-                        <label for="text">precio</label>
-                        <input type="number" class="form-control" id="actualizarimagen" name="precio" placeholder="precio">
-                    </div>
-                    <div class="form-group">
-                        <label for="text">imagen</label>
-                        <input type="image"form-control" id="actualizarimagen" name="imagen" placeholder="imagen">
-                    </div>
-                    <div class="form-group">
-                        <label for="text">idioma</label>
-                        <input type="text" class="form-control" id="actualizarimagen" name="idioma" placeholder="idioma">
-                    </div>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-success" value="Guardar"/>
-                        </div>
-                    </form>
-                
-                    
                 </div>
-                
-        
             </div>
-            </div>
-        </div>
-        
-        
-            </table>
+            
+            
+        </table>
+    </div>
         
         
             <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

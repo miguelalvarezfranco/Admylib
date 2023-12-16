@@ -52,12 +52,42 @@ iframe {
 	text-align: center;
 }
 
+.content-table {
+	overflow-x: auto;
+	margin: 20px auto 30px auto;
+	width: 94%;
+	&::-webkit-scrollbar{
+        // width: 5px;               /* width of the entire scrollbar */
+        height: 7px;
+    }
+    &::-webkit-scrollbar-track {
+        background: rgb(225, 225, 225)0;        /* color of the tracking area */
+        border-radius: 10px; 
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #343a40;    /* color of the scroll thumb */
+        border-radius: 10px;       /* roundness of the scroll thumb */
+        border: 2px solid #343a40;  /* creates padding around scroll thumb */
+    }
+}
 .table {
 	&.table-bordered {
-		width: 950px;
-		border-color: black;
+		border-color: #dfdfdf;
 		justify-content: center; 
 		border-radius: 30px;	
+	}
+	th, td {
+		font-size: 14px;
+		line-height: 17px;
+	}
+	.btn {
+		font-size: 13px;
+		padding: 5px;
+		margin: 2px 0;
+		width: 100%;
+		&.update {
+			background-color: #28a745;
+		}
 	}
 } 
 
@@ -107,27 +137,26 @@ iframe {
 }
 
 
-.card {
-	display: inline-block;
-	padding: 10px;
-	margin-top: 15px;
-	margin-left: 73px;
-	border-radius: 15px;
-	border-color: black;
-	background: #abbaab;
-	transition: 0.3s;
-	cursor: pointer;
-	/* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #ffffff, #abbaab);
-	/* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #ffffff, #abbaab);
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-} 
-
-.card:hover {
-	transform: scale(1.1);
-	box-shadow: 0px 0px 30px -15px rgba(0, 0, 0, 0);
-
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+	column-gap: 2rem;
+    row-gap: 2rem;
+	margin: 4rem auto 4rem auto;
+    width: 95%;
+	@media screen and (max-width: $break-small){
+		width: 85%;
+	}
+	.card {
+		transition: 0.3s;
+		cursor: pointer;
+		&:hover {
+			transform: scale(1.1);
+			box-shadow: 0px 0px 30px -15px rgba(0, 0, 0, 0);
+		}
+	} 
 }
 
 .ver-carrito {
@@ -135,4 +164,18 @@ iframe {
 	margin-right: 20px;
 	margin-top: 2.1vh;
 	cursor: pointer;
+}
+
+.form-register {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+	margin: 27px 0;
+	.form-group {
+		margin-bottom: 1rem;
+		width: 48%;
+		@media screen and (max-width: $break-small){
+            width: 100%;
+        }
+	}
 }

@@ -56,8 +56,8 @@
     </nav>
 
 
-    <div class="container pt-4" needs-validation" novalidate="">
-        <form action="/registrarLibro" method="post" onsubmit=" return validarFormulario()">
+    <div class="container pt-4 pb-4" needs-validation" novalidate="">
+        <form class="form-register" action="/registrarLibro" method="post" onsubmit=" return validarFormulario()">
             <div class="form-group">
                 <label for="validationUsu">ISBN:</label>
                 <input type="number" class="form-control" id="isbn" placeholder="Ingresa el ISBN" name="isbn" min="6" maxlength="10">
@@ -94,8 +94,7 @@
             </div>
             <div class="form-group">
                 <label for="Copi">Imagen</label>
-                <input type="file" class="form-control" id="imagen" placeholder="imagen" name="imagen" >
-                <button>Cargar Archivo</button>
+                <input type="file" class="form-control" id="imagen" placeholder="imagen" name="imagen" >idioma
             </div>
             <div class="form-group">
                 <label for="Copi">materias</label>
