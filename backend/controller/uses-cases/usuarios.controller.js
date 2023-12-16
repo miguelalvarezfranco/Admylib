@@ -1,12 +1,12 @@
 const usuarios = require('../data-acces/usuarios.controller');
 
-exports.crear = async(req, res)=>{
+exports.crearUsuarios = async(req, res)=>{
 
     const datos = req.body;
 
     // const nuevoUsuario = usuarios.crearUsuario(datos);
 
-    res.redirect('listarUsuarios')
+    res.redirect('mostrarUsuario')
 }
 
 exports.usu = async(req, res) =>{
@@ -15,9 +15,9 @@ exports.usu = async(req, res) =>{
         const buscarusuario = await usuarios.buscarusuario()
 
         if(buscarusuario.respuesta === false) {
-            res.status(404).json({resultado: "no existe ningun libro"})
+            res.status(404).json({resultado: "no existe ningun usuario"})
         }else{
-            res.render('listarUsuarios',{
+            res.render('mostrarUsuario',{
                 usuarios2 : buscarusuario.usuarios
             })
             
@@ -37,7 +37,7 @@ exports.usuario = async(req, res) =>{
         if(buscarusuario.respuesta === false) {
             res.status(404).json({resultado: "no existe ningun libro"})
         }else{
-            res.render('listarUsuarios',{
+            res.render('mostrarUsuario',{
                 usuarios2 : buscarusuario.usuarios
             })
 

@@ -17,7 +17,7 @@ const mercadopago = require('mercadopago');
 
 
 
-require('./backend/passport/auten-local');
+// require('./backend/passport/auten-local');
 
 //swagger
 const swaggerSpec ={
@@ -66,7 +66,7 @@ app.use(cors());
 // app.use('/api', router);
 
 app.post('login', (req, res)=>{
-    
+
 })
 
 const Mirouter = require("./backend/router");

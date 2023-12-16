@@ -10,13 +10,13 @@ const router = express.Router();
 router.post("/registrarlibro", libros.creaLibros);
 router.get("/listarLibro", libros.libro);
 router.post("/actualizarLibro/:id", libros.update);
-router.get("/eliminarLibro/:id", libros.eliminarL);
+router.get("/eliminarL/:id", libros.eliminarL);
 
 //MODULO USUARIOS
 router.post("/registrarUsuario", usuarios.crear);
 router.get("/listarUsuarios", usuarios.usuario);
 router.post("/actualizarUsuarios/:id", usuarios.updateUsu);
-router.get("/eliminarU/:id", usuarios.eliminarU);
+router.get("/eliminarL/:id", usuarios.eliminarU);
 
 
 router.post("/registro", usuarios.login);
