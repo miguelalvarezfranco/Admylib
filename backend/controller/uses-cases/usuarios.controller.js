@@ -85,26 +85,29 @@ exports.eliminarU = async (req, res) => {
 };
 
 
-exports.informacion = async(req, res) =>{
+exports.login = async(req, res) =>{
+    
 
-    try{
-        const contraUsuario = req.body.password
+    const info = await usuarios.infoUsuario({ correo: req.body.correo });
 
-        if(infoUsuario.password === contraUsuario) {
-            res.status(404).json({resultado: "contraseña incorrecta"})
-        }if(infoUsuario.rol === administrador){
-            res.render('vistaadmin')       
-        }else if(infoUsuario.rol === usuarios){
-            res.render('landing')
+    
+        const contraU = req.body.password;
+
+        if(info.password == contraU){
+            res.status(200).json({usuarios: "Ingreso de manera exitosa"});
+
+        }if(info.rol == 'admin'){
+            res.render("inicio");
+
+
+        }else if(info.rol == 'usuario'){ 
+            res.render("landing")
         }
-            
-        }
-        catch(e){
-        res.status(500).json({error:e})
-    }
-        console.log(usuarios)
+
+        
 
 }
+
 
 
 

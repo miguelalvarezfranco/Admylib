@@ -54,10 +54,10 @@ exports.updatelibros = async(id, data)=>{
     }
 }
 
-exports.eliminarLibro = async (id, data) => {
+exports.eliminarLibro = async (id) => {
     try{
 
-        const eliminarLibro = await libros.deleteOne(id , data );
+        const eliminarLibro = await libros.findOneAndDelete(id);
         if(eliminarLibro){
             return {
                 respuesta : true,

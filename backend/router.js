@@ -9,17 +9,17 @@ const router = express.Router();
 
 router.post("/registrarlibro", libros.creaLibros);
 router.get("/listarLibro", libros.libro);
-router.put("/actualizarLibro/:id", libros.update);
-router.delete("/eliminarL/:id", libros.eliminarL);
+router.post("/actualizarLibro/:id", libros.update);
+router.get("/eliminarLibro/:id", libros.eliminarL);
 
 //MODULO USUARIOS
 router.post("/registrarUsuario", usuarios.crear);
 router.get("/listarUsuarios", usuarios.usuario);
-router.put("/actualizarUsuarios/:id", usuarios.updateUsu);
-router.delete("/eliminarU/:id", usuarios.eliminarU);
+router.post("/actualizarUsuarios/:id", usuarios.updateUsu);
+router.get("/eliminarU/:id", usuarios.eliminarU);
 
 
-
+router.post("/registro", usuarios.login);
 
 
 //MOSTRAR PAGINA PRICIPAL
@@ -28,16 +28,13 @@ router.get("/landing", (req, res)=>{
 });
 
 
-
-
-
 router.get("/inicio",(req, res, next)=>{
     res.render('inicio');
 });
 
 router.post("/inicio", passport.authenticate('local-inicio',{
     successRedirect: '/inicio',
-    failureRedirect: '',
+    failureRedirect: '/inicio',
     passReqToCallback: true
 }));
 
@@ -49,7 +46,7 @@ router.get("/mostrarFormulario", libros.formularioLibro);
 
 router.get("/mostrarCatalogo", libros.Tabla);
 
-router.get("/listarUsuarios", usuarios.usu);
+// router.get("/listarUsuarios", usuarios.usu);
 
 router.get("/busqueda",(req, res)=>{
     res.render('busqueda');

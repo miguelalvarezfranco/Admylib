@@ -17,7 +17,7 @@ exports.buscarusuario = async(filter)=>{
         }else{
             return {
                 respuesta :false,
-                mensaje: "nose econtro ningun libro"
+                mensaje: "nose econtro ningun usuario"
             }
         }
     } catch(err){
@@ -84,26 +84,26 @@ exports.eliminarusuario = async (id, data) => {
 exports.infoUsuario = async (req, res) => {
 
     try{
-        const infoUsu = await usuarios.findOne({ email: req.body.Correo });
+        const infoUsu = await usuarios.findOne({ email: req.body.correo });
 
         if(infoUsu){
             return {
                 respuesta : true,
 
-                usuarios :buscarusuarios
+                usuarios :buscarusuario
             }
         }else{
             return {
                 respuesta :false,
 
-                mensaje: "no se elimino el libro"
+                mensaje: "no se elimino el usuario"
             }
         }
                 
         } catch (error) {
         return {
             respuesta : false,
-            error : err
+            error : error
         }
     }
 

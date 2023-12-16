@@ -12,7 +12,7 @@
 
 <body>
 
-    <a href="inicio" class="btn-back">‹ Regresar</a>
+    <a href="landing" class="btn-back">‹ Regresar</a>
 
     <h1 class="titulo">Tabla Libros</h1>
 
@@ -72,7 +72,7 @@
                         </td>
                         <td>
                             <button type="button" class="button btn" data-toggle="modal" onclick="llenarformulario( `<%=elemento._id %>`,`<%=elemento.isbn %>`, `<%=elemento.titulo %>`,`<%=elemento.autor%>`, `<%=elemento.editorial%>`,`<%=elemento.materias%>`,`<%=elemento.Añodepublicacion%>`,`<%=elemento.copiasdisponibles%>`, `<%=elemento.precio%>`,`<%=elemento.imagen%>`,`<%=elemento.idioma%>` )" data-target="#update">Actualizar</button>
-                            <a href="eliminarproducto/<%=elemento._id%>" class="button btn outline">Eliminar</a>
+                            <a href="eliminarLibro/<%=elemento._id%>" class="button btn outline">Eliminar</a>
                         </td>
                         
                     </tr>
@@ -98,35 +98,35 @@
                             </div>
                             <div class="form-group">
                                 <label for="text">isbn</label>
-                                <input type="number" class="form-control" id="actualizarreferencia" name="isbn"  placeholder="isbn"  >
+                                <input type="number" class="form-control" id="actualizarisbn" name="isbn"  placeholder="isbn"  >
                             </div>
                             <div class="form-group">
                                 <label for="text">titulo</label>
-                                <input type="text" class="form-control" id="actualizarnombre" name="titulo"  placeholder="titulo">
-                            </div>
+                                <input type="text" class="form-control" id="actualizaritulo" name="titulo"  placeholder="titulo">
+                        </div>
                             <div class="form-group">
                                 <label for="text">autor</label>
-                                <input type="text" class="form-control" id="actualizardescripcion" name="autor" placeholder="autor">
-                            </div>
+                                <input type="text" class="form-control" id="actualizarautor" name="autor" placeholder="autor">
+                        </div>
                             <div class="form-group">
                                 <label for="text">editorial</label>
-                                <input type="text" class="form-control" id="actualizarprecio" name="editorial" placeholder="editorial">
-                            </div>
+                                <input type="text" class="form-control" id="actualizareditorial" name="editorial" placeholder="editorial">
+                        </div>
                             <div class="form-group">
                                 <label for="text">materias</label>
-                                <input type="text" class="form-control" id="actualizarstock" name="materias" placeholder="materias">
-                        </div>
+                                <input type="text" class="form-control" id="actualizarmatrias" name="materias" placeholder="materias">
+                            </div>
                         <div class="form-group">
                             <label for="text">Añodepublicacion</label>
-                            <input type="date" class="form-control" id="actualizarhabilitado" name="Añodepublicacion" placeholder="Añodepublicacion">
+                            <input type="date" class="form-control" id="actualizarAñodepublicacion" name="Añodepublicacion" placeholder="Añodepublicacion">
                         </div>
                         <div class="form-group">
                             <label for="text">copiasdisponibles</label>
-                            <input type="number" class="form-control" id="actualizarimagen" name="copiasdisponibles" placeholder="copiasdisponibles">
+                            <input type="number" class="form-control" id="actualizarcopiasdiponibles" name="copiasdisponibles" placeholder="copiasdisponibles">
                         </div>
                         <div class="form-grlistarLibrooup">
                             <label for="text">precio</label>
-                            <input type="number" class="form-control" id="actualizarimagen" name="precio" placeholder="precio">
+                            <input type="number" class="form-control" id="actualizarprecio" name="precio" placeholder="precio">
                         </div>
                         <div class="form-group">
                             <label for="text">imagen</label>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="form-group">
                             <label for="text">idioma</label>
-                            <input type="text" class="form-control" id="actualizarimagen" name="idioma" placeholder="idioma">
+                            <input type="text" class="form-control" id="actualizaridioma" name="idioma" placeholder="idioma">
                         </div>
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-success" value="Guardar"/>
@@ -160,15 +160,22 @@
         
         
         
-            <!-- <script>
-                function llenarformulario(idp, referencia, nombre, descripcion, precio, stock, imagen, habilitado ){
+            <script>
+                function llenarformulario(idp, Isbn, titulo, autor, editorial, materias, Añodepublicacion, copiasdisponibles, precio, imagen, idioma ){
                     actualizaridp.value=idp;
-                    actualizarreferencia.value=referencia;
-                    actualizarnombre.value=nombre;
-                    actualizardescripcion.value=descripcion;
+                    actualizarisbn.value=isbn;
+                    actualizartitulo.value=titulo;
+                    actualizarautor.value=autor;
+                    actualizareditorial.value=editorial;
+                    actualizarmaterias.value=materias;
+                    actualizarAñodepublicacion.value=Añodepublicacion;
+                    actualizarcopiasdisponibles.value=copiasdisponibles;
                     actualizarprecio.value=precio;
-                    actualizarstock.value=stock;
-                    actualizarhabilitado.value=habilitado;
+                    actualizarimagen.value=imagen;
+                    actualizaridioma.value=idioma;
+
+
+
         
                 }
         
