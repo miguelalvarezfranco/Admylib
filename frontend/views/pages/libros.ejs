@@ -37,7 +37,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Catálogo</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="">Registrar libro</a>
-                    <a class="dropdown-item" href="">Ver catálogo</a>
+                    <a class="dropdown-item" href="listarLibro">Ver catálogo</a>
                 </div>
             </li>
             <li class="nav-item pr-2">
@@ -56,49 +56,57 @@
     </nav>
 
 
-    <div class="container pt-4 pb-4" needs-validation" novalidate="">
-        <form class="form-register" action="/registrarLibro" method="post" onsubmit=" return validarFormulario()">
+    <div class="container pt-4 pb-4" >
+        <form class="needs-validation" novalidate  action="/registrarLibro" method="post" onsubmit=" return validarFormulario()">
             <div class="form-group">
-                <label for="validationUsu">ISBN:</label>
-                <input type="number" class="form-control" id="isbn" placeholder="Ingresa el ISBN" name="isbn" min="6" maxlength="10">
-                
-                    
+                <label for="validation1">*ISBN:</label>
+                <input type="number" class="form-control" id="validation1" placeholder="Ingresa el ISBN" name="isbn"   required>
+                <div class="invalid-feedback">
             </div>
             <div class="form-group">
-                <label for="Validaton2">Título:</label>
-                <input type="text" class="form-control" id="title" placeholder="Ingresa el título" name="titulo" min="100" maxlength="200" >
+                <label for="Validation2">*Título:</label>
+                <input type="text" class="form-control" id="title" placeholder="Ingresa el título" name="titulo"  required >
+                <div class="invalid-feedback">
             </div>
             <div class="form-group">
-                <label for="Año">Año de publicación:</label>
+                <label for="Validation3">*Año de publicación:</label>
                 <input type="date" class="form-control" id="Año" placeholder="Ingresa el año de publicacion" name="Añodepublicacion" required>
+                <div class="invalid-feedback">
             </div>
             <div class="form-group">
-                <label for="Copi">editorial</label>
+                <label for="Validation4">*editorial</label>
                 <input type="text" class="form-control" id="editorial" placeholder="Ingresa la editorial del libro" name="editorial" min="100" maxlength="150">
+                <div class="invalid-feedback">
             </div>  
             <div class="form-group">
-                <label for="Copi">Copias Disponibles</label>
+                <label for="Validation5">*Copias Disponibles</label>
                 <input type="number" class="form-control" id="copias" placeholder="Ingresa el numero de copias disponibles" name="copiasdisponibles" required>
+                <div class="invalid-feedback">
             </div>
             <div class="form-group">
-                <label for="Copi">Precio</label>
+                <label for="Validation6">*Precio</label>
                 <input type="number" class="form-control" id="precio" placeholder="Ingresa el precio del libro" name="precio" required>
+                <div class="invalid-feedback">
             </div>
             <div class="form-group">
-                <label for="Copi">idioma</label>
+                <label for="Validation7">*idioma</label>
                 <input type="text" class="form-control" id="idioma" placeholder="Ingresa el idioma" name="idioma" min="15" max="50"> 
+                <div class="invalid-feedback">
             </div>
             <div class="form-group">
-                <label for="Copi">Autor</label>
-                <input type="text" class="form-control" id="autor" placeholder="Ingresa el autor del libro" name="autor" min="100" maxlength="180">
+                <label for="Validation8">*Autor</label>
+                <input type="text" class="form-control" id="autor" placeholder="Ingresa el autor del libro" name="autor" min="100" maxlength="180" required>
+                <div class="invalid-feedback">
             </div>
             <div class="form-group">
-                <label for="Copi">Imagen</label>
-                <input type="file" class="form-control" id="imagen" placeholder="imagen" name="imagen" >idioma
+                <label for="Validation9">*Imagen</label>
+                <input type="file" class="form-control" id="imagen" placeholder="imagen" name="imagen">
+                <div class="invalid-feedback">
             </div>
             <div class="form-group">
-                <label for="Copi">materias</label>
+                <label for="Validation10">*materias</label>
                 <input type="text" class="form-control" id="materias" placeholder="Ingresa la materia del libro" name="materias" min="20" maxlength="60">
+                <div class="invalid-feedback">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
@@ -108,10 +116,10 @@
              //Example starter JavaScript for disabling form submissions if there are invalid fields
     (() => {
     'use strict'
- 
+
  // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
- 
+
   // Loop over them and prevent submission
     Array.from(forms).forEach(form => {
     form.addEventListener('submit', event => {
@@ -119,7 +127,7 @@
         event.preventDefault()
         event.stopPropagation()
     }
- 
+
         form.classList.add('was-validated')
     }, false)
     })
