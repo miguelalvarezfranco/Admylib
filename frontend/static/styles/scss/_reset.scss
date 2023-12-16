@@ -1,0 +1,17 @@
+/* reset for older browsers */
+*{margin:0; padding:0; border:0; box-sizing: border-box; vertical-align: baseline;}
+// img{display: block;	max-width: 100%;width: 100%; object-position: center;}
+a{text-decoration: none; font-size: inherit; line-height: inherit; color:inherit; line-height: inherit;}
+video{display: flex;object-fit: cover; object-position: center center; width:100%}
+audio{ display: flex; }
+p a { display: inline; }
+li{list-style-type: none;}
+table , tr , td {border-collapse: collapse; border-spacing: 0;}
+html{scroll-behavior: smooth;}
+
+body{ font-smooth: always; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+h1 , h2, h3 , h4 , h5, h6{ font-size: inherit; line-height: inherit; }
+form{ input , textarea , select { background-color: transparent; appearance: none; display: block; } }
+
+/* classic layout */
+.clear::after{ overflow: auto; }

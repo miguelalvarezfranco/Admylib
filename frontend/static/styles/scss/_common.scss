@@ -1,0 +1,30 @@
+/*:::::::: GENERAL ::::::::*/
+html {
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+
+}
+body {	
+	@include roboto;
+	overflow-x: hidden;
+}
+
+h1 {
+	font-size: 48px;
+	font-weight: 700;
+}
+
+p {
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.box {
+    background-color: blue;
+}
+.box h1 {
+    color: green;
+}
+.box h1 span {
+    color: fuchsia;
+}
