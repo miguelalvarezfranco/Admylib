@@ -1,4 +1,10 @@
 #barra {
     background-color: #f2f2f2;
+    .navbar-brand {
+        font-size: 40px;
+        @media screen and (max-width: $break-small){
+            font-size: 30px;
+        }
+    }
 }
 
