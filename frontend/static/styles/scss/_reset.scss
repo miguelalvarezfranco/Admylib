@@ -1,6 +1,6 @@
 /* reset for older browsers */
 *{margin:0; padding:0; border:0; box-sizing: border-box; vertical-align: baseline;}
-// img{display: block;	max-width: 100%;width: 100%; object-position: center;}
+img{max-width: 100%;}
 a{text-decoration: none; font-size: inherit; line-height: inherit; color:inherit; line-height: inherit;}
 video{display: flex;object-fit: cover; object-position: center center; width:100%}
 audio{ display: flex; }

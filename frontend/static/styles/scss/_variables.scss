@@ -7,3 +7,20 @@
 $break-small: 767px;
 $break-medium: 820px;
 $break-large: 1024px;
+
+/* btn mixin */
+@mixin btn () {
+    background-color: #343a40;
+    color: #fff;
+    font-weight: 700;  
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    outline: none;
+    display: inline-block;
+    transition: 0.3s;
+    &:hover {
+        transform: scale(1.1);
+        color: #fff;
+    }
+}
