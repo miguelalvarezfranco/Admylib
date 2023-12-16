@@ -6,7 +6,7 @@ exports.crearUsuarios = async(req, res)=>{
 
     // const nuevoUsuario = usuarios.crearUsuario(datos);
 
-    res.redirect('mostrarUsuario')
+    res.redirect('listarUsuarios')
 }
 
 exports.usu = async(req, res) =>{
@@ -17,7 +17,7 @@ exports.usu = async(req, res) =>{
         if(buscarusuario.respuesta === false) {
             res.status(404).json({resultado: "no existe ningun usuario"})
         }else{
-            res.render('mostrarUsuario',{
+            res.render('listarUsuarios',{
                 usuarios2 : buscarusuario.usuarios
             })
             
@@ -35,9 +35,9 @@ exports.usuario = async(req, res) =>{
         const buscarusuario = await usuarios.buscarusuario()
 
         if(buscarusuario.respuesta === false) {
-            res.status(404).json({resultado: "no existe ningun libro"})
+            res.status(404).json({resultado: "no existe ningun usuario"})
         }else{
-            res.render('mostrarUsuario',{
+            res.render('listarUsuarios',{
                 usuarios2 : buscarusuario.usuarios
             })
 

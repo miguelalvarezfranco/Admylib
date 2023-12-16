@@ -19,7 +19,7 @@ router.post("/actualizarUsuarios/:id", usuarios.updateUsu);
 router.get("/eliminarL/:id", usuarios.eliminarU);
 
 
-router.post("/registro", usuarios.login);
+//router.post("/registro", usuarios.login);
 
 
 //MOSTRAR PAGINA PRICIPAL
@@ -46,7 +46,7 @@ router.get("/mostrarFormulario", libros.formularioLibro);
 
 router.get("/mostrarCatalogo", libros.Tabla);
 
-// router.get("/listarUsuarios", usuarios.usu);
+
 
 router.get("/busqueda",(req, res)=>{
     res.render('busqueda');
@@ -56,12 +56,12 @@ router.get("/busqueda",(req, res)=>{
 
 
 
-// router.get("/mostrarTabla", libros.tablaCatalogo);
+
 
 
 
 //MODULO USUARIO
 
-router.post("/crear", usuarios.crear);
+router.get("/crear", usuarios.crear);
 
 module.exports = router;
