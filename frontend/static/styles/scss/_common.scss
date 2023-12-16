@@ -48,6 +48,10 @@ iframe {
 	@include btn;
 }
 
+.outline {
+	@include outline;
+}
+
 .titulo{
 	text-align: center;
 }
@@ -87,6 +91,11 @@ iframe {
 		width: 100%;
 		&.update {
 			background-color: #28a745;
+			border: 1px solid #28a745;
+		}
+		&.delete {
+			background-color: #dc3545;
+			border: 1px solid #dc3545;
 		}
 	}
 } 

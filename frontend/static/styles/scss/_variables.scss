@@ -28,3 +28,19 @@ $break-large: 1024px;
         width: 100%;
     }
 }
+
+@mixin outline () {
+    background-color: transparent;
+    border-color: #343a40;
+    color: #343a40;
+    &:hover {
+        transform: scale(1.1);
+        background-color: #343a40;
+        border-color: #343a40;
+        color: #fff;
+    }
+    @media screen and (max-width: $break-small){
+        width: 100%;
+    }
+}
+
