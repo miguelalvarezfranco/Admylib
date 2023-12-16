@@ -12,7 +12,7 @@
 
 <body>
 
-    <a href="inicio" class="btn-back">Regresar</a>
+    <a href="inicio" class="btn-back">‹ Regresar</a>
 
     <h1 class="titulo">Tabla Libros</h1>
 
@@ -71,8 +71,8 @@
                             <%=elemento.idioma%>
                         </td>
                         <td>
-                            <button type="button" class="button btn update" data-toggle="modal" onclick="llenarformulario( `<%=elemento._id %>`,`<%=elemento.isbn %>`, `<%=elemento.titulo %>`,`<%=elemento.autor%>`, `<%=elemento.editorial%>`,`<%=elemento.materias%>`,`<%=elemento.Añodepublicacion%>`,`<%=elemento.copiasdisponibles%>`, `<%=elemento.precio%>`,`<%=elemento.imagen%>`,`<%=elemento.idioma%>` )" data-target="#update">Actualizar</button>
-                            <a href="eliminarproducto/<%=elemento._id%>" class="button btn">Eliminar</a>
+                            <button type="button" class="button btn" data-toggle="modal" onclick="llenarformulario( `<%=elemento._id %>`,`<%=elemento.isbn %>`, `<%=elemento.titulo %>`,`<%=elemento.autor%>`, `<%=elemento.editorial%>`,`<%=elemento.materias%>`,`<%=elemento.Añodepublicacion%>`,`<%=elemento.copiasdisponibles%>`, `<%=elemento.precio%>`,`<%=elemento.imagen%>`,`<%=elemento.idioma%>` )" data-target="#update">Actualizar</button>
+                            <a href="eliminarproducto/<%=elemento._id%>" class="button btn outline">Eliminar</a>
                         </td>
                         
                     </tr>
