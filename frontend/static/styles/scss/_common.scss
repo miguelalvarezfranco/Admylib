@@ -10,13 +10,43 @@ body {
 }
 
 h1 {
-	font-size: 48px;
+	font-size: 40px;
 	font-weight: 700;
+	@media screen and (max-width: $break-small){
+		font-size: 30px;
+	}
+}
+
+h2 {
+	font-size: 30px;
+	font-weight: 700;
+	@media screen and (max-width: $break-small){
+		font-size: 20px;
+	}
+}
+
+h3 {
+	font-size: 22px;
+	font-weight: 700;
+	@media screen and (max-width: $break-small){
+		font-size: 18px;
+	}
 }
 
 p {
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 400;
+	@media screen and (max-width: $break-small){
+		font-size: 14px;
+	}
+}
+
+iframe {
+	margin-bottom: 30px;
+}
+
+.btn {
+	@include btn;
 }
 
 /* Content */
@@ -35,4 +65,30 @@ p {
 }
 #segundaSect{
 	font-size: 35px;
+}
+
+/* cards home */
+#cuartaSect {
+	.container {
+		display: flex;
+		justify-content: space-around;
+		.card {
+			width: 30%;
+			img {
+				max-height: 210px;
+				object-fit: cover;
+				width: 100%;
+			}
+			.face {
+				&.face1 {
+					h3 {
+						padding: 12px;
+					}
+				}
+				&.face2 {
+					padding: 0 12px 12px 12px;
+				}
+			}
+		}
+	}
 }
