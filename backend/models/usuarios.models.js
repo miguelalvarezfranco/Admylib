@@ -2,7 +2,7 @@ const mongoose = require('../config/database');
 // const bcrypt = require('bcrypt-nodejs');
 const { Schema } = mongoose;
 
-const SchemaUsuario = new mongoose.Schema({
+const usuariosSchema = new mongoose.Schema({
 
   usuario: {
     type: String,
@@ -32,6 +32,6 @@ const SchemaUsuario = new mongoose.Schema({
     // }
 
       
-  const usuario = mongoose.model('usuarios', SchemaUsuario);
+  const usuario = mongoose.model('usuarios', usuariosSchema);
   module.exports = usuario;
   

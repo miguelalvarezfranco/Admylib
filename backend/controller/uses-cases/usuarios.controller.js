@@ -5,7 +5,7 @@ exports.creaUsuario = async(req, res)=>{
 
     // const nuevoUsuario = usuarios.crearUsuario(datos);
 
-    res.redirect('listarUsuarios')
+    res.redirect('listarUsuarios');
 }
 
 exports.Tabla2 = async(req, res) =>{
@@ -17,9 +17,9 @@ exports.Tabla2 = async(req, res) =>{
 
             res.status(404).json({resultado: "no existe ningun usuario"})
         }else{
-            res.render('listarUsuarios',{
+            res.render('mostrarCatalogo'),{
                 usuarios2 : buscarUsuario.usuarios
-            })
+            }
             
         }
     }catch(e){
@@ -39,10 +39,10 @@ exports.usuario = async(req, res) =>{
             res.status(404).json({resultado: "no existe "})
         }else{
 
-            res.render('listarUsuarios',{
-                usuarios2 : buscarUsuario.usuarios
-            })
-        //     res.status(200).json({libros2: buscarLibro});
+            // res.render('listarUsuarios',{
+            //     usuarios2 : buscarUsuario.usuarios
+            // })
+            res.status(200).json({usuarios2: buscarUsuario});
         }
     }catch(e){
         res.status(500).json({error:e})

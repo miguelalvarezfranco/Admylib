@@ -11,12 +11,17 @@
     <title>Document</title>
 </head>
 <body>
+
+
+    <a href="inicio" class="btn-back">‹ Regresar</a>
+    
     <div class="container">
         <div class="row justify-content-center">
         <div class="col-8">
 
-            <a href="inicio" class="btn-back">‹ Regresar</a>
+           
 
+            
     <h1 class="titulo">Tabla Usuarios</h1>
     <table class="table table-bordered">
         <thead>
@@ -31,7 +36,7 @@
         </tr>
         </thead>
         <tbody>
-            <%usuarios2.forEach(function(elemento){%>
+            <% usuarios2.forEach(function(elemento){%>
                 <tr>
                     <td>
                         <%=elemento._id%>
