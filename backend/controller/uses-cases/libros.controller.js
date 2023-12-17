@@ -5,8 +5,7 @@ exports.creaLibros = async(req, res)=>{
 
     //const nuevoLibro =  libros.createLibros(datos);
     
-    res.render('mostrarCatalogo');
-
+    res.redirect('mostrarCatalogo');
 }
 
 exports.Tabla = async(req, res) =>{
@@ -20,7 +19,7 @@ exports.Tabla = async(req, res) =>{
 
         }else{
             res.render('mostrarCatalogo',{
-                libros : buscarLibro.libros
+                libros2 : buscarLibro.libros
 
             })
         }
@@ -45,7 +44,7 @@ exports.libro = async(req, res) =>{
         } else{
 
             res.render('listarCatalogo',{
-                libros : buscarLibro.libros
+                libros2 : buscarLibro.libros
             })
         //     res.status(200).json({libros2: buscarLibro});
         }
