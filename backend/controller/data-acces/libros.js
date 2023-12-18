@@ -1,7 +1,12 @@
 const libros = require('../../models/libros.model');
 
 exports.createLibros = async(librosdata) =>{
-    return await new  libros(librosdata).save();
+    try{
+        return  new libros(librosdata).save();
+    }catch(err){
+        return err
+    }
+    
 }
 
 exports.buscarLibro = async(filter)=>{

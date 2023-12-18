@@ -1,11 +1,12 @@
 const libros = require('../data-acces/libros');
 
-exports.creaLibros = async(req, res)=>{
-    const datos = req.body;
+exports.crearLibros = async(req, res)=>{
 
-    //const nuevoLibro =  libros.createLibros(datos);
+    const datos = await libros.createLibros(req.body);
+
+    //const nuevoLibro = await libros.createLibros(datos);
     
-    res.redirect('mostrarCatalogo');
+    res.redirect('listarLibros');
 }
 
 exports.Tabla = async(req, res) =>{
@@ -13,29 +14,29 @@ exports.Tabla = async(req, res) =>{
     try{
         const buscarLibro = await libros.buscarLibro()
 
+        console.log(buscarLibro);
+
         if(buscarLibro.respuesta === false) {
 
             res.status(404).json({resultado: "no existe ningun libro"})
 
         }else{
-            res.render('mostrarCatalogo',{
+            res.render('listarLibros',{
                 libros2 : buscarLibro.libros
-
             })
+            res.status(200).json({libros2: buscarLibro});
         }
     }catch(e){
         res.status(500).json({error:e})
     }
-    console.log(libros)
-
 }
 
 exports.libro = async(req, res) =>{
 
-    try{
-        const buscarLibro = await libros.buscarLibro()
+    const buscarLibro = await libros.buscarLibro()
 
-        // console.log(buscarLibro)
+    try{
+        console.log(buscarLibro)
 
         if(buscarLibro.respuesta === false) {
 
@@ -46,7 +47,7 @@ exports.libro = async(req, res) =>{
             res.render('listarCatalogo',{
                 libros2 : buscarLibro.libros
             })
-        //     res.status(200).json({libros2: buscarLibro});
+            //res.status(200).json({libros2: buscarLibro});
         }
     }catch(e){
         res.status(500).json({error:e})
@@ -54,8 +55,6 @@ exports.libro = async(req, res) =>{
         
     }
 
-    
-    
 }
 
 exports.update = async(req, res)=>{
@@ -65,14 +64,15 @@ exports.update = async(req, res)=>{
         const datos = {
             Isbn: req.body.Isbn,
             titulo: req.body.titulo,
-            autor: req.body.autor,
-            editorial: req.body.editorial,
-            materias: req.body.materias,
             Añodepublicacion: req.body.Añodepublicacion,
+            editorial: req.body.editorial,
             copiasdisponibles: req.body.copiasdisponibles,
             precio: req.body.precio,
-            imagen: req.body.imagen,
             idioma: req.body.idioma,
+            autor: req.body.autor,
+            imagen: req.body.imagen,
+            materias: req.body.materias,
+    
         }
         if(id.respuesta === false){
             res.status(404).json({resultado: "no se actualizo"})
@@ -93,7 +93,7 @@ exports.eliminarL = async (req, res) => {
             res.status(404).json({respuesta: "no encuentro el id"});
         }else{
             await libros.eliminarLibro({_id: req.params.id});
-            res.render('mostrarCatalogo')
+            res.render('listarLibros')
         }
     } catch (e) {
         res.status(500).json({error:e})

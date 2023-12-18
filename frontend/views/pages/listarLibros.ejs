@@ -12,11 +12,11 @@
 
 <body>
 
-    <a href="landing" class="btn-back">‹ Regresar</a>
+
+    <a href="/landing" class="btn-back">‹ Regresar</a>
+
 
     <h1 class="titulo">Tabla Libros</h1>
-
-    <div class="content-table">
         <table class="table table-bordered" >
             <thead>
             <tr>
@@ -31,6 +31,7 @@
                 <th scope="col">PRECIO</th>
                 <th scope="col">IMAGEN</th>
                 <th scope="col">IDIOMA</th>
+                <th scope="col">HABILITADO</th>
 
             </tr>
             </thead>
@@ -91,7 +92,7 @@
                     <!-- Modal body -->
                     <div class="modal-body">
             
-                        <form action="actualizarCatalogo" method="post">
+                        <form action="actualizarLibro" method="post">
                             <div class="form-group">
                                 <label for="text">ID</label>
                                 <input type="text" class="form-control" id="actualizaridp" name="idpactualizarproducto"  placeholder="id" readonly >
@@ -137,7 +138,7 @@
                             <input type="text" class="form-control" id="actualizaridioma" name="idioma" placeholder="idioma">
                         </div>
                             <div class="modal-footer">
-                                <input type="submit" class="btn btn-success" value="Guardar"/>
+                                <input type="submit" class="btn btn-success" value="Guardar">
                             </div>
                         </form>
                     
@@ -151,7 +152,6 @@
             
             
         </table>
-    </div>
         
         
             <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admylib</title>
+    <title>Tienda virtual de libros </title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -55,7 +54,7 @@
 
 
     <div class="container pt-4 pb-4" >
-        <form class="needs-validation" novalidate  action="/agregar" method="post">
+        <form class="needs-validation" novalidate  action="registrarlibros" method="post">
             <div class="form-group">
                 <label for="validation1">*ISBN:</label>
                 <input type="number" class="form-control" id="validation1" placeholder="Ingresa el ISBN" name="isbn"   required>
@@ -106,7 +105,7 @@
                 <input type="text" class="form-control" id="materias" placeholder="Ingresa la materia del libro" name="materias" min="20" maxlength="60">
                 <div class="invalid-feedback">
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
     </div>
 
@@ -184,7 +183,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="listarUsuarios" method="get" onsubmit="return validarRegistro">
+                <form action="" method="post" onsubmit="return validarRegistro">
                     <div class="form-group">
                         <label for="usuario">Usuario:</label>
                         <input type="text" class="form-control" placeholder="Ingrese su usuario" name="usuario"  required  min="15" maxlength="100">
