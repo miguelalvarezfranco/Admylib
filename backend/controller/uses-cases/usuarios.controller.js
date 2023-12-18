@@ -41,7 +41,7 @@ exports.usuario = async(req, res) =>{
             res.status(404).json({resultado: "no existe "})
         }else{
 
-            res.render('listarUsuarios',{
+            res.render('listarUsuario',{
                 usuarios2 : buscarUsuario.usuarios
             })
             //res.status(200).json({usuarios2: buscarUsuario});
@@ -75,17 +75,25 @@ exports.updateUsu = async(req, res)=>{
 
 exports.eliminarU = async (req, res) => {
     try {
-        const id = req.params.id;
-        if(id.respuesta === false){
-            res.status(404).json({respuesta: "no encuentro el id"});
-        }else{
-            await usuarios.eliminarusuario({_id: req.params.id},); 
-            res.render('listarUsuarios');
-        }
-    } catch (e) {
-        res.status(500).json({error:e})
-        }
-};
+        await usuarios.eliminarusuario(req.params.id);
+        return res.render("/listarUsuario");
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    // try {
+    //     const id = await usuarios.eliminarusuario(req.params.id);
+    //     if(id.respuesta === false){
+    //         res.status(404).json({respuesta: "no encuentro el id"});
+    //     }else{
+    //         res.render('listarUsuario')
+        
+    //     }
+    //         res.status(200).json({usuarios2:  "se elimino correctamente"});
+    //     }
+    // } catch (e) {
+    //     res.status(500).json({error:e})
+    //     }
 
 
 exports.login = async(req, res) =>{

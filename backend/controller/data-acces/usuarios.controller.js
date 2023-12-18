@@ -61,14 +61,11 @@ exports.updateusuarios = async(id, data)=>{
 }
 
 exports.eliminarusuario = async (id) => {
-
-    try {
-        if (!filter) return {error: 'No se ha especificado un filtro'};
-        return await usuarios.findOneAndDelete(id);
-    } catch (error) {
-        return error;
-    }
-};
+    
+    return await usuarios.findByIdAndDelete(id);
+}
+        
+    
 //     try{
 
 //         const eliminarusuario = await usuarios.findOneAndUpdate(id  );
