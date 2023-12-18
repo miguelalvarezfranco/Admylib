@@ -33,7 +33,7 @@
         </tr>
         </thead>
         <tbody>
-            <% usuarios2.forEach(function(elemento){%>
+            <%usuarios2.forEach(function(elemento){%>
                 <tr>
                     <td>
                         <%=elemento._id%>
@@ -42,7 +42,7 @@
                         <%=elemento.usuario%>
                     </td>
                     <td>
-                        <%=elemento.email%>
+                        <%=elemento.correo%>
                     </td>
                     <td>
                         <%=elemento.password%>
@@ -51,7 +51,7 @@
                         <%=elemento.rol%>
                     </td>
                     <td>
-                        <button type="button" class="button button1" data-toggle="modal" onclick="llenar(`<%=elemento._id%>`,`<%=elemento.usuario%>`,`<%=elemento.email%>`, `<%=elemento.password%>`,`<%=elemento.rol%>`,)" data-target="#update">Actualizar</button>
+                        <button type="button" class="button button1" data-toggle="modal" onclick="llenar(`<%=elemento._id%>`,`<%=elemento.usuario%>`,`<%=elemento.correo%>`, `<%=elemento.password%>`,`<%=elemento.rol%>`,)" data-target="#update">Actualizar</button>
                         <a href="eliminarusuario/<%=elemento._id%>" class="button btn-success">eliminar</a>
                     </td>
                     
@@ -80,7 +80,7 @@
             <form action="actualizarusuarios" method="post">
                 <div class="form-group">
                     <label for="text">ID</label>
-                    <input type="text" class="form-control" id="actualizaridf" name="idactualizar" placeholder="id" readonly>
+                    <input type="text" class="form-control" id="actualizaridf" name="actualizar" placeholder="id" readonly>
                 </div>
                 <div class="form-group">
                     <label for="text">usuario</label>
@@ -88,7 +88,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">email</label>
-                    <input type="email" class="form-control" id="actualizaremail" name="email" placeholder="email">
+                    <input type="email" class="form-control" id="actualizarcorreo" name="corro" placeholder="email">
                 </div>
                 <div class="form-group">
                     <label for="pws">password</label>

@@ -13,10 +13,10 @@ router.post("/actualizarLibro", libros.update);
 router.get("/eliminarLibro/:id", libros.eliminarL);
 
 //MODULO USUARIOS
-// router.post("/registrarUsuario", usuarios.crear);
-// router.get("/listarUsuario", usuarios.usuario);
-// router.post("/actualizarUsuarios/:id", usuarios.updateUsu);
-// router.get("/eliminarU/:id", usuarios.eliminarU);
+router.post("/registrarusuario", usuarios.crearUsuarios);
+router.get("/listarUsuario", usuarios.usuario);
+router.post("/actualizarUsuarios/:id", usuarios.updateUsu);
+router.get("/eliminarusuario/:id", usuarios.eliminarU);
 
 
 //MOSTRAR PAGINA PRICIPAL
@@ -29,15 +29,7 @@ router.get("/mostrarFormulario", libros.formularioLibro);
 
 router.get("/listarLibros", libros.Tabla);
 
-//router.get("/listarUsuarios", usuarios.usu);
-
-
-
-
-
-
-// router.get("/mostrarTabla", libros.tablaCatalogo);
-
+router.get("/listarUsuarios", usuarios.Tabla2);
 
 
 //MODULO USUARIO

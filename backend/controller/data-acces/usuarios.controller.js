@@ -1,7 +1,12 @@
 const usuarios = require('../../models/usuarios.models');
 
 exports.createUsuarios = async(usuariosdata)=>{
-    return await new usuarios(usuariosdata).save();
+    try{
+        return  new usuarios(usuariosdata).save();
+    }catch(err){
+        return err
+    }
+
 
 }
 
@@ -55,31 +60,39 @@ exports.updateusuarios = async(id, data)=>{
     }
 }
 
-exports.eliminarusuario = async (id, data) => {
-    try{
+exports.eliminarusuario = async (id) => {
 
-        const eliminarusuario = await usuarios.deleteOne(id , data );
-        if(eliminarusuario){
-            return {
-                respuesta : true,
-
-                usuarios :eliminarusuario
-            }
-        }else{
-            return {
-                respuesta :false,
-
-                mensaje: "no se elimino el libro"
-            }
-        }
-                
-        } catch (error) {
-        return {
-            respuesta : false,
-            error : err
-        }
+    try {
+        if (!filter) return {error: 'No se ha especificado un filtro'};
+        return await usuarios.findOneAndDelete(id);
+    } catch (error) {
+        return error;
     }
-}
+};
+//     try{
+
+//         const eliminarusuario = await usuarios.findOneAndUpdate(id  );
+//         if(eliminarusuario){
+//             return {
+//                 respuesta : true,
+
+//                 usuarios :eliminarusuario
+//             }
+//         }else{
+//             return {
+//                 respuesta :false,
+
+//                 mensaje: "no se elimino el libro"
+//             }
+//         }
+                
+//         } catch (error) {
+//         return {
+//             respuesta : false,
+//             error : err
+//         }
+//     }
+// }
 
 exports.infoUsuario = async (req, res) => {
 

@@ -1,11 +1,12 @@
 const usuarios = require('../data-acces/usuarios.controller');
 
-exports.creaUsuario = async(req, res)=>{
-    const datos = req.body;
+exports.crearUsuarios = async(req, res)=>{
+
+    const datos = await usuarios.createUsuarios(req.body);
 
     // const nuevoUsuario = usuarios.crearUsuario(datos);
 
-    res.redirect('listarUsuarios');
+    res.redirect('listarUsuario');
 }
 
 exports.Tabla2 = async(req, res) =>{
@@ -13,13 +14,14 @@ exports.Tabla2 = async(req, res) =>{
     try{
         const buscarUsuario = await usuarios.buscarUsuario()
 
-        if(buscarUsuario.respuesta === false) {
+        if(buscarUsuario.respuesta === false){
 
             res.status(404).json({resultado: "no existe ningun usuario"})
         }else{
-            res.render('mostrarCatalogo'),{
+            res.render('listarUsuarios',{
                 usuarios2 : buscarUsuario.usuarios
-            }
+            })
+            res.status(200).json({usuarios2: buscarUsuario});
             
         }
     }catch(e){
@@ -39,15 +41,14 @@ exports.usuario = async(req, res) =>{
             res.status(404).json({resultado: "no existe "})
         }else{
 
-            // res.render('listarUsuarios',{
-            //     usuarios2 : buscarUsuario.usuarios
-            // })
-            res.status(200).json({usuarios2: buscarUsuario});
+            res.render('listarUsuarios',{
+                usuarios2 : buscarUsuario.usuarios
+            })
+            //res.status(200).json({usuarios2: buscarUsuario});
         }
     }catch(e){
         res.status(500).json({error:e})
     }
-    console.log(usuarios)
 }
 
 exports.updateUsu = async(req, res)=>{
@@ -78,8 +79,8 @@ exports.eliminarU = async (req, res) => {
         if(id.respuesta === false){
             res.status(404).json({respuesta: "no encuentro el id"});
         }else{
-            await usuarios.eliminarusuario({_id: id});
-            res.status(200).json({usuarios:  "se elimino  correctamente"});
+            await usuarios.eliminarusuario({_id: req.params.id},); 
+            res.render('listarUsuarios');
         }
     } catch (e) {
         res.status(500).json({error:e})

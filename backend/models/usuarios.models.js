@@ -8,7 +8,7 @@ const usuariosSchema = new mongoose.Schema({
     type: String,
     
   },
-  email: {
+  correo: {
     type: String,
     
   },
@@ -23,15 +23,6 @@ const usuariosSchema = new mongoose.Schema({
 
     }})
 
-    // userSchema.methods.encryptedPassword = (password) => {
-    //   return  bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-    // };
-
-    // userSchema.methods.compararContraseña = function(password){
-    //   bcrypt.compareSync(password, this.password);
-    // }
-
-      
   const usuario = mongoose.model('usuarios', usuariosSchema);
   module.exports = usuario;
   
