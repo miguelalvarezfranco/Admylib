@@ -89,13 +89,12 @@ app.listen(PORT, () => {
 //MERCADO PAGO 
 
 app.post("/create_preference", (req, res) => {
-    console.log(req.body);
-	const preference = {
+	let preference = {
 		items: [
-			{   id: 2,
-				title: "hola mundo",
-				unit_price: 100,
-                quantity: 1
+			{   
+				title: req.body.description,
+				unit_price: Number(req.body.price),
+                quantity:  Number(req.body.quantity),
                 
 			}
 		],
@@ -116,13 +115,13 @@ app.post("/create_preference", (req, res) => {
 			console.log(error);
 		});
 
-app.get('/feedback', function (req, res) {
-	res.json({
-		Payment: req.query.payment_id,
-		Status: req.query.status,
-		MerchantOrder: req.query.merchant_order_id
-	});
-});
+// app.get('/feedback', function (req, res) {
+// 	res.json({
+// 		Payment: req.query.payment_id,
+// 		Status: req.query.status,
+// 		MerchantOrder: req.query.merchant_order_id
+// 	});
+// });
 
 
 

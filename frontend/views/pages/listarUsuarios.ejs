@@ -13,7 +13,7 @@
 <body>
 
 
-    <a href="inicio" class="btn-back">‹ Regresar</a>
+    <a href="landing" class="btn-back">‹ Regresar</a>
     
     <div class="container">
         <div class="row justify-content-center">
@@ -51,8 +51,8 @@
                         <%=elemento.rol%>
                     </td>
                     <td>
-                        <button type="button" class="button button1" data-toggle="modal" onclick="llenar(`<%=elemento._id%>`,`<%=elemento.usuario%>`,`<%=elemento.correo%>`, `<%=elemento.password%>`,`<%=elemento.rol%>`,)" data-target="#update">Actualizar</button>
-                        <a href="eliminarusuario/<%=elemento._id%>" class="button btn-success">eliminar</a>
+                        <button type="button" class="button btn" data-toggle="modal" onclick="llenar(`<%=elemento._id%>`,`<%=elemento.usuario%>`,`<%=elemento.correo%>`, `<%=elemento.password%>`,`<%=elemento.rol%>`,)" data-target="#update">Actualizar</button>
+                        <a href="eliminarusuario/<%=elemento._id%>" class="button btn outline">eliminar</a>
                     </td>
                     
                 </tr>

@@ -31,6 +31,8 @@ router.get("/listarLibros", libros.Tabla);
 
 router.get("/listarUsuarios", usuarios.Tabla2);
 
+router.post("/landing", usuarios.login);
+
 
 //MODULO USUARIO
 

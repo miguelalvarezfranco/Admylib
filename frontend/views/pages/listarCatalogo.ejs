@@ -6,7 +6,7 @@
     <title>Listar Catálogo</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admylib</title>
+    <title>Tienda Virtual de libros</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -57,7 +57,8 @@
 
                 </div>
                 <div class="modal-footer">
-        
+                    <button type="button" onclick="pintarCarrito()" class="btn btn-primary" data-toggle="modal" data-target="#modalpago">
+                    checkOut</button>
                     <button type="button" class="btn btn-danger" onclick="vaciar()">Vaciar carrito</button>
         
                 </div>
@@ -176,8 +177,6 @@
                 totalproductos.className = "total-content";
                 totalproductos.innerHTML = `
                 <div class="total-precio">total: ${total}</div>
-                <button class="btn" id="checkout-btn"> go to checkout</button>
-                <div id="button-checkout"></div>
                 `;
                 body.append(totalproductos);
 
@@ -186,17 +185,14 @@
                  // The most common are: 'pt-BR', 'es-AR' and 'en-US'
                 
 
-                const checkoutButton = totalproductos.querySelector("#checkout-btn");
-
-
-                checkoutButton.addEventListener("click", function () {
-
-                    checkoutButton.remove();
+                const checkout = totalproductos.querySelector("checkout-btn");
+                checkout.addEventListener("click", function () {
+                checkout.remove();
 
                 const orderData = {
-                title: "hola",
                 quantity: 1,
-                price: 100
+                description: "hola",
+                price:total
                 };
 
                 fetch("http://localhost:8080/create_preference", {
@@ -211,9 +207,14 @@
                 })
                 .then(function (preference) {
                     createCheckoutButton(preference.id);
+                    
+                    
+
+
                 })
-                .catch(function () {
-                    alert("Unexpected error");
+                .catch(function (error) {
+                    console.log(error);
+                    $("#checkout-btn").attr("disabled", false);
                 });
             });
 
@@ -222,9 +223,9 @@
                 const bricksBuilder = mercadopago.bricks();
 
                 const renderComponent = async (bricksBuilder) => {
-                //if (window.checkoutButton) window.checkoutButton.unmount();
+                if (window.checkoutButton) window.checkoutButton.unmount();
                 await mercadopago.bricksBuilder.create(
-                    'wallet', "wallet_container",
+                    'wallet',
                     'button-checkout', // class/id where the payment button will be displayed
                     {
                         initialization: {

@@ -60,9 +60,9 @@ exports.libro = async(req, res) =>{
 exports.update = async(req, res)=>{
 
     try {
-        const id = {_id: req.params.id };
+        const id = {_id: req.body.id };
         const datos = {
-            Isbn: req.body.Isbn,
+            isbn: req.body.isbn,
             titulo: req.body.titulo,
             Añodepublicacion: req.body.Añodepublicacion,
             editorial: req.body.editorial,
@@ -78,7 +78,7 @@ exports.update = async(req, res)=>{
             res.status(404).json({resultado: "no se actualizo"})
         }else{
             await libros.updatelibros(id, datos);
-            res.status(200).json({libros:  "se actualizo correctamente"})
+            return res.redirect('/listarLibros')
         }
 
     } catch (e) {
@@ -88,15 +88,10 @@ exports.update = async(req, res)=>{
 
 exports.eliminarL = async (req, res) => {
     try {
-        const id = req.params.id;
-        if(id.respuesta === false){
-            res.status(404).json({respuesta: "no encuentro el id"});
-        }else{
-            await libros.eliminarLibro({_id: req.params.id});
-            res.render('listarLibros')
-        }
-    } catch (e) {
-        res.status(500).json({error:e})
+        await libros.eliminarLibro(req.params.id);
+        return res.redirect("/listarLibros");
+    } catch (error) {
+        console.error(error);
         }
 };
 

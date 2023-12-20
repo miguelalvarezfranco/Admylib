@@ -62,7 +62,7 @@ exports.updatelibros = async(id, data)=>{
 exports.eliminarLibro = async (id) => {
     try{
 
-        const eliminarLibro = await libros.findOneAndDelete(id);
+        const eliminarLibro = await libros.findByIdAndDelete(id);
         if(eliminarLibro){
             return {
                 respuesta : true,

@@ -41,7 +41,7 @@ exports.usuario = async(req, res) =>{
             res.status(404).json({resultado: "no existe "})
         }else{
 
-            res.render('listarUsuario',{
+            res.render('listarUsuarios',{
                 usuarios2 : buscarUsuario.usuarios
             })
             //res.status(200).json({usuarios2: buscarUsuario});
@@ -76,48 +76,55 @@ exports.updateUsu = async(req, res)=>{
 exports.eliminarU = async (req, res) => {
     try {
         await usuarios.eliminarusuario(req.params.id);
-        return res.render("/listarUsuario");
-      } catch (error) {
+        return res.redirect("/listarUsuario");
+    } catch (error) {
         console.error(error);
-      }
+        }
     };
-    // try {
-    //     const id = await usuarios.eliminarusuario(req.params.id);
-    //     if(id.respuesta === false){
-    //         res.status(404).json({respuesta: "no encuentro el id"});
-    //     }else{
-    //         res.render('listarUsuario')
-        
-    //     }
-    //         res.status(200).json({usuarios2:  "se elimino correctamente"});
-    //     }
-    // } catch (e) {
-    //     res.status(500).json({error:e})
-    //     }
+
 
 
 exports.login = async(req, res) =>{
-    
 
-    const info = await usuarios.infoUsuario({ correo: req.body.correo });
-
-    
-        const contraU = req.body.password;
-
-        if(info.password == contraU){
-            res.status(200).json({usuarios: "Ingreso de manera exitosa"});
-
-        }if(info.rol == 'admin'){
-            res.render("inicio");
-
-
-        }else if(info.rol == 'usuario'){ 
-            res.render("landing")
+    const {correo, password} = req.body;
+    try {
+        if (!correo || !password) return res.render('landing', {error: 'Ingresa todos los datos'});
+        const usu = await usuarios.infoUsuario({correo: correo}); //{email: 1, password: 1, role: 1});
+        if (!usu) {
+            return res.render('landing', {error: 'Este usuario no existe'});
+        } else {
+            const passwordIsCorrect = await bcrypt.compare(password, usu.password);
+            if (!passwordIsCorrect) {
+                return res.render('landing', {error: 'Contraseña incorrecta'});
+            } 
         }
+    } catch (error) {
+        console.error(error);
+        return res.render('500', {
+            error: error,
+        });
+    }
+};
+    
+
+    // const info = await usuarios.infoUsuario({ correo: req.body.correo });
+
+    
+    //     const contraU = req.body.password;
+
+    //     if(info.password == contraU){
+    //         res.status(200).json({usuarios: "Ingreso de manera exitosa"});
+
+    //     }if(info.rol == 'admin'){
+    //         res.redirect("/inicio");
+
+
+    //     }else if(info.rol == 'usuario'){ 
+    //         res.redirect("/landing")
+    //     }
 
         
 
-}
 
 
 
