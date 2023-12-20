@@ -99,10 +99,7 @@ exports.login = async(req, res) =>{
             } 
         }
     } catch (error) {
-        console.error(error);
-        return res.render('500', {
-            error: error,
-        });
+        
     }
 };
     
