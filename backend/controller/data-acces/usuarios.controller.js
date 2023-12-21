@@ -91,10 +91,10 @@ exports.eliminarusuario = async (id) => {
 //     }
 // }
 
-exports.infoUsuario = async (req, res) => {
+exports.infoUsuario = async (email, password) => {
 
     try{
-        const infoUsu = await usuarios.findOne({ email: req.body.correo });
+        const infoUsu = await usuarios.find({ email: req.body.correo });
 
         if(infoUsu){
             return {

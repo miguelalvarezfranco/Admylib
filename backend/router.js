@@ -1,6 +1,7 @@
 const express = require('express');
 const libros = require('./controller/uses-cases/libros.controller');
 const usuarios = require('./controller/uses-cases/usuarios.controller');
+
 //const passport = require('passport');
 
 const router = express.Router();
@@ -17,6 +18,7 @@ router.post("/registrarusuario", usuarios.crearUsuarios);
 router.get("/listarUsuario", usuarios.usuario);
 router.post("/actualizarUsuarios/:id", usuarios.updateUsu);
 router.get("/eliminarusuario/:id", usuarios.eliminarU);
+router.get("/inicio", usuarios.login);
 
 
 //MOSTRAR PAGINA PRICIPAL
@@ -25,17 +27,15 @@ router.get("/landing", (req, res)=>{
 });
 
 
+
 router.get("/mostrarFormulario", libros.formularioLibro);
 
 router.get("/listarLibros", libros.Tabla);
 
 router.get("/listarUsuarios", usuarios.Tabla2);
 
-router.post("/landing", usuarios.login);
 
 
-//MODULO USUARIO
 
-// router.post("/crear", usuarios.crear);
 
 module.exports = router;

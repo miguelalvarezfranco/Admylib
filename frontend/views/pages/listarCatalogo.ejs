@@ -57,7 +57,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" onclick="pintarCarrito()" class="btn btn-primary" data-toggle="modal" data-target="#modalpago">
+                    <button type="button" onclick="cookies()" class="btn btn-primary" data-toggle="modal" data-target="#modalpago">
                     checkOut</button>
                     <button type="button" class="btn btn-danger" onclick="vaciar()">Vaciar carrito</button>
         
@@ -212,6 +212,8 @@
 
 
                 })
+
+
                 .catch(function (error) {
                     console.log(error);
                     $("#checkout-btn").attr("disabled", false);

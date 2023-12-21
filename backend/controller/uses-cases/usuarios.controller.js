@@ -1,4 +1,5 @@
 const usuarios = require('../data-acces/usuarios.controller');
+const bcrypt = require('bcrypt')
 
 exports.crearUsuarios = async(req, res)=>{
 
@@ -84,24 +85,51 @@ exports.eliminarU = async (req, res) => {
 
 
 
+    // function verificarRol(usuario) {
+    //     if ("rol" in usuario) {
+    //         return usuario.rol;
+    //     } else {
+    //         return null;
+    //     }
+    //     }
+
+
+
 exports.login = async(req, res) =>{
 
-    const {correo, password} = req.body;
-    try {
-        if (!correo || !password) return res.render('landing', {error: 'Ingresa todos los datos'});
-        const usu = await usuarios.infoUsuario({correo: correo}); //{email: 1, password: 1, role: 1});
-        if (!usu) {
-            return res.render('landing', {error: 'Este usuario no existe'});
-        } else {
-            const passwordIsCorrect = await bcrypt.compare(password, usu.password);
-            if (!passwordIsCorrect) {
-                return res.render('landing', {error: 'Contraseña incorrecta'});
-            } 
+
+    const usuarioEncontrado =  await  usuarios.infoUsuario({ correo: req.body.correo });
+    
+    const contraUsuario = req.body.password
+
+        if (usuarioEncontrado.password === contraUsuario ) {
+            }
+          // const rol = verificarRol(usuarioEncontrado);
+            if (usuarioEncontrado.rol === "administrador") {
+            res.redirect("/inicio"); // Redirección a la página de administración
+        } else if (usuarioEncontrado.rol === "usuario") {
+            res.render("landing"); // Redirección a la página de usuario
         }
-    } catch (error) {
+
         
+ // Credenciales incorrectas
     }
-};
+
+    // const {correo, password} = req.body;
+    // try {
+    //     if (!correo || !password) return res.render('landing', {error: 'Ingresa todos los datos'});
+    //     const usu = await usuarios.infoUsuario({correo: correo}); //{email: 1, password: 1, role: 1});
+    //     if (!usu) {
+    //         return res.render('landing', {error: 'Este usuario no existe'});
+    //     } else {
+    //         const passwordIsCorrect = await bcrypt.compare(password, usu.password);
+    //         if (!passwordIsCorrect) {
+    //             return res.render('landing', {error: 'Contraseña incorrecta'});
+    //         } 
+    //     }
+    // } catch (error) {
+    //     return(error)
+    // }
     
 
     // const info = await usuarios.infoUsuario({ correo: req.body.correo });
