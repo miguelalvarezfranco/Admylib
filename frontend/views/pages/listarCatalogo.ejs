@@ -185,7 +185,8 @@
                  // The most common are: 'pt-BR', 'es-AR' and 'en-US'
                 
 
-                const checkout = totalproductos.querySelector("checkout-btn");
+                const checkout = totalproductos.querySelector("#checkout-btn")
+
                 checkout.addEventListener("click", function () {
                 checkout.remove();
 
@@ -207,13 +208,7 @@
                 })
                 .then(function (preference) {
                     createCheckoutButton(preference.id);
-                    
-                    
-
-
                 })
-
-
                 .catch(function (error) {
                     console.log(error);
                     $("#checkout-btn").attr("disabled", false);
