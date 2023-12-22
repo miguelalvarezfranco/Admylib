@@ -6,14 +6,18 @@ const usuariosSchema = new mongoose.Schema({
 
   usuario: {
     type: String,
-    
+    maxLength:100,
+    minLength:5
   },
   correo: {
     type: String,
+    maxLength:100,
+    minLength:15,
     
   },
   password: {
     type: String,
+    minlength:8,
     
   },
 
