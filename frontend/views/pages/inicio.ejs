@@ -6,7 +6,8 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
     <link rel="stylesheet" href="../../styles/css/styles.css">
 </head>
 
@@ -14,50 +15,9 @@
 
 
 <body>
-    <div>
-        <h1>Vista Administrador </h1>
-    </div>
 
-    <body>
-        <nav id="barra" class="navbar navbar-expand-sm navbar-light">
-            <!-- Brand/logo -->
-            <div class="container justify-content-start">
-                <img src="images/udl.png" alt="logo" style="width:110px;">
-                <a class="navbar-brand">
-                    El universo de los libros 
-                </a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-            </div>
-            <!-- Links -->
-            <ul class="container justify-content-end navbar-nav" id="items">
-                <li class="nav-item">
-                    <a class="nav-link" href="landing">Inicio</a>
-                </li>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                LIBROS
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="/mostrarCatalogo">Listar</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                USUARIOS
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="/listarUsuarios">Listar</a></li>
-                            </ul>
-                        </li>
-
-            </ul>
-        </nav>
-
-
-
+    <%- include('../partials/vista3') %>
+    
             </script>
 
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

@@ -1,71 +1,64 @@
-const usuarios = require('../../models/usuarios.models');
+const usuarios = require("../../models/usuarios.models");
 
-exports.createUsuarios = async(usuariosdata)=>{
-    try{
-        return  new usuarios(usuariosdata).save();
-    }catch(err){
-        return err
+exports.createUsuarios = async (usuariosdata) => {
+  try {
+    return new usuarios(usuariosdata).save();
+  } catch (err) {
+    return err;
+  }
+};
+
+exports.buscarUsuario = async (filter) => {
+  try {
+    const buscarUsuario = await usuarios.find(filter);
+    if (buscarUsuario) {
+      return {
+        respuesta: true,
+
+        usuarios: buscarUsuario,
+      };
+    } else {
+      return {
+        respuesta: false,
+        mensaje: "nose econtro ningun usuario",
+      };
     }
+  } catch (err) {
+    return {
+      respuesta: false,
+      error: err,
+    };
+  }
+};
 
+exports.updateusuarios = async (id, data) => {
+  try {
+    const updateusuarios = await usuarios.findOneAndUpdate(id, data);
+    if (updateusuarios) {
+      return {
+        respuesta: true,
 
-}
+        usuarios: updateusuarios,
+      };
+    } else {
+      return {
+        respuesta: false,
 
-exports.buscarUsuario = async(filter)=>{
-    try{
-        const buscarUsuario = await usuarios.find(filter);
-        if(buscarUsuario){
-            return {
-                respuesta : true,
-                
-                usuarios :buscarUsuario
-            }
-        }else{
-            return {
-                respuesta :false,
-                mensaje: "nose econtro ningun usuario"
-            }
-        }
-    } catch(err){
-        return {
-            respuesta : false,
-            error : err
-        }
+        mensaje: "nose realizo la actualizacion",
+      };
     }
-}
-
-
-exports.updateusuarios = async(id, data)=>{
-    try{
-
-        const updateusuarios = await usuarios.findOneAndUpdate(id, data );
-        if(updateusuarios){
-            return {
-                respuesta : true,
-
-                usuarios :updateusuarios
-            }
-        }else{
-            return {
-                respuesta :false,
-
-                mensaje: "nose realizo la actualizacion"
-            }
-        }
-
-        } catch (error) {
-        return {
-            respuesta : false,
-            error : err
-        }
-    }
-}
+  } catch (error) {
+    return {
+      respuesta: false,
+      error: err,
+    };
+  }
+};
 
 exports.eliminarusuario = async (id) => {
-    
-    return await usuarios.findByIdAndDelete(id);
-}
-        
-    
+  return await usuarios.findByIdAndDelete(id);
+};
+
 //     try{
 
 //         const eliminarusuario = await usuarios.findOneAndUpdate(id  );
@@ -82,7 +75,7 @@ exports.eliminarusuario = async (id) => {
 //                 mensaje: "no se elimino el libro"
 //             }
 //         }
-                
+
 //         } catch (error) {
 //         return {
 //             respuesta : false,
@@ -91,35 +84,25 @@ exports.eliminarusuario = async (id) => {
 //     }
 // }
 
-exports.infoUsuario = async (email, password) => {
-
-    try{
-        const infoUsu = await usuarios.find({ email: req.body.correo });
-
-        if(infoUsu){
-            return {
-                respuesta : true,
-
-                usuarios :buscarusuario
-            }
-        }else{
-            return {
-                respuesta :false,
-
-                mensaje: "no se elimino el usuario"
-            }
-        }
-                
-        } catch (error) {
+exports.infoUsuario = async (correo) => {
+    try {
+        const buscarUsuario = await usuarios.findOne(correo);
+        if (buscarUsuario) {
         return {
-            respuesta : false,
-            error : error
+            respuesta: true,
+
+            usuarios: buscarUsuario,
+        };
+        } else {
+        return {
+            respuesta: false,
+            mensaje: "nose econtro ningun usuario",
+        };
         }
+    } catch (err) {
+        return {
+        respuesta: false,
+        error: err,
+        };
     }
-
-    
-    };
-
-
-
-
+};

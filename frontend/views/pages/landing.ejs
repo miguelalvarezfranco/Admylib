@@ -16,42 +16,27 @@
 </head>
 
 <body>
-    <nav id="barra" class="navbar navbar-expand-sm navbar-light">
-        <!-- Brand/logo -->
-        <div class="container justify-content-start">
-            <img src="images/udl.png" alt="logo" style="width:110px;">
-            <a class="navbar-brand">
-                El universo de los libros
-            </a>
-        </div>
-        <!-- Links -->
-        <ul class="container justify-content-end navbar-nav" id="items">
-            <li class="nav-item">
-                <a class="nav-link" href="landing" id="paginaP">Inicio</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Catálogo</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/mostrarformulario">Registrar libro</a>
-                    <a class="dropdown-item" href="/listarLibro" ">Ver catálogo</a>
-                </div>
-            </li>
-            <li class="nav-item pr-2">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#login">
-                    <i class="fa fa-user-circle"></i>
-                </button>
-            </li>
-            <li class="nav-item">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#registro">
-                    <i class="fa fa-sign-in"></i>
-                </button>
-            </li>
-        </ul>
-    </nav>
+        
+        
+
     <main>
+        <section>
+            <% if(rol === undefined) { %>
+                <%- include('../partials/vista1') %>
+
+            <%}else if(rol === "administrador"){%>
+                <%- include('../partials/vista3') %>
+
+            <%}else if(rol === "usuario"){%>
+                <%- include('../partials/vista2') %>
+
+            <%}%>
+        </section>
+
         <section id="primerSect">
+            
+
+
             <img src="images/fondo1.jpg" alt="fondo" width="100%">
             <div class="center form-row">
                 <form action="">
@@ -198,110 +183,14 @@
         </footer>
     </main>
 
-    <script>
-        paginaP.addEventListener("click", () => {
-        alert("Para continuar, debe registrarse.");
-    });
-
-    navbardrop.addEventListener("click", () => {
-        alert("Para continuar, debe registrarse.");
-    });
-
-
-    
-
-    </script>
-   
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 
-
-    
-
-
-
-
-
-
-
-
-
 </body>
 
 
-<!-- Modal login-->
-<div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/inicio" method="get"  class="needs-validation" novalidate>
-                    <div class="form-group">
-                        <label for="correo">*Correo:</label>
-                        <input type="email" class="form-control" placeholder="Ingrese su correo" name="correo" required>
-                        <div class="invalid-feedback">
-                            Por favor ingresa tu correo
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">*Contraseña:</label>
-                        <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="password" required>
-                        <div class="invalid-feedback">
-                            Por favor ingresa tu contraseña
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success">Recuperar Contraseña</button>
-                    </div>
-                    <div class="form-group form-check text-center">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox"> Recordarme
-                        </label>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success">Enviar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal registro-->
-<div class="modal fade" id="registro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registrarse</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="registrarusuario" method="post">
-                    <div class="form-group">
-                        <label for="usuario">*Usuario:</label>
-                        <input type="text" class="form-control" placeholder="Ingrese su usuario"  name="usuario"
-                    </div>
-                    <div class="form-group">
-                        <label for="correo">*Correo electrónico:</label>
-                        <input type="email" class="form-control" placeholder="Ingrese su correo"  name="correo" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">*Contraseña:</label>
-                        <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="password" required minlength="8">
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success">Registrarse</button>
-                    </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+

@@ -18,13 +18,18 @@ router.post("/registrarusuario", usuarios.crearUsuarios);
 router.get("/listarUsuario", usuarios.usuario);
 router.post("/actualizarUsuarios/:id", usuarios.updateUsu);
 router.get("/eliminarusuario/:id", usuarios.eliminarU);
-router.get("/inicio", usuarios.login);
+
+router.post("/inicio", usuarios.login);
+
+router.get("/vistaAdmin",usuarios.VistaAdministrador );
+
+router.get("/cerrarsesion", usuarios.borrarCookie);
+
+
 
 
 //MOSTRAR PAGINA PRICIPAL
-router.get("/landing", (req, res)=>{
-    res.render('landing');
-});
+router.get("/landing",usuarios.paginaPrincipal)
 
 
 

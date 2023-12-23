@@ -19,6 +19,7 @@ const usuariosSchema = new mongoose.Schema({
     type: String,
     minlength:8,
     
+    
   },
 
   rol: { 

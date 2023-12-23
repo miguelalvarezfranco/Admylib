@@ -10,6 +10,7 @@ const passport = require('passport');
 const session = require('express-session');
 const cors = require("cors");
 const mercadopago = require('mercadopago');
+const cookieparser = require('cookie-parser');
 
 // REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel
 
@@ -62,6 +63,8 @@ app.use(session({
 //app.use(passport.initialize());
 //app.use(passport.session());
 app.use(cors());
+
+app.use(cookieparser());
 
 // app.use('/api', router);
 

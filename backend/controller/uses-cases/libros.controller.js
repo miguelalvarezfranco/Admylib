@@ -4,10 +4,17 @@ exports.crearLibros = async(req, res)=>{
 
     const datos = await libros.createLibros(req.body);
 
-    //const nuevoLibro = await libros.createLibros(datos);
-    
-    res.redirect('listarLibros');
+    if(req.cookies.rol === "administrador"){
+        res.redirect('/listarLibros');
+    }else{
+        res.redirect("/landing");
+    }
+
 }
+
+
+
+
 
 exports.Tabla = async(req, res) =>{
 

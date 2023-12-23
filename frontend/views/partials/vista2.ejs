@@ -1,0 +1,31 @@
+<nav id="barra" class="navbar navbar-expand-sm navbar-light">
+    <!-- Brand/logo -->
+    <div class="container justify-content-start">
+        <img src="images/udl.png" alt="logo" style="width:110px;">
+        <a class="navbar-brand">
+            El universo de los libros
+        </a>
+    </div>
+    <!-- Links -->
+    <ul class="container justify-content-end navbar-nav" id="items">
+        <li class="nav-item">
+            <a class="nav-link" href="landing" id="">Inicio</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Catálogo</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/mostrarformulario">Registrar libro</a>
+                <a class="dropdown-item" href="/listarLibro" ">Ver catálogo</a>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <!-- Button trigger modal -->
+    
+            <a href="/cerrarsesion" type="button" class="btn btn-dark">
+            
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</nav>

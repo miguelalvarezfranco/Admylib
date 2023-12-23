@@ -1,0 +1,123 @@
+
+
+<nav id="barra" class="navbar navbar-expand-sm navbar-light">
+    <!-- Brand/logo -->
+    <div class="container justify-content-start">
+        <img src="images/udl.png" alt="logo" style="width:110px;">
+        <a class="navbar-brand">
+            El universo de los libros
+        </a>
+    </div>
+    <!-- Links -->
+    <ul class="container justify-content-end navbar-nav" id="items">
+        <li class="nav-item pr-2">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#login">
+                <i class="fa fa-user-circle"></i>
+            </button>
+        </li>
+        <li class="nav-item">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#registro">
+                <i class="fa fa-sign-in"></i>
+            </button>
+        </li>
+    </ul>
+</nav>
+
+
+
+<div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/inicio" method="POST"  class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="correo">*Correo:</label>
+                        <input type="email" class="form-control" placeholder="Ingrese su correo" name="correo" required>
+                        <div class="invalid-feedback">
+                            Por favor ingresa tu correo
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">*Contraseña:</label>
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="password" required>
+                        <div class="invalid-feedback">
+                            Por favor ingresa tu contraseña
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Recuperar Contraseña</button>
+                    </div>
+                    <div class="form-group form-check text-center">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox"> Recordarme
+                        </label>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal registro-->
+<div class="modal fade" id="registro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registrarse</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="registrarusuario" method="post" >
+                    <div class="form-group">
+                        <label for="usuario">*Usuario:</label>
+                        <input type="text" class="form-control" placeholder="Ingrese su usuario"  name="usuario" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">*Correo electrónico:</label>
+                        <input type="email" class="form-control" placeholder="Ingrese su correo"  name="correo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">*Contraseña:</label>
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña"  name="password" required minlength="8">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Registrarse</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
