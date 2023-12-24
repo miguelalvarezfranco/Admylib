@@ -1,8 +1,24 @@
 const libros = require('../data-acces/libros');
+const path = require('path');
+const fs = require('fs').promises
 
 exports.crearLibros = async(req, res)=>{
 
-    const datos = await libros.createLibros(req.body);
+    const datos = (req.body);
+    if(req.file){
+        datos.path = '../../static/fotos/' + req.file.filename
+        
+    
+
+    }
+
+    const guardar = await libros.createLibros(datos)
+
+    if(!guardar){
+        res.status(404).json({resultado: "no se pudo guardar"})
+    }else if(guardar === false){
+        res.status(200).json({resultado: "se guardo con exito"})
+    }
 
     if(req.cookies.rol === "administrador"){
         res.redirect('/listarLibros');
@@ -84,7 +100,7 @@ exports.update = async(req, res)=>{
         if(id.respuesta === false){
             res.status(404).json({resultado: "no se actualizo"})
         }else{
-            await libros.updatelibros(id, datos);
+            await libros.updatelibros(datos);
             return res.redirect('/listarLibros')
         }
 

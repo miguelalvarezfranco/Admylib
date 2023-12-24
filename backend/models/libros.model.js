@@ -43,8 +43,9 @@ const LibrosSchema = new mongoose.Schema({
         type: Number,
         
     },
-    imagen: {
+    path: {
         type:String,
+
         
     },
     idioma: {

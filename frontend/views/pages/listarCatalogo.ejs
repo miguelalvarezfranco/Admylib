@@ -79,7 +79,8 @@
         <div class="container book-list">
             <%libros2.forEach(function(elemento){%>
                 <div class="card">
-                    <img src="https://source.unsplash.com/300x201/?<%=elemento.titulo%>" class="card-img-top" alt="..">
+                    <img src="<%=elemento.path%>" class="card-img-top" alt=".." width="5px" height="100px">
+
                     <div class="card-body">
                         <h5 class="card-title">
                             <%=elemento.titulo%>
@@ -89,12 +90,13 @@
                         </p>
         
                         <button class="btn" type="button"
-                            onclick="Carrito(`<%=elemento.id%>`,`<%=elemento.imagen%>`,`<%=elemento.titulo%>`,`<%=elemento.precio%>`)">Añadir
+                            onclick="Carrito(`<%=elemento.id%>`,`<%=elemento.path%>`,`<%=elemento.titulo%>`,`<%=elemento.precio%>`)">Añadir
                             Al Carrito</button>
                     </div>
                 </div>
             <% })%>
         </div>
+
 
         <script>
 

@@ -33,7 +33,7 @@ exports.buscarLibro = async(filter)=>{
 }
 
 
-exports.updatelibros = async(id, data)=>{
+exports.updatelibros = async(data)=>{
     try{
 
         const updatelibros = await libros.findOneAndUpdate(id, data );
@@ -60,27 +60,5 @@ exports.updatelibros = async(id, data)=>{
 }
 
 exports.eliminarLibro = async (id) => {
-    try{
-
-        const eliminarLibro = await libros.findByIdAndDelete(id);
-        if(eliminarLibro){
-            return {
-                respuesta : true,
-
-                libros :eliminarLibro
-            }
-        }else{
-            return {
-                respuesta :false,
-
-                mensaje: "no se elimino el libro"
-            }
-        }
-                
-        } catch (error) {
-        return {
-            respuesta : false,
-            error : err
-        }
-    }
+    return await libros.findByIdAndDelete(id);
 }
