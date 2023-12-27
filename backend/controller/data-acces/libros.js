@@ -33,31 +33,11 @@ exports.buscarLibro = async(filter)=>{
 }
 
 
-exports.updatelibros = async(data)=>{
-    try{
+exports.updatelibros = async(id, datos)=>{
 
-        const updatelibros = await libros.findOneAndUpdate(id, data );
-        if(updatelibros){
-            return {
-                respuesta : true,
 
-                libros :updatelibros
-            }
-        }else{
-            return {
-                respuesta :false,
-
-                mensaje: "nose realizo la actualizacion"
-            }
-        }
-
-        } catch (error) {
-        return {
-            respuesta : false,
-            error : err
-        }
-    }
-}
+        return await libros.findOneAndUpdate(id, datos );
+} 
 
 exports.eliminarLibro = async (id) => {
     return await libros.findByIdAndDelete(id);

@@ -1,6 +1,7 @@
 const express = require('express');
 const libros = require('./controller/uses-cases/libros.controller');
 const usuarios = require('./controller/uses-cases/usuarios.controller');
+const nodemailer = require('./controller/uses-cases/nodemailer');
 
 //const passport = require('passport');
 
@@ -29,7 +30,22 @@ router.get("/cerrarsesion", usuarios.borrarCookie);
 
 
 //MOSTRAR PAGINA PRICIPAL
-router.get("/landing",usuarios.paginaPrincipal)
+router.get("/landing",usuarios.paginaPrincipal);
+
+//INFORMACION DEL PAGO
+
+router.get("/realizarcompra",usuarios.comprar);
+
+router.get("/recuperarc", usuarios.recupe);
+
+router.get("/recuperarc", usuarios.recupe);
+
+// router.post("/recuperarcontraseña", nodemailer.recuperar);
+
+
+
+// router.post("/envioCorreo", nodemailer.recuperar);
+
 
 
 
@@ -38,6 +54,15 @@ router.get("/mostrarFormulario", libros.formularioLibro);
 router.get("/listarLibros", libros.Tabla);
 
 router.get("/listarUsuarios", usuarios.Tabla2);
+
+
+
+///STRIPE
+
+// router.get('/create-checkout-session');
+// router.get('/succes');
+// router.get('/cancel');
+
 
 
 

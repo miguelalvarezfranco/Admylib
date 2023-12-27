@@ -60,12 +60,15 @@
                 <div class="modal-footer">
 
                     <script>
-                   
+
 
                     </script>
-                    <button type="button" onclick="cookies()" class="btn btn-primary" data-toggle="modal" data-target="#modalpago">
+                    <button type="button" onclick="comprar()" class="btn btn-primary" data-toggle="modal" data-target="#modalpago">
                     checkOut</button>
+
                     <button type="button" class="btn btn-danger" onclick="vaciar()">Vaciar carrito</button>
+                    <button ><a href="realizarcompra">comprar</a></button>
+
         
                 </div>
 
@@ -219,7 +222,7 @@
                 })
                 .catch(function (error) {
                     console.log(error);
-                    $("checkout-btn").attr("disabled", false);
+                    $("#checkout-btn").attr("disabled", false);
                 });
             });
 
@@ -314,6 +317,10 @@
             const bodycarrito = document.getElementById('body-carrito');
             bodycarrito.innerHTML = '';
             localStorage.clear();
+        }
+
+        function comprar (){
+
         }
 
         </script>

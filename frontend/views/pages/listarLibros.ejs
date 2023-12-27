@@ -15,7 +15,7 @@
 <body>
 
 
-    <a href="/inicio" class="btn-back">Regresar</a>
+    <a href="landing" class="btn-back">‹Regresar</a>
 
 
     <h1 class="titulo">Tabla Libros</h1>
@@ -74,8 +74,8 @@
                             <%=elemento.idioma%>
                         </td>
                         <td>
-                            <button type="button" class="button btn" data-toggle="modal" onclick="llenarformulario( `<%=elemento._id %>`,`<%=elemento.isbn %>`, `<%=elemento.titulo %>`,`<%=elemento.autor%>`, `<%=elemento.editorial%>`,`<%=elemento.materias%>`,`<%=elemento.Añodepublicacion%>`,`<%=elemento.copiasdisponibles%>`, `<%=elemento.precio%>`,`<%=elemento.imagen%>`,`<%=elemento.idioma%>` )" data-target="#update">Actualizar</button>
-                            <a href="eliminarLibro/<%=elemento._id%>" class="button btn outline">Eliminar</a>
+                            <button type="button" class="button btn" data-toggle="modal" onclick="llenarformulario( `<%=elemento._id %>`,`<%=elemento.isbn %>`, `<%=elemento.titulo %>`,`<%=elemento.autor%>`, `<%=elemento.editorial%>`,`<%=elemento.materias%>`,`<%=elemento.Añodepublicacion%>`,`<%=elemento.copiasdisponibles%>`, `<%=elemento.precio%>`,`<%=elemento.path%>`,`<%=elemento.idioma%>` )" data-target="#update">Actualizar</button>
+                            <a href="eliminarLibro/<%=elemento._id%>"  class="button btn outline">Eliminar</a>
                         </td>
                         
                     </tr>
@@ -97,7 +97,7 @@
                         <form action="actualizarLibro" method="post">
                             <div class="form-group">
                                 <label for="text">ID</label>
-                                <input type="text" class="form-control" id="actualizaridp" name="idpactualizarproducto"  placeholder="id" readonly >
+                                <input type="text" class="form-control" id="actualizaridp" name="idLibro"  placeholder="id" readonly >
                             </div>
                             <div class="form-group">
                                 <label for="text">isbn</label>
@@ -143,9 +143,10 @@
                             <label for="text">idioma</label>
                             <input type="text" class="form-control" id="actualizaridioma" name="idioma" placeholder="idioma">
                         </div>
-                            <div class="modal-footer">
-                                <input type="submit" class="btn btn-success" value="Guardar">
-                            </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+
                         </form>
                     
                         

@@ -145,6 +145,18 @@ exports.borrarCookie = (req, res) => {
 }
 
 
+exports.comprar = (req, res) => {
+    res.render('pago')
+}
+
+
+exports.recupe = (req, res) => {
+    res.render('recuperar')
+}
+
+
+
+
 
 
 
