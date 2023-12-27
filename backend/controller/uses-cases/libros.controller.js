@@ -82,7 +82,7 @@ exports.libro = async(req, res) =>{
 
 
     exports.update = async(req, res) => {
-        const idLibro = { _id: req.body.idLibro};
+        const idLibro = { _id:req.body.idLibro};
         const datos = {
             isbn: req.body.isbn,
             titulo: req.body.titulo,

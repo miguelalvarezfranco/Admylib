@@ -85,13 +85,6 @@ exports.eliminarU = async (req, res) => {
 
 
 
-    // function verificarRol(usuario) {
-    //     if ("rol" in usuario) {
-    //         return usuario.rol;
-    //     } else {
-    //         return null;
-    //     }
-    //     }
 
 
 
@@ -111,8 +104,9 @@ exports.login = async(req, res) =>{
             res.redirect('/landing');
         }   
     }
-}
 
+    
+}
 
 
 exports.paginaPrincipal = (req, res)=>{
