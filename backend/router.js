@@ -38,7 +38,7 @@ router.get("/realizarcompra",usuarios.comprar);
 
 router.get("/recuperarc", usuarios.recupe);
 
-router.get("/recuperarc", usuarios.recupe);
+router.post("/recuperarc", usuarios.recupe);
 
 // router.post("/recuperarcontraseña", nodemailer.recuperar);
 

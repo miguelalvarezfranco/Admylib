@@ -77,7 +77,7 @@ exports.updateUsu = async(req, res)=>{
 exports.eliminarU = async (req, res) => {
     try {
         await usuarios.eliminarusuario(req.params.id);
-        return res.redirect("/listarUsuario");
+        return res.redirect("/listarUsuarios");
     } catch (error) {
         console.error(error);
         }
@@ -149,73 +149,5 @@ exports.recupe = (req, res) => {
 }
 
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// exports.infoUsuario =  (req, res) => {
-
- 
-//     const contra = req.body.password;
-//     const email = req.body.email;
-
-    
-//     if(usuarios.buscarUsuario.password === contra){
-
-//     }
-    
-//     if(usuarios.buscarUsuario.email === email ){
-
-//         res.status(200).json({buscarUsuario: ''});
-
-//     // }else if(usuarios.buscarUsuario.password === 'miguel123'){
-//         res.redirect("vistaadmin");
-//         // res.render('mostrarCatalogo');
-    
-//     };
-// }
 
     

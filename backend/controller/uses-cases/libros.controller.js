@@ -82,8 +82,8 @@ exports.libro = async(req, res) =>{
 
 
     exports.update = async(req, res) => {
-        const idLibro = { _id:req.body.idLibro};
-        const datos = {
+        const filter = { _id: req.body.idLibro};
+        const update = {
             isbn: req.body.isbn,
             titulo: req.body.titulo,
             autor: req.body.autor,
@@ -95,21 +95,15 @@ exports.libro = async(req, res) =>{
             path: req.body.path,
             idioma: req.body.idioma,
         };
+
+        console.log(update);
     
-        // Validamos los datos
-        if (datos.isbn === "" || datos.titulo === "") {
-            return res.status(400).json({
-            resultado: "Error de validación",
-        });
-        }
     
         // Actualizamos el libro
-        await libros.updatelibros(idLibro, datos);
+        await libros.updatelibros(update, filter);
     
         // Devolvemos un mensaje de éxito
-        return res.redirect('/listarLibros'), {
-        resultado: "Libro actualizado correctamente",
-        };
+        return res.redirect('/listarLibros')
     };
 
 exports.eliminarL = async (req, res) => {

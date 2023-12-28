@@ -33,11 +33,19 @@ exports.buscarLibro = async(filter)=>{
 }
 
 
-exports.updatelibros = async(id, datos)=>{
+exports.updatelibros = async(filter, update)=>{
+
+    try {
+        if (!filter) return {error: 'No se ha especificado un filtro'};
+        if (!update) return {error: 'No se dieron datos para actualizar'};
+        return await  libros.findByIdAndUpdate(filter, update, {new: true});
+    } catch (error) {
+        return error;
+    }
+};
 
 
-        return await libros.findOneAndUpdate(id, datos );
-} 
+
 
 exports.eliminarLibro = async (id) => {
     return await libros.findByIdAndDelete(id);

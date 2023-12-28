@@ -54,24 +54,24 @@
 
 
     <div class="container pt-4 pb-4" >
-        <form  class="needs-validation" novalidate  action="registrarlibros" method="post" enctype="multipart/form-data">
+        <form  class="needs-validation" novalidate  action="registrarlibros" method="post" enctype="multipart/form-data" onsubmit=return validarCampos()">
             <div class="form-group">
                 <label for="isbn">*ISBN:</label>
-                <input type="number" class="form-control" id="" placeholder="Ingresa el ISBN" name="isbn"   required>
+                <input type="number" class="form-control" id="isbn" placeholder="Ingresa el ISBN" name="isbn"   required>
                 <div class="invalid-feedback">
                     Ingresa el ISBN
             </div>
             </div>
             <div class="form-group">
                 <label for="titulo">*Título:</label>
-                <input type="text" class="form-control" id="" placeholder="Ingresa el título" name="titulo"  required >
+                <input type="text" class="form-control" id="titulo" placeholder="Ingresa el título" name="titulo"  required  >
                 <div class="invalid-feedback">
-                    Ingresa el titlo
+                    Ingresa el titulo
                 </div>
             </div>
             <div class="form-group">
-                <label for="Añodepublicacion">*Año de publicación:</label>
-                <input type="date" class="form-control" id="" placeholder="Ingresa el año de publicacion" name="Añodepublicacion" required pattern="Ingrese solo letras">
+                <label for="Anodepublicacion">*Año de publicación:</label>
+                <input type="date" class="form-control" id="anodepublicacion" placeholder="Ingresa el año de publicacion" name="Anodepublicacion" required >
                 <div class="invalid-feedback">
                     Ingresa solo letras
             </div>
@@ -145,6 +145,32 @@
             }, false)
             })
         })()
+
+
+
+        function validarCampos(){
+
+            const validarForm = true;
+
+            const isbn = document.getElementById('isbn').value;
+
+            if(isNaN(isbn)){
+                alert("el isbn contiene solo numeros");
+                validarForm = false;
+            }
+
+            const titulo = document.getElementById('titulo').value;
+
+            if(titulo == null || titulo.length == 0){
+                alert('el titulo no puede estar vacio');
+                validarForm = false;
+            }
+
+            const anodepublicacion = document.getElementById('anodepublicacion');
+
+            return validarForm;
+        }
+
             </script>
 
         </body>
