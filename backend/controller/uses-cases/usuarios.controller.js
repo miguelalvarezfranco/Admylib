@@ -1,14 +1,39 @@
 const usuarios = require('../data-acces/usuarios.controller');
 const bcrypt = require('bcrypt')
 
-exports.crearUsuarios = async(req, res)=>{
+exports.crearUsuarios = async (req, res) => {
+    try {
+        const correoIngresado = req.body.correo;
 
-    const datos = await usuarios.createUsuarios(req.body);
+        // Verificar si el correo ya está registrado
+        const correoExistente = await usuarios.infoUsuario({ correo: correoIngresado });
 
-    res.cookie('rol', "usuario");
-    res.redirect('/landing');
+        if (correoExistente) {
+            // El correo ya está registrado
+            return res.status(409).send("Correo ya registrado");
+        }
 
+        // Si el correo no está en uso, procede a crear el nuevo usuario
+        await usuarios.createUsuarios(req.body);
+
+        res.cookie('rol', "usuario");
+        res.redirect('/landing');
+    } catch (error) {
+        // Manejo de errores
+        console.error(error);
+        return res.status(500).send("Error interno del servidor");
+    }
 }
+
+
+// exports.crearUsuarios = async(req, res)=>{
+
+//     const datos = await usuarios.createUsuarios(req.body);
+
+//     res.cookie('rol', "usuario");
+//     res.redirect('/landing');
+
+// }
 
 exports.Tabla2 = async(req, res) =>{
 
@@ -85,28 +110,85 @@ exports.eliminarU = async (req, res) => {
 
 
 
-
-
-
-exports.login = async(req, res) =>{
-
-
-    const usuarioEncontrado =  await  usuarios.infoUsuario({ correo: req.body.correo });
-    console.log(usuarioEncontrado.usuarios.rol)
+    exports.login = async (req, res) => {
+        try {
+            const correoIngresado = req.body.correo;
     
-
-    if (usuarioEncontrado.usuarios.password === req.body.password ) {
-        if (usuarioEncontrado.usuarios.rol === 'administrador'){
-            res.cookie('rol', usuarioEncontrado.usuarios.rol);
-            res.render('inicio');
-        } else {
-            res.cookie('rol', usuarioEncontrado.usuarios.rol);
-            res.redirect('/landing');
-        }   
+            // Verificar si el correo ya está registrado
+            const usuarioExistente = await usuarios.infoUsuario({ correo: correoIngresado });
+    
+            if (!usuarioExistente) {
+                // El correo no está registrado
+                return res.status(404).send("Correo no registrado");
+            }
+    
+            // Si el correo existe, verifica la contraseña
+            if (usuarioExistente.password !== req.body.password) {
+                // La contraseña no coincide
+                return res.status(401).send("Contraseña incorrecta");
+            }
+    
+            // Si el correo y contraseña son correctos, procede con el inicio de sesión
+            if (usuarioExistente.rol === 'administrador') {
+                res.cookie('rol', usuarioExistente.rol);
+                return res.render('inicio');
+            } else {
+                res.cookie('rol', usuarioExistente.rol);
+                return res.redirect('/landing');
+            }
+        } catch (error) {
+            // Manejo de errores
+            console.error(error);
+            return res.status(500).send("Error interno del servidor");
+        }
     }
-
     
-}
+
+
+
+    // exports.login = async (req, res) => {
+    //     try {
+    //         const usuarioEncontrado = await usuarios.infoUsuario({ correo: req.body.correo });
+    
+    //         if (!usuarioEncontrado) {
+    //             // No se encontró ningún usuario con ese correo electrónico
+    //             return res.status(404).send("Usuario no encontrado");
+    //         }
+    
+    //         if (usuarioEncontrado.password !== req.body.password) {
+    //             // La contraseña no coincide
+    //             return res.status(401).send("Contraseña incorrecta");
+    //         }
+    
+    //         if (usuarioEncontrado.rol === 'administrador') {
+    //             res.cookie('rol', usuarioEncontrado.rol);
+    //             return res.render('inicio');
+    //         } else {
+    //             res.cookie('rol', usuarioEncontrado.rol);
+    //             return res.redirect('/landing');
+    //         }
+    //     } catch (error) {
+    //         // Manejo de errores
+    //         console.error(error);
+    //         return res.status(500).send("Error interno del servidor");
+    //     }
+    // }
+    
+
+    // const usuarioEncontrado =  await  usuarios.infoUsuario({ correo: req.body.correo });
+    // console.log(usuarioEncontrado.usuarios.rol)
+    
+
+    // if (usuarioEncontrado.usuarios.password === req.body.password ) {
+    //     if (usuarioEncontrado.usuarios.rol === 'administrador'){
+    //         res.cookie('rol', usuarioEncontrado.usuarios.rol);
+    //         res.render('inicio');
+    //     } else {
+    //         res.cookie('rol', usuarioEncontrado.usuarios.rol);
+    //         res.redirect('/landing');
+    //     }   
+    // }
+
 
 
 exports.paginaPrincipal = (req, res)=>{
