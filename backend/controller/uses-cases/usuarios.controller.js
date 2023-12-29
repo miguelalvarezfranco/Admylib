@@ -116,13 +116,14 @@ exports.eliminarU = async (req, res) => {
                 const usuarioEncontrado = await usuarios.infoUsuario({ correo: req.body.correo });
         
                 if (!usuarioEncontrado) {
+                    // Si no se encuentra el usuario
                     return res.status(401).send('Usuario no encontrado');
                 }
         
-                // Comparar contraseñas utilizando bcrypt
-                const passwordCorrecta = await bcrypt.compare(req.body.password, usuarioEncontrado.usuarios.password);
+                const passwordCorrecta = usuarioEncontrado.usuarios.password === req.body.password;
         
                 if (!passwordCorrecta) {
+                    // Si la contraseña es incorrecta
                     return res.status(401).send('Contraseña incorrecta');
                 }
         
