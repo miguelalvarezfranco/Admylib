@@ -31,7 +31,7 @@ const LibrosSchema = new mongoose.Schema({
         maxLength:50,
         
     },
-    Añodepublicacion: {
+    Anodepublicacion: {
         type: Date,
 
     },

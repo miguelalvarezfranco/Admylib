@@ -11,13 +11,13 @@ const router = express.Router();
 
 router.post("/registrarlibros", libros.crearLibros);
 router.get("/listarLibro", libros.libro);
-router.post("/actualizarLibro/:id", libros.update);
+router.post("/actualizarLibro", libros.update);
 router.get("/eliminarLibro/:id", libros.eliminarL);
 
 //MODULO USUARIOS
 router.post("/registrarusuario", usuarios.crearUsuarios);
 router.get("/listarUsuario", usuarios.usuario);
-router.post("/actualizarUsuarios/:id", usuarios.updateUsu);
+router.post("/actualizarUsuarios", usuarios.updateUsu);
 router.get("/eliminarusuario/:id", usuarios.eliminarU);
 
 router.post("/inicio", usuarios.login);
@@ -32,7 +32,7 @@ router.get("/realizarcompra",usuarios.comprar);
 
 // router.get("/recuperarc", usuarios.recupe);
 
-router.post("/inicio", nodemailer.recuperar);
+router.get("/recuperarc", nodemailer.recuperar);
 
 router.get("/mostrarFormulario", libros.formularioLibro);
 
