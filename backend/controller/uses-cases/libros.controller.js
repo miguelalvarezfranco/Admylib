@@ -29,9 +29,6 @@ exports.crearLibros = async(req, res)=>{
 }
 
 
-
-
-
 exports.Tabla = async(req, res) =>{
 
     try{
@@ -89,21 +86,17 @@ exports.libro = async(req, res) =>{
             autor: req.body.autor,
             editorial: req.body.editorial,
             materias: req.body.materias,
-            Añodepublicacion: req.body.Añodepublicacion,
+            Añodepublicacion: req.body.Anodepublicacion,
             copiasdisponibles: req.body.copiasdisponibles,
             precio: req.body.precio,
             path: req.body.path,
             idioma: req.body.idioma,
         };
-
-        console.log(update);
-    
-    
         // Actualizamos el libro
         await libros.updatelibros(update, filter);
     
         // Devolvemos un mensaje de éxito
-        return res.redirect('/listarLibros')
+        res.redirect('/listarLibros')
     };
 
 exports.eliminarL = async (req, res) => {

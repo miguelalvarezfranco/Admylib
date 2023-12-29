@@ -148,29 +148,79 @@
         })()
 
 
-
-        function validarCampos(){
-
-            const validarForm = true;
-
-            const isbn = document.getElementById('isbn').value;
-
-            if(isNaN(isbn)){
-                alert("el isbn contiene solo numeros");
-                validarForm = false;
-            }
-
-            const titulo = document.getElementById('titulo').value;
-
-            if(titulo == null || titulo.length == 0){
-                alert('el titulo no puede estar vacio');
-                validarForm = false;
-            }
-
-            const anodepublicacion = document.getElementById('anodepublicacion');
-
-            return validarForm;
+            function validarCampos() {
+        // Validación del ISBN (campo numérico)
+        const isbn = document.getElementById('isbn').value;
+        if (isNaN(isbn)) {
+            alert('ISBN debe ser un número válido');
+            return false;
         }
+
+        // Validación del título (campo de texto)
+        const titulo = document.getElementById('titulo').value;
+        if (!titulo.trim()) {
+            alert('Ingresa el título del libro');
+            return false;
+        }
+
+        
+        const anodepublicacion = document.getElementById('anodepublicacion').value;
+        const anioActual = new Date().getFullYear();
+
+        if (!anodepublicacion || isNaN(Date.parse(anodepublicacion))) {
+            alert('Ingresa un año de publicación válido');
+            return false;
+        }
+
+        const anioIngresado = new Date(anodepublicacion).getFullYear();
+        const anioMinimo = 1900;
+
+        if (anioIngresado < anioMinimo || anioIngresado > anioActual) {
+            alert(`El año de publicación debe estar entre ${anioMinimo} y ${anioActual}`);
+            return false;
+        }
+
+    // Resto de las validaciones...
+
+        return true;
+        // Validación de la editorial (campo de texto)
+        const editorial = document.getElementById('editorial').value;
+        if (!editorial.trim()) {
+            alert('Ingresa la editorial del libro');
+            return false;
+        }
+
+        // Validación de las copias disponibles (campo numérico)
+        const copias = document.getElementById('copias').value;
+        if (isNaN(copias)) {
+            alert('El número de copias debe ser un número válido');
+            return false;
+        }
+
+        // Validación del precio (campo numérico)
+        const precio = document.getElementById('precio').value;
+        if (isNaN(precio)) {
+            alert('El precio debe ser un número válido');
+            return false;
+        }
+
+        // Validación del idioma (campo de texto)
+        const idioma = document.getElementById('idioma').value;
+        if (!idioma.trim()) {
+            alert('Ingresa el idioma del libro');
+            return false;
+        }
+
+        // Validación del autor (campo de texto)
+        const autor = document.getElementById('autor').value;
+        if (!autor.trim()) {
+            alert('Ingresa el autor del libro');
+            return false;
+        }
+
+
+        return true; 
+}
 
             </script>
 

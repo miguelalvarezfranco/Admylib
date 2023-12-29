@@ -29,14 +29,14 @@ if (user) {
         if (error) {
         console.log(error);
         } else {
-        console.log("Email sent: " + info.response);
+        console.log("Email sent: " + infoUsuario.response);
         }
     });
     } else {
     console.log("Este usuario no existe");
     }
 
-    res.render('recuperar')
+    
 };
 
 

@@ -13,6 +13,14 @@
 
     <a href="landing" class="btn-back">‹Regresar</a>
 
+
+   
+
+        <div id="listaLibros">
+
+        </div>
+
+
     
         <div class="container mt-5 mb-5">
             <div class="row">
@@ -24,10 +32,13 @@
                             <form id="formulario-envio" method="get" action="/realizarcompra">
                                 <!-- Nombre y celular -->
                                 <div class="row mb-3">
-                                    <input type="text" hidden id="listaDeProductos" name="listaDeProductos">
                                     <div class="col-md-6">
                                         <label for="nombreEnvio" class="form-label">Nombre</label>
                                         <input type="text" class="form-control" name="nombreEnvio" id="nombreEnvio"  required >
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="cedula" class="form-label">cedula</label>
+                                        <input type="number" class="form-control" name="cedula" id="cedula"  required >
                                     </div>
                                     <div class="col-md-6">
                                         <label for="telefonoEnvio" class="form-label">Celular</label>
@@ -51,5 +62,24 @@
                         </div>
                     </div>
                 </div>
+
+                <script>
+
+
+                    let carritoCompras = JSON.parse(localStorage.getItem("Micarrito")) || [];
+
+                    let cadena = "";
+
+                    carritoCompras.forEach(element => {
+
+                        
+                        cadena  +="<div class='card'>"+"<img src='"+element.imagen+"' alt='..' width='150px' height='100px'>"+"<div class='card-body'>"+"<h5 class='card-title'>"+element.titulo+"</h5>"+"<p class='card-text'>"+"<p>Precio: "+element.precio +"</p></div></div>";
+                    }); 
+
+                    document.getElementById("listaLibros").innerHTML = cadena;
+
+
+                </script>
+
 </body>
 </html>

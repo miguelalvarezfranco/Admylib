@@ -110,61 +110,30 @@ exports.eliminarU = async (req, res) => {
 
 
 
-    exports.login = async (req, res) => {
-        try {
-            const correoIngresado = req.body.correo;
-    
-            // Verificar si el correo ya está registrado
-            const usuarioExistente = await usuarios.infoUsuario({ correo: correoIngresado });
-    
-            if (!usuarioExistente) {
-                // El correo no está registrado
-                return res.status(404).send("Correo no registrado");
-            }
-    
-            // Si el correo existe, verifica la contraseña
-            if (usuarioExistente.password !== req.body.password) {
-                // La contraseña no coincide
-                return res.status(401).send("Contraseña incorrecta");
-            }
-    
-            // Si el correo y contraseña son correctos, procede con el inicio de sesión
-            if (usuarioExistente.rol === 'administrador') {
-                res.cookie('rol', usuarioExistente.rol);
-                return res.render('inicio');
-            } else {
-                res.cookie('rol', usuarioExistente.rol);
-                return res.redirect('/landing');
-            }
-        } catch (error) {
-            // Manejo de errores
-            console.error(error);
-            return res.status(500).send("Error interno del servidor");
-        }
-    }
-    
-
-
-
     // exports.login = async (req, res) => {
     //     try {
-    //         const usuarioEncontrado = await usuarios.infoUsuario({ correo: req.body.correo });
+    //         const correoIngresado = req.body.correo;
     
-    //         if (!usuarioEncontrado) {
-    //             // No se encontró ningún usuario con ese correo electrónico
-    //             return res.status(404).send("Usuario no encontrado");
+    //         // Verificar si el correo ya está registrado
+    //         const usuarioExistente = await usuarios.infoUsuario({ correo: correoIngresado });
+    
+    //         if (!usuarioExistente) {
+    //             // El correo no está registrado
+    //             return res.status(404).send("Correo no registrado");
     //         }
     
-    //         if (usuarioEncontrado.password !== req.body.password) {
+    //         // Si el correo existe, verifica la contraseña
+    //         if (usuarioExistente.password !== req.body.password) {
     //             // La contraseña no coincide
     //             return res.status(401).send("Contraseña incorrecta");
     //         }
     
-    //         if (usuarioEncontrado.rol === 'administrador') {
-    //             res.cookie('rol', usuarioEncontrado.rol);
+    //         // Si el correo y contraseña son correctos, procede con el inicio de sesión
+    //         if (usuarioExistente.rol === 'administrador') {
+    //             res.cookie('rol', usuarioExistente.rol);
     //             return res.render('inicio');
     //         } else {
-    //             res.cookie('rol', usuarioEncontrado.rol);
+    //             res.cookie('rol', usuarioExistente.rol);
     //             return res.redirect('/landing');
     //         }
     //     } catch (error) {
@@ -175,19 +144,52 @@ exports.eliminarU = async (req, res) => {
     // }
     
 
-    // const usuarioEncontrado =  await  usuarios.infoUsuario({ correo: req.body.correo });
-    // console.log(usuarioEncontrado.usuarios.rol)
-    
 
-    // if (usuarioEncontrado.usuarios.password === req.body.password ) {
-    //     if (usuarioEncontrado.usuarios.rol === 'administrador'){
-    //         res.cookie('rol', usuarioEncontrado.usuarios.rol);
-    //         res.render('inicio');
-    //     } else {
-    //         res.cookie('rol', usuarioEncontrado.usuarios.rol);
-    //         res.redirect('/landing');
-    //     }   
-    // }
+
+    // exports.login = async (req, res) => {
+    //         try {
+    //             const usuarioEncontrado = await usuarios.infoUsuario({ correo: req.body.correo });
+        
+    //         if (!usuarioEncontrado) {
+    //                 // No se encontró ningún usuario con ese correo electrónico
+    //                 return res.status(404).send("Usuario no encontrado");
+    //             }
+        
+    //             if (usuarioEncontrado.password !== req.body.password) {
+    //                 // La contraseña no coincide
+    //                 return res.status(401).send("Contraseña incorrecta");
+    //             }
+        
+    //             if (usuarioEncontrado.rol === 'administrador') {
+    //                 res.cookie('rol', usuarioEncontrado.rol);
+    //             return res.render('inicio');
+    //             } else {
+    //                 res.cookie('rol', usuarioEncontrado.rol);
+    //                 return res.redirect('/landing');
+    //             }
+    //         } catch (error) {
+    //             // Manejo de errores
+    //             console.error(error);
+    //             return res.status(500).send("Error interno del servidor");
+    //         }
+    //     }
+
+        exports.login = async (req, res) => {
+
+        const usuarioEncontrado =  await  usuarios.infoUsuario({ correo: req.body.correo });
+        console.log(usuarioEncontrado.usuarios.rol)
+        
+
+        if (usuarioEncontrado.usuarios.password === req.body.password ) {
+            if (usuarioEncontrado.usuarios.rol === 'administrador'){
+                res.cookie('rol', usuarioEncontrado.usuarios.rol);
+                res.render('inicio');
+            } else {
+                res.cookie('rol', usuarioEncontrado.usuarios.rol);
+                res.redirect('/landing');
+            }   
+        }
+    }
 
 
 

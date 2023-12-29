@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/registrarlibros", libros.crearLibros);
 router.get("/listarLibro", libros.libro);
-router.post("/actualizarLibro", libros.update);
+router.post("/actualizarLibro/:id", libros.update);
 router.get("/eliminarLibro/:id", libros.eliminarL);
 
 //MODULO USUARIOS
@@ -21,33 +21,18 @@ router.post("/actualizarUsuarios/:id", usuarios.updateUsu);
 router.get("/eliminarusuario/:id", usuarios.eliminarU);
 
 router.post("/inicio", usuarios.login);
-
 router.get("/vistaAdmin",usuarios.VistaAdministrador );
-
 router.get("/cerrarsesion", usuarios.borrarCookie);
-
-
-
 
 //MOSTRAR PAGINA PRICIPAL
 router.get("/landing",usuarios.paginaPrincipal);
 
 //INFORMACION DEL PAGO
-
 router.get("/realizarcompra",usuarios.comprar);
 
-router.get("/recuperarc", usuarios.recupe);
+// router.get("/recuperarc", usuarios.recupe);
 
-router.post("/recuperarc", usuarios.recupe);
-
-// router.post("/recuperarcontraseña", nodemailer.recuperar);
-
-
-
-// router.post("/envioCorreo", nodemailer.recuperar);
-
-
-
+router.post("/inicio", nodemailer.recuperar);
 
 router.get("/mostrarFormulario", libros.formularioLibro);
 
